@@ -1,0 +1,17 @@
+with installing matplotlib in python3.6 - do it as superuser.
+
+instead of pip install xyz, do python3.6 -m install xyz
+
+In the file requirements.txt, change the version of matplotlib that is there.
+
+also had to do sudo pip install jupyter (dont know why no python36 -m etc)
+
+-------
+
+in the pelicanconf.py file, i replaced PLUGIN_PATH by PLUGIN_PATHS and './plugins' by ['./plugins']. In this way I was able to avoid the warnings:
+WARNING: PLUGIN_PATH setting has been replaced by PLUGIN_PATHS, moving it to the new setting name.
+WARNING: Defining PLUGIN_PATHS setting as string has been deprecated (should be a list)
+when I ran
+(blogve) kbhaskar@capri:~/Pythonblog$ pelican content -s publishconf.py
+
+

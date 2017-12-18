@@ -1,0 +1,16 @@
+https://www.dataquest.io/blog/how-to-setup-a-data-science-blog/
+
+http://docs.python-guide.org/en/latest/dev/virtualenvs/
+
+https://stackoverflow.com/questions/42662104/how-to-install-pip-for-python-3-6-on-ubuntu-16-10/44254088#44254088
+
+https://stackoverflow.com/questions/41477650/problems-with-installing-matplotlib-in-python-3-6
+
+https://stackoverflow.com/questions/46335312/pelican-importerror-no-module-named-pelican
+
+
+-------------------------
+
+http://marpat.github.io/python-anaconda-and-pelican-on-windows.html and references at the end therein
+
+http://docs.getpelican.com/en/3.6.3/quickstart.html
