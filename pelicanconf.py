@@ -27,7 +27,7 @@ AUTHOR_FEED_RSS = None
 
 # Title menu options
 MENUITEMS = (('About', 'https://bhaskarkamble.com'),
-             ('Archives', './archives.html'))
+             ('Archives', 'bhaskar-kamble.github.io/archives.html'))
 
 # Social widget
 SOCIAL = (('Twitter', 'https://twitter.com/baski170182'),
