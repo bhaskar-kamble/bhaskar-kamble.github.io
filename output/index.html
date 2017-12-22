@@ -3,7 +3,8 @@
 <head>
         <meta charset="utf-8" />
         <title>Random Forests</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="https://bhaskar-kamble.github.io/theme/css/main.css" />
+        <link href="https://bhaskar-kamble.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Random Forests Atom Feed" />
 
         <!--[if IE]>
             <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,25 +13,25 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">Random Forests </a></h1>
+                <h1><a href="https://bhaskar-kamble.github.io/">Random Forests </a></h1>
                 <nav><ul>
-                    <li><a href="/category/posts.html">posts</a></li>
+                    <li><a href="https://bhaskar-kamble.github.io/category/posts.html">posts</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/first-post.html">First Post with Pelican</a></h1>
+                    <h1 class="entry-title"><a href="https://bhaskar-kamble.github.io/first-post.html">First Post with Pelican</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2017-12-18T11:00:00+01:00">
                 Published: Mo 18 Dezember 2017
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="/author/bhaskar-kamble.html">Bhaskar Kamble</a>
+                By                         <a class="url fn" href="https://bhaskar-kamble.github.io/author/bhaskar-kamble.html">Bhaskar Kamble</a>
         </address>
-<p>In <a href="/category/posts.html">posts</a>.</p>
-<p>tags: <a href="/tag/python-firsts.html">python firsts</a> </p>
+<p>In <a href="https://bhaskar-kamble.github.io/category/posts.html">posts</a>.</p>
+<p>tags: <a href="https://bhaskar-kamble.github.io/tag/python-firsts.html">python firsts</a> </p>
 </footer><!-- /.post-info --><style type="text/css">/*!
 *
 * IPython notebook
@@ -1010,7 +1011,56 @@ h6:hover .anchor-link {
 <p>Endlich habe ich es geschafft: einen Blog auf Github zu erstellen. Zwar habe ich seit lang mit den Gedanken gespielt, so was zu tun, aber meine Stelle als Referendar an einer Schule in Berlin ließ mich mit kaum Zeit für etwas, das nicht direkt mit der Schule zu tun hat. Aber jetzt, da ich nicht mehr diese Einschränkung habe, habe ich endlich Zeit dafür gefunden.</p>
 <p>Die erste Frage, warum ein Blog auf Github? Ich habe schon eine eigene Webseite auf Wordpress und einen Blog auf Blogspot wo ich Materialien hochgeladen habe, die ich für meinen Unterricht entwickelt habe. Aber mit Wordpress oder Blogspot darf man kein Javascript benutzen. Da darf man keine Gleichungen in Latex schreiben. Auf der anderen Seite hatte ich schon Erfahrungen mit Erfahrungen mit Github gemacht und habe viele Blogs und Webseite gesehen, die auf Github erstellt/hosted worden sind.</p>
 <p>Die ersten Untersuchungen auf dem Internet haben mir von Jekyll bewusst gemacht, mit dessen Hilfe man einen Blog oder eine Webseite auf Github erstellen kann. Man kann auch Markdown benutzen, um den chreibstil zu modizifieren und Gleichungen in Latex zu schreiben. Danach habe ich tatsächlich eine Webseite auf Github mithilfe von Jekyll erstellt. Die Anleitungen habe ich von dieser hervorragenden Seite bekommen.</p>
-<p>Aber dann bin von einem anderen Problem bewusst gewesen. Anders gesagt, bin ich von einer anderen Möglichkeit bewusst gewesen.</p>
+<p>Aber dann bin von einem anderen Problem bewusst gewesen. Anders gesagt, bin ich von einer anderen Möglichkeit bewusst gewesen. Ich hatte schon Erfahrung mit dem IPython Jupyter Notebook gemacht und war mit seinen Fähigkeiten total beeindruckt. Ich habe erinnerte irgendwo gelesen zu haben, dass man diesen Notebook zusammen mit einem Blog benutzen kann. (Zwar ähnelt der IPython Notebook zum Teil dem RMarkdown Dokumente in RStudio, aber ich bin nicht sicher, ob das letztere kann im Zusammenhang mit einem Blog oder einer Webseite benutzen kann. Na ja, meine Sprache ist Python und nicht R, deshalb ist diese Frage auch irrelevant.) Ich hatte auch inzwischen didaktische, interaktive Software entwickelt, die alle ich in Python geschrieben habe. Deshalb war diese Möglichkeit für mich von Interesse. Nachdem ich auf dem Internet ein bisschen erkundet habe, ist es mir bekannt geworden, dass an statt Jekyll ist Pelican total geeignet, die Kraft von Python und dem Jupyter Notebook in einem Blog oder einer Webseite zu verwenden.</p>
+<p>Das war begeisternd, und ich war noch mehr begeistert, als diese Webseite gesehen habe, wo die Anleitungen zum Erstellen eines Blogs mithilfe Pelicans und Gthubs deutlich beschrieben werden sind. Trotzdem hat es mir 2 Tage gedauert, bis ich diesen Blog verwirklichen konnte. (Viele Probleme sind von den unterschiedlichen Versionen vom Python verursacht worden. Zum Beispiel in meinem Ubuntu 16.04 ist Python2.7 die default Version von Python, während zum Zweck des Erstellens dieses Blogs war Python3.5 oder höher nötig. Die habe ich separat installiert, aber es gab Kompatibilitätsprobleme zwischen diesen Versionen wenn ich die nötigen Packages installiert habe.) Jetzt ist es gemacht und ich bin wirklich begeistert nachzuschauen, was alles möglich ist. Bald muss ich an den Plugins denken, die brauche, z.B. um Kommnets zu ermöglichen usw. Aber jetzt will ich einige einfacheren Sachen ausprobieren.</p>
+<h3 id="Markdown">Markdown<a class="anchor-link" href="#Markdown">¶</a></h3><p>Zuerst möchte ich nachschauen, <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a> funktioniert. Hier funktioniert der Link offentsichtilich und auch der Titel, dessen Größe man mit '#' kontrollieren kann. Nächstes möchte ich Liste ausprobieren, die man mit * erstellen kann.</p>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+</ul>
+<p>Oder nummereierte Liste:</p>
+<ol>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+</ol>
+<p>Außerdem kann man Codelines mit "back-ticks" kennzeichnen. Zum Beispiel <code>y=np.sin(x)</code>.</p>
+<p>Man kann auch Tabelle erstellen. Zum Beispiel:</p>
+<table>
+<thead><tr>
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a(1,1)</td>
+<td>a(1,2)</td>
+<td>a(1,3)</td>
+</tr>
+<tr>
+<td>a(2,1)</td>
+<td>a(2,2)</td>
+<td>a(2,3)</td>
+</tr>
+<tr>
+<td>a(3,1)</td>
+<td>a(3,2)</td>
+<td>a(3,3)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Latex">Latex<a class="anchor-link" href="#Latex">¶</a></h3><p>Ok, Markdown funktioniert. Lass mich jetzt Latex ausprobieren. Wenn ich das folgende schreibe</p>
+<p><code>\begin{equation}
+H = \hbar\omega \left( n + \frac{1}{2}\right)
+\end{equation},</code>
+dann bekomme ich:
+\begin{equation}
+H = \hbar\omega \left( n + \frac{1}{2}\right)
+\end{equation}</p>
+<p>Also sehr gut! Latex funktioniert auch.</p>
 </div>
 </div>
 </div>
@@ -1019,9 +1069,9 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">8.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">51</span><span class="p">)</span>
 
@@ -1092,6 +1142,7 @@ h6:hover .anchor-link {
                 <div class="social">
                         <h2>social</h2>
                         <ul>
+                            <li><a href="https://bhaskar-kamble.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
                             <li><a href="#">You can add links in your config file</a></li>
                             <li><a href="#">Another social link</a></li>

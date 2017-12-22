@@ -63,3 +63,15 @@ Wichtige Sachen, die ich gelernt habe.
 20. git push --set-upstream origin dev
 21. ghp-import output -b master
 22. git push origin master
+
+#################################
+When you want to write a new article or modify an earlier article, do:
+1. source blogve/bin/activate
+2. Modify or create the posts in Jupyter Notebook.
+3. Copy the ipynb file in "content" folder and modify the ipynb-meta file if needed.
+4. Run pelican content -s publischconf.py
+5. go to "output" folder
+6. Run "python3.6 -m pelican.server" to see the post.
+7. Go back to "Pythonblog"
+8. Run "git checkout dev" or "git checkout -b dev". The latter if the branch "dev" doesn't already exist.
+
