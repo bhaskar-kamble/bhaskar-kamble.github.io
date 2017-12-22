@@ -20,18 +20,14 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-#LINKS = (('Pelican', 'http://getpelican.com/'),
-#         ('Python.org', 'http://python.org/'),
-#         ('Jinja2', 'http://jinja.pocoo.org/'),
-#         ('You can modify those links in your config file', '#'),)
-
-# Title menu options
-MENUITEMS = (('About', 'https://bhaskarkamble.com'),
-             ('Archives', './archives.html'))
+LINKS = (('Pelican', 'http://getpelican.com/'),
+         ('Python.org', 'http://python.org/'),
+         ('Jinja2', 'http://jinja.pocoo.org/'),
+         ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('Twitter', 'https://twitter.com/baski170182'),
-          ('YouTube', 'https://www.youtube.com/channel/UCuC--7f00jwHWAXix-66oUg'),)
+SOCIAL = (('You can add links in your config file', '#'),
+          ('Another social link', '#'),)
 
 DEFAULT_PAGINATION = 10
 
