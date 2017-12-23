@@ -23,10 +23,10 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://bhaskar-kamble.github.io/first-post.html">Meine erste Post mit Pelican auf Github Pages</a></h1>
+                    <h1 class="entry-title"><a href="https://bhaskar-kamble.github.io/second-post.html">Mein zweiter Post mit Pelican auf Github Pages</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2017-12-18T11:00:00+01:00">
-                Published: Mo 18 Dezember 2017
+        <abbr class="published" title="2017-12-23T23:03:00+01:00">
+                Published: Sa 23 Dezember 2017
         </abbr>
 
         <address class="vcard author">
@@ -1010,111 +1010,32 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Endlich habe ich es geschafft: einen Blog auf Github zu erstellen. Zwar habe ich seit lang mit den Gedanken gespielt, so was zu tun, aber meine Stelle als Referendar an einer Schule in Berlin ließ mich mit kaum Zeit für etwas, das nicht direkt mit der Schule zu tun hat. Aber jetzt, da ich nicht mehr diese Einschränkung habe, habe ich endlich dafür Zeit gefunden.</p>
-<p>Die erste Frage, warum ein Blog auf Github? Ich habe schon eine eigene Webseite auf Wordpress und einen Blog auf Blogspot wo ich Materialien hochgeladen habe, die ich für meinen Unterricht entwickelt habe. Aber mit Wordpress oder Blogspot darf man kein Javascript benutzen. Da darf man keine Gleichungen in Latex schreiben. Auf der anderen Seite hatte ich schon Erfahrungen mit Erfahrungen mit Github gemacht und habe viele Blogs und Webseite gesehen, die auf Github erstellt/hosted worden sind.</p>
-<p>Die ersten Untersuchungen auf dem Internet haben mir von Jekyll bewusst gemacht, mit dessen Hilfe man einen Blog oder eine Webseite auf Github erstellen kann. Man kann auch Markdown benutzen, um den chreibstil zu modizifieren und Gleichungen in Latex zu schreiben. Danach habe ich tatsächlich eine Webseite auf Github mithilfe von Jekyll erstellt. Die Anleitungen habe ich von <a href="http://jmcglone.com/guides/github-pages/">dieser</a> hervorragenden Seite bekommen.</p>
-<p>Aber dann bin von einem anderen Problem bewusst gewesen. Anders gesagt, bin ich von einer anderen Möglichkeit bewusst gewesen. Ich hatte schon Erfahrung mit dem IPython Jupyter Notebook gemacht und war mit seinen Fähigkeiten total beeindruckt. Ich habe erinnerte irgendwo gelesen zu haben, dass man diesen Notebook zusammen mit einem Blog benutzen kann (<a href="http://twiecki.github.io/blog/2014/11/18/python-for-data-science/">hier</a>, genauer gesagt). (Zwar ähnelt der IPython Notebook zum Teil dem RMarkdown Dokumente in RStudio, aber ich bin nicht sicher, ob das letztere im Zusammenhang mit einem Blog oder einer Webseite benutzt werden kann. Außerdem wollte ich Python benutzen und nicht R.) Ich hatte auch inzwischen didaktische, interaktive Software entwickelt, die alle ich in Python geschrieben habe. Deshalb war diese Möglichkeit für mich von Interesse. Nachdem ich auf dem Internet ein bisschen erkundet habe, ist es mir bekannt geworden, dass an statt Jekyll ist Pelican total geeignet, die Kraft von Python und dem Jupyter Notebook in einem Blog oder einer Webseite zu verwenden.</p>
-<p>Das war begeisternd, und ich war noch mehr begeistert, als ich <a href="https://www.dataquest.io/blog/how-to-setup-a-data-science-blog/">diese Webseite</a> gesehen habe, wo die Anleitungen zum Erstellen eines Blogs mithilfe Pelicans und Githubs deutlich beschrieben werden sind. Trotzdem hat es mir 2 Tage gedauert, bis ich diesen Blog verwirklichen konnte. (Viele Probleme sind von den unterschiedlichen Versionen vom Python verursacht worden. Zum Beispiel in meinem Ubuntu 16.04 ist Python2.7 die default Version von Python, während zum Zweck des Erstellens dieses Blogs war Python3.5 oder höher nötig. Die habe ich separat installiert, aber es gab Kompatibilitätsprobleme zwischen diesen Versionen wenn ich die nötigen Packages installiert habe.) Jetzt ist es gemacht und ich bin wirklich begeistert nachzuschauen, was alles möglich ist. Bald muss ich an den Plugins denken, die brauche, z.B. um Kommnets zu ermöglichen usw., aber jetzt will ich die grundlegenden Dinge ausprobieren.</p>
-<h3 id="Markdown">Markdown<a class="anchor-link" href="#Markdown">¶</a></h3><p>Das erste, dass ich machen möchte, ist nachzuschauen, ob <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a> funktioniert. Markdown ist eine schnelle Lösung für Leute (die meisten von uns), dei wenig Zeit haben, Text mit HTML zu formatieren. (<a href="https://daringfireball.net/projects/markdown/syntax">hier</a> ist eine andere Seite, die das Markdown Format beschreibt.)</p>
-<p>Man kann Code mit "back-ticks" (also dieses Symbol: `) kennzeichnen. Zum Beispiel, wenn ich den Python Befehl "import numpy as np" als Code zeigen möchte, soll ich in Jupyter Notebook</p>
-<p>`import numpy as np`</p>
-<p>so schreiben, und das Ergebnis ist:</p>
-<p><code>import numpy as np</code></p>
-<p>Oben wird den Befehl deutlich als Code gekennzeichnet. Also das funktioniert!</p>
-<p>Mit Markdown können Überschrifte in fett und groß gedruckt werden. Das wird durch Benutzung des # Symbols ermöglicht. Zum Beispiel, wenn ich in Jupyter Notebook die folgenden Sätze schreibe</p>
-<pre><code># Überschrift 1
-## Überschrift 2
-### Überschrift 3
-#### Überschrift 4
-
-</code></pre>
-<p>dann bekomme ich als Ergebnis</p>
-<h1 id="Überschrift-1">Überschrift 1<a class="anchor-link" href="#Überschrift-1">¶</a></h1><h2 id="Überschrift-2">Überschrift 2<a class="anchor-link" href="#Überschrift-2">¶</a></h2><h3 id="Überschrift-3">Überschrift 3<a class="anchor-link" href="#Überschrift-3">¶</a></h3><h4 id="Überschrift-4">Überschrift 4<a class="anchor-link" href="#Überschrift-4">¶</a></h4><p>wobei sieht man, dass die Größe der Überschrifte mit der Anzahl von # Symbolen kontrolliert werden können. (Vielleicht haben Sie schon bemerkt, dass ich genau diese Idee benutzt habe, um die Überschrift dieses Abschnitts, Markdown, zu schreiben.) Das freut mich, auch das funktioniert.</p>
-<p>Ich möchte auch Liste und Tabelle ausprobieren. Unnummerierte Liste kann man mit * erstellen. Zum Beispiel, wenn ich</p>
-<pre><code>* Item 1
-* Item 2  
-* Item 3
-
-</code></pre>
-<p>schreibe, dann bekomme ich als Ergebnis:</p>
-<ul>
-<li>Item 1</li>
-<li>Item 2</li>
-<li>Item 3</li>
-</ul>
-<p>Nummerierte Liste kann man so erstellen:</p>
-<pre><code>1. Item 1
-2. Item 2
-4. Item 3
-
-
-</code></pre>
-<p>und das Ergebnis ist:</p>
-<ol>
-<li>Item 1</li>
-<li>Item 2</li>
-<li>Item 3</li>
-</ol>
-<p>und das interessant ist, dass obwohl ich die Nummer falsch gegeben habe, hat Markdown trotzdem die richtige Reihenfolge der Zahlen benutzt.</p>
-<p>Man kann auch Tabelle erstellen. Zum Beispiel:</p>
-<pre><code>| Col1        | Col2           | Col3  |
-| ------------|----------------|-------|
-| a(1,1)      | a(1,2)         |a(1,3) |
-| a(2,1)      | a(2,2)         | a(2,3)|
-| a(3,1)      | a(3,2)         | a(3,3)|</code></pre>
-<p>und das Ergebnis ist</p>
-<table>
-<thead><tr>
-<th>Col1</th>
-<th>Col2</th>
-<th>Col3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>a(1,1)</td>
-<td>a(1,2)</td>
-<td>a(1,3)</td>
-</tr>
-<tr>
-<td>a(2,1)</td>
-<td>a(2,2)</td>
-<td>a(2,3)</td>
-</tr>
-<tr>
-<td>a(3,1)</td>
-<td>a(3,2)</td>
-<td>a(3,3)</td>
-</tr>
-</tbody>
-</table>
-<p>Also Liste und Tabelle funtionieren auch.</p>
-<h3 id="Latex">Latex<a class="anchor-link" href="#Latex">¶</a></h3><p>Am Ende dieser ersten Post möchte ich nachweisen, dass ich Latex Formel schreiben kann. Wenn ich das folgende schreibe</p>
-<pre><code>\begin{equation}
-H = \hbar\omega \left( n + \frac{1}{2}\right)
-\end{equation},
-
-</code></pre>
-<p>dann bekomme ich:</p>
+<p>Dieser Post ist eine Erweiterung der letzten Post. Der letzte Post war mein erster Post auf diese Blog und ich habe verschiedene Möglichkeiten mit Markup und Latex ausprobiert. In diesem Post möchte ich besonders nachschauen, in wie fern ich Python code benutzen kann. Ich möchte auch sehen, wie man Bilder und Videos hochladen kann.</p>
+<h2 id="Python-Code">Python Code<a class="anchor-link" href="#Python-Code">¶</a></h2><p>Zuerst möchte ich einfach einen Grafen plotten. Die Funktion, die ich plotten möchte ist</p>
 <p>\begin{equation}
-H = \hbar\omega \left( a^\dagger a + \frac{1}{2}\right)
+f(x) = \frac{\sin x}{x}.
 \end{equation}</p>
-<p>Ok! Alles scheint in Ordnung zu sein. In meiner nächsten Post möchte ich sehen, was alles ich mit Python machen kann.</p>
+<p>Unten ploote ich diese Funktion, wie auf <a href="https://www.youtube.com/watch?v=Hr4yh1_4GlQ">dieser</a> Link beschrieben wird.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [21]:</div>
+<div class="prompt input_prompt">In [71]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">8.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">51</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.figsize'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'font.size'</span> <span class="p">:</span> <span class="mi">17</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="s1">'$0$'</span><span class="p">,</span><span class="s1">'$1$'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="p">],[</span><span class="s1">'$-4\pi$'</span><span class="p">,</span><span class="s1">'$-2\pi$'</span><span class="p">,</span><span class="s1">'$0$'</span><span class="p">,</span><span class="s1">'$2\pi$'</span><span class="p">,</span><span class="s1">'$4\pi$'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'$f(x)=\frac{\sin x}{x}$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1122,22 +1043,132 @@ H = \hbar\omega \left( a^\dagger a + \frac{1}{2}\right)
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[21]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>[<matplotlib.lines.line2d at 0x7fb7f7d3c9d0>]</pre>
-</div>
-</div>
-<div class="output_area">
 <div class="prompt"></div>
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 " />
 </div>
 </div>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sehr gut, Python Code funktioniert.</p>
+<h2 id="Bilder">Bilder<a class="anchor-link" href="#Bilder">¶</a></h2><p>Von <a href="https://www.youtube.com/watch?v=xlD8FIM5biA">diesem</a> YouTube Link sind mir verschiedene Methoden bewusst gewesen, wie man ein Bild hochladen kann.</p>
+<h4 id="Methode-1">Methode 1<a class="anchor-link" href="#Methode-1">¶</a></h4><p>Hier soll der "Cell-type" Markdown sein und das Bild kann mit dem Satz</p>
+<pre><code>![title](Path_to_image/image_name)
 
+</code></pre>
+<p>hochgeladen werden. Dass mache ich unten, wo man den Befehl nicht sehen kann, sondern nur das Bild.</p>
+<p><img alt="title" src="bhaskar-kamble.github.io/images/post_02/sun_wiki.jpeg" /></p>
+<p>(<a href="https://en.wikipedia.org/wiki/File:2017_Solar_Eclipse_Weiser_Idaho.jpg">Quelle</a>) Obwohl ich einige Zeit auf <a href="https://stackoverflow.com/questions/14675913/how-to-change-image-size-markdown">Stackoverflow</a> (auch <a href="https://stackoverflow.com/questions/10628262/inserting-image-into-ipython-notebook-markdown">hier</a>) verbracht habe, konnte ich leider mit dieser Methode keinen einfachen Weg finden, die Größe des Bilds anpassen zu können. Auch ich weiss es nicht, wie man eine Kaption schreiben kann. Aber anscheinend kann man auch gif Dateien hochladen kann.</p>
+<p><img alt="title" src="./images_temp/ellipse_opt_slow_20percent.gif" /></p>
+<h4 id="Methode-2">Methode 2<a class="anchor-link" href="#Methode-2">¶</a></h4><p>In der zweiten Methode muss der Cell-Type "Code" sein. Der Befehl ist, wie von dem YouTube Link zu sehen ist,</p>
+<pre><code>from IPython.display import Image
+Image(filename="path_to_file",width=100,height=400)</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">"bhaskar-kamble.github.io/images/post_02/tree2.jpg"</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">IOError</span>                                   Traceback (most recent call last)
+<span class="ansi-green-fg"><ipython-input-2-034ba72e5428></span> in <span class="ansi-cyan-fg"><module></span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">from</span> IPython<span class="ansi-blue-fg">.</span>display <span class="ansi-green-fg">import</span> Image
+<span class="ansi-green-fg">----> 2</span><span class="ansi-red-fg"> </span>Image<span class="ansi-blue-fg">(</span>filename<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">"bhaskar-kamble.github.io/images/post_02/tree2.jpg"</span><span class="ansi-blue-fg">,</span>width<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">300</span><span class="ansi-blue-fg">,</span>height<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">200</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">/usr/local/lib/python2.7/dist-packages/IPython/core/display.pyc</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, data, url, filename, format, embed, width, height, retina, unconfined, metadata)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1019</span>         self<span class="ansi-blue-fg">.</span>unconfined <span class="ansi-blue-fg">=</span> unconfined
+<span class="ansi-green-intense-fg ansi-bold">   1020</span>         self<span class="ansi-blue-fg">.</span>metadata <span class="ansi-blue-fg">=</span> metadata
+<span class="ansi-green-fg">-> 1021</span><span class="ansi-red-fg">         </span>super<span class="ansi-blue-fg">(</span>Image<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>__init__<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">=</span>data<span class="ansi-blue-fg">,</span> url<span class="ansi-blue-fg">=</span>url<span class="ansi-blue-fg">,</span> filename<span class="ansi-blue-fg">=</span>filename<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1022</span> 
+<span class="ansi-green-intense-fg ansi-bold">   1023</span>         <span class="ansi-green-fg">if</span> retina<span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/usr/local/lib/python2.7/dist-packages/IPython/core/display.pyc</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, data, url, filename)</span>
+<span class="ansi-green-intense-fg ansi-bold">    611</span>         self<span class="ansi-blue-fg">.</span>filename <span class="ansi-blue-fg">=</span> None <span class="ansi-green-fg">if</span> filename <span class="ansi-green-fg">is</span> None <span class="ansi-green-fg">else</span> unicode_type<span class="ansi-blue-fg">(</span>filename<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    612</span> 
+<span class="ansi-green-fg">--> 613</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>reload<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    614</span>         self<span class="ansi-blue-fg">.</span>_check_data<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    615</span> 
+
+<span class="ansi-green-fg">/usr/local/lib/python2.7/dist-packages/IPython/core/display.pyc</span> in <span class="ansi-cyan-fg">reload</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1041</span>         <span class="ansi-blue-fg">"""Reload the raw data from file or URL."""</span>
+<span class="ansi-green-intense-fg ansi-bold">   1042</span>         <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>embed<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-> 1043</span><span class="ansi-red-fg">             </span>super<span class="ansi-blue-fg">(</span>Image<span class="ansi-blue-fg">,</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>reload<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1044</span>             <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>retina<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   1045</span>                 self<span class="ansi-blue-fg">.</span>_retina_shape<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">/usr/local/lib/python2.7/dist-packages/IPython/core/display.pyc</span> in <span class="ansi-cyan-fg">reload</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">    629</span>         <span class="ansi-blue-fg">"""Reload the raw data from file or URL."""</span>
+<span class="ansi-green-intense-fg ansi-bold">    630</span>         <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>filename <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> None<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--> 631</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">with</span> open<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>filename<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_read_flags<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> f<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    632</span>                 self<span class="ansi-blue-fg">.</span>data <span class="ansi-blue-fg">=</span> f<span class="ansi-blue-fg">.</span>read<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    633</span>         <span class="ansi-green-fg">elif</span> self<span class="ansi-blue-fg">.</span>url <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> None<span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">IOError</span>: [Errno 2] No such file or directory: u'bhaskar-kamble.github.io/images/post_02/tree2.jpg'</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Leider kann man mit dieser Methode kein gif Datein hochladen aber man kann die Größe anpassen.</p>
+<h4 id="Methode-3">Methode 3<a class="anchor-link" href="#Methode-3">¶</a></h4><p>Für diese Methode muss Cell-type "Markdown" sein (nicht "Code"). Der Befehl ist</p>
+<pre><code><img src="./images_temp/tree2.jpg",width=200,height=200>
+
+</code></pre>
+<p>Wenn ich das schreibe, bekoome ich direkt das Bild, ohne den Satz:</p>
+<p><img src="bhaskar-kamble.github.io/images/post_02/tree2.jpg",width=200,height=200></p>
+<p>Das spannende ist, dass man auf diese Weise auch gif hochladen kann:</p>
+<pre><code><img src="./images_temp/ellipse_opt_slow_20percent.gif",width=500,height=200>
+
+</code></pre>
+<p><img src="bhaskar-kamble.github.io/images/post_02/ellipse_opt_slow_20percent.gif",width=500,height=200></p>
+<p>und die Größe des Bilds anpassen kann.</p>
+<h4 id="Methode-4">Methode 4<a class="anchor-link" href="#Methode-4">¶</a></h4><p>Diese Methode ähnelt der 3. Methode, aber jetzt wird der als Python Code geschrieben. Für diese Methode muss man den Cell-Type als "Code" bezeichnen und ein %%html Label am Anfang schreiben.</p>
+<p><code>%%html</code></p>
+<p><code><img src="./images_temp/tree2.jpg",width=200,height=200></code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">html</span>
+<img src="bhaskar-kamble.github.io/images/post_02/ellipse_opt_slow_20percent.gif",width=50>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea ">
+</div></div></div></div></div>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -1168,6 +1199,39 @@ H = \hbar\omega \left( a^\dagger a + \frac{1}{2}\right)
 </script>
                 </article>
             </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bhaskar-kamble.github.io/first-post.html" rel="bookmark"
+                           title="Permalink to Meine erste Post mit Pelican auf Github Pages">Meine erste Post mit Pelican auf Github Pages</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-12-18T11:00:00+01:00">
+                Published: Mo 18 Dezember 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://bhaskar-kamble.github.io/author/bhaskar-kamble.html">Bhaskar Kamble</a>
+        </address>
+<p>In <a href="https://bhaskar-kamble.github.io/category/posts.html">posts</a>.</p>
+<p>tags: <a href="https://bhaskar-kamble.github.io/tag/python.html">python</a> <a href="https://bhaskar-kamble.github.io/tag/pelican.html">pelican</a> <a href="https://bhaskar-kamble.github.io/tag/github-pages.html">github pages</a> </p>
+</footer><!-- /.post-info -->                
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Endlich habe ich es geschafft: einen Blog auf Github zu erstellen. Zwar habe ich seit lang mit den Gedanken gespielt, so was zu tun, aber meine Stelle als Referendar an einer Schule in Berlin ließ mich mit kaum Zeit für etwas, das nicht direkt mit der Schule zu tun hat. Aber jetzt, da ich nicht mehr diese Einschränkung habe, habe ich endlich dafür Zeit gefunden.</p>
+                <a class="readmore" href="https://bhaskar-kamble.github.io/first-post.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">
                         <h2>social</h2>
