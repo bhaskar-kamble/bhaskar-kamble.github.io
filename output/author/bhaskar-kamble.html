@@ -1057,16 +1057,7 @@ f(x) = \frac{\sin x}{x}.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Sehr gut, Python Code funktioniert.</p>
-<h2 id="Bilder">Bilder<a class="anchor-link" href="#Bilder">¶</a></h2><p>Von <a href="https://www.youtube.com/watch?v=xlD8FIM5biA">diesem</a> YouTube Link sind mir verschiedene Methoden bewusst gewesen, wie man ein Bild hochladen kann.</p>
-<h4 id="Methode-1">Methode 1<a class="anchor-link" href="#Methode-1">¶</a></h4><p>Hier soll der "Cell-type" Markdown sein und das Bild kann mit dem Satz</p>
-<pre><code>![title](Path_to_image/image_name)
-
-</code></pre>
-<p>hochgeladen werden. Dass mache ich unten, wo man den Befehl nicht sehen kann, sondern nur das Bild.</p>
-<p><img alt="title" src="./images_temp/sun_wiki.jpeg" /></p>
-<p>(<a href="https://en.wikipedia.org/wiki/File:2017_Solar_Eclipse_Weiser_Idaho.jpg">Quelle</a>) Obwohl ich einige Zeit auf <a href="https://stackoverflow.com/questions/14675913/how-to-change-image-size-markdown">Stackoverflow</a> (auch <a href="https://stackoverflow.com/questions/10628262/inserting-image-into-ipython-notebook-markdown">hier</a>) verbracht habe, konnte ich leider mit dieser Methode keinen einfachen Weg finden, die Größe des Bilds anpassen zu können. Auch ich weiss es nicht, wie man eine Kaption schreiben kann. Aber anscheinend kann man auch gif Dateien hochladen kann.</p>
-<p><img alt="title" src="./images_temp/ellipse_opt_slow_20percent.gif" /></p>
-<h4 id="Methode-2">Methode 2<a class="anchor-link" href="#Methode-2">¶</a></h4><p>In der zweiten Methode muss der Cell-Type "Code" sein. Der Befehl ist, wie von dem YouTube Link zu sehen ist,</p>
+<h2 id="Bilder">Bilder<a class="anchor-link" href="#Bilder">¶</a></h2><h4 id="Methode-2">Methode 2<a class="anchor-link" href="#Methode-2">¶</a></h4><p>In der zweiten Methode muss der Cell-Type "Code" sein. Der Befehl ist, wie von dem YouTube Link zu sehen ist,</p>
 <pre><code>from IPython.display import Image
 Image(filename="path_to_file",width=100,height=400)</code></pre>
 </div>
@@ -1104,7 +1095,7 @@ Image(filename="path_to_file",width=100,height=400)</code></pre>
 <pre><code><img src="./images_temp/tree2.jpg",width=200,height=200>
 
 </code></pre>
-<p>Wenn ich das schreibe, bekoome ich direkt das Bild, ohne den Satz:</p>
+<p>Wenn ich das schreibe, bekomme ich direkt das Bild, ohne den Satz:</p>
 <p><img src="./images_temp/tree2.jpg",width=200,height=200></p>
 <p>Das spannende ist, dass man auf diese Weise auch gif hochladen kann:</p>
 <pre><code><img src="./images_temp/ellipse_opt_slow_20percent.gif",width=500,height=200>
@@ -1112,19 +1103,58 @@ Image(filename="path_to_file",width=100,height=400)</code></pre>
 </code></pre>
 <p><img src="./images_temp/ellipse_opt_slow_20percent.gif",width=500,height=200></p>
 <p>und die Größe des Bilds anpassen kann.</p>
-<h4 id="Methode-4">Methode 4<a class="anchor-link" href="#Methode-4">¶</a></h4><p>Diese Methode ähnelt der 3. Methode, aber jetzt wird der als Python Code geschrieben. Für diese Methode muss man den Cell-Type als "Code" bezeichnen und ein %%html Label am Anfang schreiben.</p>
-<p><code>%%html</code></p>
-<p><code><img src="./images_temp/tree2.jpg",width=200,height=200></code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Videos">Videos<a class="anchor-link" href="#Videos">¶</a></h2><h3 id="YouTube-Videos">YouTube Videos<a class="anchor-link" href="#YouTube-Videos">¶</a></h3><p>Hier ist eine Methode, die ich vor einer Zeit gelernt habe, mit deren man YouTube Videos hochladen kann. Erstmal soll man das Video auf YouTube besuchen. Unter dem Video gibt es ein "SHARE" button. Wenn man dort klickt, öffnet sich ein Window mit verschiedenen Optionen auf Facebook, Twitter etc. hochzuladen. In diesem Window, unten Rechts, gibt es "EMBED" und "COPY" Buttons. Wenn man auf "EMBED" klickt, öffnet sich ein neues Window mit einem Embedcode. Diesen Code muss man kopieren und in zwischen inverted commas ('xyz') in Klammern einfügen - die Klammern, die nach HTML kommen. Cell Type muss "Code" sein.</p>
+<pre><code>from IPython.display import HTML
+HTML('embed code')</code></pre>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">html</span>
-<img src="./images_temp/ellipse_opt_slow_20percent.gif",width=50>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">'<iframe width="560" height="315" src="https://www.youtube.com/embed/G5Y_eqXHIpw" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[16]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<iframe allow="encrypted-media" allowfullscreen="" frameborder="0" gesture="media" height="315" src="https://www.youtube.com/embed/G5Y_eqXHIpw" width="560"></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Eigene-Videos">Eigene Videos<a class="anchor-link" href="#Eigene-Videos">¶</a></h3><p>Ich versuche mal von <a href="https://stackoverflow.com/questions/18019477/how-can-i-play-a-local-video-in-my-ipython-notebook">dieser</a> Link eigene Videos hochzuladen.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
+<video width="320" height="240" controls>
+  <source src="./images_temp/Kinematik03.mp4" type="video/mp4">
+</video>
 </pre></div>
 </div>
 </div>
@@ -1134,7 +1164,41 @@ Image(filename="path_to_file",width=100,height=400)</code></pre>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea ">
-</div></div></div></div></div>
+<video controls="" height="240" width="320">
+<source src="./images_temp/Kinematik03.mp4" type="video/mp4" />
+</video>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
+<audio controls>
+  <source src="./images_temp/Roll_Yer_Own_v8_amplified.mp3">
+</audio>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea ">
+<audio controls="">
+<source src="./images_temp/Roll_Yer_Own_v8_amplified.mp3" />
+</audio>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
