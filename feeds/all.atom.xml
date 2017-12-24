@@ -4,12 +4,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Bilder"&gt;Bilder&lt;a class="anchor-link" href="#Bilder"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+&lt;h2 id="Bilder"&gt;Bilder&lt;a class="anchor-link" href="#Bilder"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In diesem Post möchte ich erklären, wie man Bilder hochladen kann. Es gibt verschiedene Methoden, mit denen man auf dem Blog Bilder hochladen kann. &lt;a href="https://www.youtube.com/watch?v=xlD8FIM5biA"&gt;Hier&lt;/a&gt; steht ein Video, das vier solche Methoden erklärt. Ich werde hier nur zwei von diesen Methoden zeigen, weil mit diesen Methoden man die Größe der Bilder kontrollieren kann.&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -985,7 +980,15 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Bilder"&gt;Bilder&lt;a class="anchor-link" href="#Bilder"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Bilder"&gt;Bilder&lt;a class="anchor-link" href="#Bilder"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In diesem Post möchte ich erklären, wie man Bilder hochladen kann. Es gibt verschiedene Methoden, mit denen man auf dem Blog Bilder hochladen kann. &lt;a href="https://www.youtube.com/watch?v=xlD8FIM5biA"&gt;Hier&lt;/a&gt; steht ein Video, das vier solche Methoden erklärt. Ich werde hier nur zwei von diesen Methoden zeigen, weil mit diesen Methoden man die Größe der Bilder kontrollieren kann.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Methode-1"&gt;Methode 1&lt;a class="anchor-link" href="#Methode-1"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Hier soll der Cell-type "Code" sein und man kann die Größe des Bilds mit der "width" (Breite) option kontrollieren. Man kann auch die Höhe ändern, indem man die "height" option benutzt. Aber dann wird natürlich der "Aspect Ratio" auch ändern. Wenn man den Aspect-Ratio nicht ändern möchte, dann soll nur "width" benutzt werden.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1016,13 +1019,20 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Leider kann man mit dieser Methode kein gif Datein hochladen aber man kann die Größe anpassen.&lt;/p&gt;
-&lt;h4 id="Andere-Methode"&gt;Andere Methode&lt;a class="anchor-link" href="#Andere-Methode"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Für diese Methode muss Cell-type "Markdown" sein (nicht "Code"). Der Befehl ist&lt;/p&gt;
-&lt;p&gt;Wenn ich das schreibe, bekomme ich direkt das Bild, ohne den Satz:&lt;/p&gt;
+&lt;p&gt;Leider kann man mit dieser Methode kein gif Datein hochladen.&lt;/p&gt;
+&lt;h3 id="Methode-2"&gt;Methode 2&lt;a class="anchor-link" href="#Methode-2"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Für diese Methode muss der Cell-type "Markdown" sein (nicht "Code"). Der Befehl ist von &lt;a href="https://stackoverflow.com/questions/14675913/how-to-change-image-size-markdown"&gt;hier&lt;/a&gt; zu sehen (der mit 171 upvotes). Da versteht Pelican irgendwie nicht, dass ich den HTML Befehl als Code gekennzeichnet habe, versucht er immer den Code einzusetzen und damit das nicht-existeriende Bild zu zeigen. Deswegen musste ich den Befehl selbst als Bild hochladen (was ich ganz schon ein bisschen ironisch finde!):&lt;/p&gt;
+&lt;p&gt;&lt;img src="./images_temp/htmlcommandforuploadingimage.png" width="500" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Wenn ich den Befehl schreibe, erzeugt Pelican das Bild direkt, ohne den Befehl zu zeigen:&lt;/p&gt;
 &lt;p&gt;&lt;img src="./images_temp/tree2.jpg" width="200" /&gt;&lt;/p&gt;
-&lt;p&gt;Das spannende ist, dass man auf diese Weise auch gif hochladen kann:&lt;/p&gt;
-&lt;p&gt;&lt;img src="./images_temp/ellipse_opt_slow_20percent.gif" width="200" /&gt;&lt;/p&gt;
-&lt;p&gt;und die Größe des Bilds anpassen kann.&lt;/p&gt;
+&lt;p&gt;Das spannende ist, dass man auf diese Weise die Größe anpassen kann und auch gif hochladen kann:&lt;/p&gt;
+&lt;p&gt;&lt;img src="./images_temp/ellipse_opt_slow_20percent.gif" width="600" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
