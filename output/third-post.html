@@ -1015,7 +1015,15 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bilder">Bilder<a class="anchor-link" href="#Bilder">¶</a></h2>
+<h2 id="Bilder">Bilder<a class="anchor-link" href="#Bilder">¶</a></h2><p>In diesem Post möchte ich erklären, wie man Bilder hochladen kann. Es gibt verschiedene Methoden, mit denen man auf dem Blog Bilder hochladen kann. <a href="https://www.youtube.com/watch?v=xlD8FIM5biA">Hier</a> steht ein Video, das vier solche Methoden erklärt. Ich werde hier nur zwei von diesen Methoden zeigen, weil mit diesen Methoden man die Größe der Bilder kontrollieren kann.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Methode-1">Methode 1<a class="anchor-link" href="#Methode-1">¶</a></h3><p>Hier soll der Cell-type "Code" sein und man kann die Größe des Bilds mit der "width" (Breite) option kontrollieren. Man kann auch die Höhe ändern, indem man die "height" option benutzt. Aber dann wird natürlich der "Aspect Ratio" auch ändern. Wenn man den Aspect-Ratio nicht ändern möchte, dann soll nur "width" benutzt werden.</p>
 </div>
 </div>
 </div>
@@ -1046,13 +1054,20 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Leider kann man mit dieser Methode kein gif Datein hochladen aber man kann die Größe anpassen.</p>
-<h4 id="Andere-Methode">Andere Methode<a class="anchor-link" href="#Andere-Methode">¶</a></h4><p>Für diese Methode muss Cell-type "Markdown" sein (nicht "Code"). Der Befehl ist</p>
-<p>Wenn ich das schreibe, bekomme ich direkt das Bild, ohne den Satz:</p>
+<p>Leider kann man mit dieser Methode kein gif Datein hochladen.</p>
+<h3 id="Methode-2">Methode 2<a class="anchor-link" href="#Methode-2">¶</a></h3><p>Für diese Methode muss der Cell-type "Markdown" sein (nicht "Code"). Der Befehl ist von <a href="https://stackoverflow.com/questions/14675913/how-to-change-image-size-markdown">hier</a> zu sehen (der mit 171 upvotes). Da versteht Pelican irgendwie nicht, dass ich den HTML Befehl als Code gekennzeichnet habe, versucht er immer den Code einzusetzen und damit das nicht-existeriende Bild zu zeigen. Deswegen musste ich den Befehl selbst als Bild hochladen (was ich ganz schon ein bisschen ironisch finde!):</p>
+<p><img src="./images_temp/htmlcommandforuploadingimage.png" width="500" /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Wenn ich den Befehl schreibe, erzeugt Pelican das Bild direkt, ohne den Befehl zu zeigen:</p>
 <p><img src="./images_temp/tree2.jpg" width="200" /></p>
-<p>Das spannende ist, dass man auf diese Weise auch gif hochladen kann:</p>
-<p><img src="./images_temp/ellipse_opt_slow_20percent.gif" width="200" /></p>
-<p>und die Größe des Bilds anpassen kann.</p>
+<p>Das spannende ist, dass man auf diese Weise die Größe anpassen kann und auch gif hochladen kann:</p>
+<p><img src="./images_temp/ellipse_opt_slow_20percent.gif" width="600" /></p>
 </div>
 </div>
 </div>
