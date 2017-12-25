@@ -19,6 +19,8 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
+#RELATIVE_URLS = False
+
 # Blogroll
 #LINKS = (('Pelican', 'http://getpelican.com/'),
 #         ('Python.org', 'http://python.org/'),
@@ -26,8 +28,8 @@ AUTHOR_FEED_RSS = None
 #         ('You can modify those links in your config file', '#'),)
 
 # Title menu options
-MENUITEMS = (('About', 'https://bhaskarkamble.com'),
-             ('Archives', 'bhaskar-kamble.github.io/archives.html'))
+MENUITEMS = (('About', 'https://bhaskarkamble.com'),('Archives', "https://bhaskar-kamble.github.io/archives.html"))
+#             ('Archives', 'bhaskar-kamble.github.io/archives.html'))
 
 # Social widget
 SOCIAL = (('Twitter', 'https://twitter.com/baski170182'),
