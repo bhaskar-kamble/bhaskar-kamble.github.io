@@ -28,7 +28,7 @@ AUTHOR_FEED_RSS = None
 #         ('You can modify those links in your config file', '#'),)
 
 # Title menu options
-MENUITEMS = (('About', 'https://bhaskarkamble.com'),('Archives', "https://bhaskar-kamble.github.io/archives.html"))
+MENUITEMS = (('About', 'https://bhaskarkamble.com'),('Archives', "/archives.html"))
 #             ('Archives', 'bhaskar-kamble.github.io/archives.html'))
 
 # Social widget
