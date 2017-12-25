@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Forests</title><link href="https://bhaskar-kamble.github.io/" rel="alternate"></link><link href="https://bhaskar-kamble.github.io/feeds/all.atom.xml" rel="self"></link><id>https://bhaskar-kamble.github.io/</id><updated>2017-12-24T20:38:00+01:00</updated><entry><title>Uploading youtube videos using Pelican</title><link href="https://bhaskar-kamble.github.io/fourth-post.html" rel="alternate"></link><published>2017-12-24T20:38:00+01:00</published><updated>2017-12-24T20:38:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2017-12-24:/fourth-post.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Forests</title><link href="https://bhaskar-kamble.github.io/" rel="alternate"></link><link href="https://bhaskar-kamble.github.io/feeds/all.atom.xml" rel="self"></link><id>https://bhaskar-kamble.github.io/</id><updated>2017-12-24T20:38:00+01:00</updated><entry><title>Uploading video and audio files using Pelican</title><link href="https://bhaskar-kamble.github.io/fourth-post.html" rel="alternate"></link><published>2017-12-24T20:38:00+01:00</published><updated>2017-12-24T20:38:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2017-12-24:/fourth-post.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -1080,7 +1080,7 @@ h6:hover .anchor-link {
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="python"></category><category term="pelican"></category><category term="github pages"></category></entry><entry><title>Trying to upload images using Pelican</title><link href="https://bhaskar-kamble.github.io/third-post.html" rel="alternate"></link><published>2017-12-24T12:23:00+01:00</published><updated>2017-12-24T12:23:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2017-12-24:/third-post.html</id><summary type="html">
+</content><category term="python"></category><category term="pelican"></category><category term="github pages"></category></entry><entry><title>Uploading images using Pelican</title><link href="https://bhaskar-kamble.github.io/third-post.html" rel="alternate"></link><published>2017-12-24T12:23:00+01:00</published><updated>2017-12-24T12:23:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2017-12-24:/third-post.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -2146,7 +2146,7 @@ h6:hover .anchor-link {
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="python"></category><category term="pelican"></category><category term="github pages"></category></entry><entry><title>Mein zweiter Post mit Pelican auf Github Pages</title><link href="https://bhaskar-kamble.github.io/second-post.html" rel="alternate"></link><published>2017-12-23T23:03:00+01:00</published><updated>2017-12-23T23:03:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2017-12-23:/second-post.html</id><summary type="html">
+</content><category term="python"></category><category term="pelican"></category><category term="github pages"></category></entry><entry><title>Python Kode in einem Blogpost</title><link href="https://bhaskar-kamble.github.io/second-post.html" rel="alternate"></link><published>2017-12-23T23:03:00+01:00</published><updated>2017-12-23T23:03:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2017-12-23:/second-post.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -3206,7 +3206,7 @@ f(x) = \frac{\sin x}{x}.
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="python"></category><category term="pelican"></category><category term="github pages"></category></entry><entry><title>Meine erste Post mit Pelican auf Github Pages</title><link href="https://bhaskar-kamble.github.io/first-post.html" rel="alternate"></link><published>2017-12-18T11:00:00+01:00</published><updated>2017-12-18T11:00:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2017-12-18:/first-post.html</id><summary type="html">
+</content><category term="python"></category><category term="pelican"></category><category term="github pages"></category></entry><entry><title>Bloggen mit Pelican und Github Pages</title><link href="https://bhaskar-kamble.github.io/first-post.html" rel="alternate"></link><published>2017-12-18T11:00:00+01:00</published><updated>2017-12-18T11:00:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2017-12-18:/first-post.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
