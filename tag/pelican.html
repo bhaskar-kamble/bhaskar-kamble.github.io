@@ -1052,7 +1052,8 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Erst habe ich versucht der Anleitung von <a href="http://nbviewer.jupyter.org/github/ipython/ipython/blob/1.x/examples/notebooks/Part%205%20-%20Rich%20Display%20System.ipynb#Video">dieser</a> Seite zu folgen. Zwar konnte man das Video mithilfe des Kodes ansehen, aber es gab auch zusätzlich eine komische Nachricht dabei. Deshalb habe ich einige Ideen von <a href="https://stackoverflow.com/questions/18019477/how-can-i-play-a-local-video-in-my-ipython-notebook">diesen</a> Antworten eingesetzt, um ein Video in einem Blogpost einzubetten. Die Idee ist einfach den folgenden html Kode in einem Cell (mit cell-type "markdown") zu schreiben:</p>
-<p><img src="&lt;a href='https://bhaskar-kamble.github.io/images/Video_Embedding.png">'>https://bhaskar-kamble.github.io/images/Video_Embedding.png"></a></p>
+<p><img src="https://bhaskar-kamble.github.io/images/videoembedding.png" width="500" /></p>
+<p>Hier muss ich etwas merkwurdiges bemerken. Wenn ich (src = "<a href="https://bhaskar-kamble.github.io/images/videoembedding.png">https://bhaskar-kamble.github.io/images/videoembedding.png</a>") schreibe, dann mein Blog zeigt das Bild nicht. Nur ein gebrochenes Bild wird gezeigt. Aber Jupyter Notebook zeigt das Bild wenn ich (src = "<a href="https://bhaskar-kamble.github.io/images/videoembedding.png">https://bhaskar-kamble.github.io/images/videoembedding.png</a>") schreibe. Und wenn ich (src = ".images/videoembedding.png) schreibe, dann zeigen beide das Blog und auch Jupyter Notebook das Bild.</p>
 <p>Zum Beispiel ich habe das folgende Video hier eingebettet, wo ich <a href="https://bhaskarkamble.com/physics/reflections/">die Reflexion einer Wasserwelle</a> simuliert habe.</p>
 <video controls="" height="240" width="320">
 <source src="./images/wavereflection.mp4" type="video/mp4" />
