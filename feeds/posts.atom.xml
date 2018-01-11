@@ -1,5 +1,1243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Forests - posts</title><link href="https://bhaskar-kamble.github.io/" rel="alternate"></link><link href="https://bhaskar-kamble.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://bhaskar-kamble.github.io/</id><updated>2017-12-24T20:38:00+01:00</updated><entry><title>Uploading video and audio files using Pelican</title><link href="https://bhaskar-kamble.github.io/fourth-post.html" rel="alternate"></link><published>2017-12-24T20:38:00+01:00</published><updated>2017-12-24T20:38:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2017-12-24:/fourth-post.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Forests - posts</title><link href="https://bhaskar-kamble.github.io/" rel="alternate"></link><link href="https://bhaskar-kamble.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://bhaskar-kamble.github.io/</id><updated>2018-01-11T21:12:00+01:00</updated><entry><title>Reflection of waves in a two-dimensional boundary</title><link href="https://bhaskar-kamble.github.io/reflections.html" rel="alternate"></link><published>2018-01-11T21:12:00+01:00</published><updated>2018-01-11T21:12:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2018-01-11:/reflections.html</id><summary type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;em&gt;The Python code I wrote for creating the two-dimensional animations shown in this post is available at &lt;a href="https://github.com/bhaskar-kamble/Reflections"&gt;my github repo&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Like Archimedes, I like my occasional warm bath in winter. And like Archimedes, I am given to pensive cogitations in the bath tub. On one such occasion, spent in pensively reflecting and cogitating in the bath tub on this and that, the patterns of waves on the water surface caught my attention. The slightest movement on my part would set off a wave in motion, which would go out in a circle, get reflected from the wall of the tub, change direction, come back, meet another wave coming in from the other direction, get reflected from the opposite wall, and so on it went, getting reflected over and over again, meeting other waves on the way, which in their turn were being reflected and traveling back and forth, till in the end an absolutely incomprehensible display of patterns developed itself in the bath tub. “a fascinating display of shimmering patterns” is another way to describe the phenomenon. I accordingly transferred my cogitations to understanding these patterns. After the mechanism was clear, I spent some time in coding with Python to simulate them, and here is the result of that simulation:&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell &gt; div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area &gt; div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area &gt; div.highlight &gt; pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the &lt;head&gt; if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev &lt;Maniac@SoftwareManiacs.Org&gt;
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell &gt; div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+&lt;/style&gt;
+&lt;style type="text/css"&gt;.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;
+&lt;style type="text/css"&gt;
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+&lt;/style&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;em&gt;The Python code I wrote for creating the two-dimensional animations shown in this post is available at &lt;a href="https://github.com/bhaskar-kamble/Reflections"&gt;my github repo&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Like Archimedes, I like my occasional warm bath in winter. And like Archimedes, I am given to pensive cogitations in the bath tub. On one such occasion, spent in pensively reflecting and cogitating in the bath tub on this and that, the patterns of waves on the water surface caught my attention. The slightest movement on my part would set off a wave in motion, which would go out in a circle, get reflected from the wall of the tub, change direction, come back, meet another wave coming in from the other direction, get reflected from the opposite wall, and so on it went, getting reflected over and over again, meeting other waves on the way, which in their turn were being reflected and traveling back and forth, till in the end an absolutely incomprehensible display of patterns developed itself in the bath tub. “a fascinating display of shimmering patterns” is another way to describe the phenomenon. I accordingly transferred my cogitations to understanding these patterns. After the mechanism was clear, I spent some time in coding with Python to simulate them, and here is the result of that simulation:&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="./images/reflections/Reflections_03.gif" width="500" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;And I thought, why stop with a square boundary with the source at the center, why not do it for a recangular boundary as well with the source at an arbitrary point? Well, I modified the program a bit, and this is what the simulation looks like:
+&lt;img src="./images/reflections/WaterReflection.gif" width="500" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;In this post I'd like to share how the above animations were created as well as the physics of the above phenomenon.&lt;/p&gt;
+&lt;p&gt;During my initial searches on Google, I did not find much regarding wave reflection from multiple boundaries, which was surprising because it is a very good illustration of how very simple ideas can lead to quite complicated looking phenomena. In fact, the basic idea is quite simple and is based on the reflection of a one dimensional wave from a single boundary. So let us revisit this concept.&lt;/p&gt;
+&lt;h2 id="Reflection-of-one-dimensional-waves-at-a-boundary"&gt;Reflection of one dimensional waves at a boundary&lt;a class="anchor-link" href="#Reflection-of-one-dimensional-waves-at-a-boundary"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;I had read about the reflection of one-dimensional waves at a boundary from the Feynman lectures on physics (FLP) when I was a physics student. It was a long time ago, but it seems like yesterday when I was sitting in the bus and reading about it. And I distinctly remembered the mechanism, since it was so simple in its essence.&lt;/p&gt;
+&lt;p&gt;The system being considered was a rope fixed at one end with a pulse traveling along its length. (In the following I have used the words “pulse”, “wave” and “wave form” interchangeably.) The question was to understand how the pulse would be reflected from the fixed point when it reached there. It turns out that due to the nature of the wave equation and the boundary condition in this case, this reflection can be thought of as a linear combination of two virtual waves: one wave traveling in the positive direction and the other in the negative direction, and the actual wave is a superposition of the two. (see &lt;a href="http://www.feynmanlectures.caltech.edu/I_49.html"&gt;here&lt;/a&gt; for the explanation from the online version of FLP.) It is almost as if an imaginary wave is coming from the other side of the fixed point and meeting the actual pulse at the fixed point, and the two pulses then go along the way. I created some animations to illustrate the idea. The first of these shows just the process of reflection without the virtual waves:&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="./images/reflections/rope_03_opt_crop.gif" width="500" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;It shows a wave pulse traveling on a rope fixed to a wall and and as it reaches the wall it gets reflected into the other direction.&lt;/p&gt;
+&lt;p&gt;As mentioned earlier this can be thought of as a combination of two virtual waves traveling in opposite directions. The next animation below shows the actual wave along with the two virtual wave forms. The actual wave form (red) is a superposition of the virtual (blue and green) wave forms.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="./images/reflections/rope_05_opt_crop.gif" width="500" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;The one in blue is a waveform traveling to the right and the one in green is traveling to the left and the actual wave form is a superposition of both. Except for a sign change, the two are mirror images of each other, which is required to ensure that the end point of the string remains fixed to the wall at all times.  (The particular waveform I have chosen is such that the two wave forms overlap only when they reach the wall, and hence the actual wave form will resemble the blue one before reflection and the green one after reflection. Only during the reflection process it will look somewhat different due to the overlap. In general the two virtual waveforms may always have considerable overlap and thus the actual waveform may bear little resemblance to the virtual waves. For example, a standing wave on a string fixed at both ends is a superposition of a virtual wave traveling in the positive direction and a virtual wave traveling in the negative direction, but the standing wave itself has little resemblance to either of the virtual waveforms.)&lt;/p&gt;
+&lt;p&gt;What I find really intriguing is that it is almost as if an imaginary wave is coming from the other side of the fixed point and meeting the actual pulse at the fixed point, and the two pulses then go along the way.&lt;/p&gt;
+&lt;p&gt;Formally, the blue waveform, being a wave traveling in the +x direction, can be expressed as $f(x–vt)$, where $v$ is the speed of the wave and $t$ is the time. The point where the rope is attached to the wall is $x = 0$. Similarly, the green waveform, being a wave traveling in the $-x$ direction and being the inverted mirror image of the blue one, is $-f(-x–vt)$. Hence the actual wave, shown in red, is $u(x,t) =  f(x–vt)-f(-x–vt)$. This ensures that the point where the string is attached to the wall remains fixed at all times.&lt;/p&gt;
+&lt;p&gt;What happens when, instead of being rigidly fixed to the wall, the end of the string is allowed to move freely at the boundary without resistance? In this case, assuming the rope is massless, the slope of the tangent at the end point of the string must always be zero. This is ensured by requiring that the virtual waveforms be mirror images of each other. Under this condition the actual waveform becomes $u(x,t) =  f(x–vt)+f(-x–vt)$. The partial derivative of $u(x,t)$ with respect to $x$ at $x = 0$, which is the slope of the tangent at the end point of the string, is indeed easily seen to be zero. The following animation shows this case:&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="./images/reflections/rope_05_openBC_opt_crop.gif" width="500" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Reflection-of-two-dimensional-waves-at-a-boundary"&gt;Reflection of two-dimensional waves at a boundary&lt;a class="anchor-link" href="#Reflection-of-two-dimensional-waves-at-a-boundary"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The above explanation pertains to one-dimensional waves and for a single reflection at a boundary. As mentioned earlier, I wanted to understand multiple reflections for a two-dimensional wave and eventually to simulate them. Before doing so I’d like to mention some simplifying assumptions about water waves in two dimensions which render the calculations tractable.&lt;/p&gt;
+&lt;h3 id="Some-simplifications-for-water-waves"&gt;Some simplifications for water waves&lt;a class="anchor-link" href="#Some-simplifications-for-water-waves"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;At the outset I must mention some uncomfortable facts about water waves. Although waves on a water surface look so much like ordinary transverse waves, they are much more complicated. Feynman makes it clear that&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;“Now, the next waves of interest, that are easily seen by everyone and which are usually used as an example of waves in elementary courses, are water waves. As we shall soon see, they are the worst possible example, because they are in no respects like sound and light; they have all the complications that waves can have.”&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;For example, one may expect that a water molecule on the surface of a water wave executes up-and-down simple harmonic motion, just like in a transverse wave. However this picture is immediately seen to be wrong when one remembers that water is incompressible in the everyday world, and such a transverse motion would require that water be compressible. As Feynman goes on to say,&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;“What actually happens is that particles of water near the surface move approximately in circles. When smooth swells are coming, a person floating in a tire can look at a nearby object and see it going in a circle. So it is a mixture of longitudinal and transverse, to add to the confusion. At greater depths in the water the motions are smaller circles until, reasonably far down, there is nothing left of the motion.”&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The following is a diagram from FLP, showing how the water molecules move on a water wave.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="./images/reflections/WaterWaves_FLP.jpg" width="500" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a href="http://www.acs.psu.edu/drussell/Demos/waves/Water-2016.gif"&gt;Here&lt;/a&gt; is a very nice animation showing the motion of water molecules under the effect of a water wave, which is taken from &lt;a href="http://www.acs.psu.edu/drussell/Demos/waves/wavemotion.html"&gt;this&lt;/a&gt; site. For a hardcore mathematical treatment of this fascination subject check out &lt;a href="https://www.amazon.com/Linear-Water-Waves-Mathematical-Approach/dp/0521808537"&gt;this&lt;/a&gt; book.&lt;/p&gt;
+&lt;p&gt;Regardless of the above complications it is however a matter of observation that the &lt;em&gt;height&lt;/em&gt; of the water surface indeed behaves like a transverse wave, and I shall therefore assume that it satisfies the two-dimensional wave equation:&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+\frac{\partial^2 h }{\partial x^2}
++
+\frac{\partial^2 h }{\partial y^2}=
+\frac{1}{v^2}\frac{\partial^2 h }{\partial t^2}
+\end{equation}&lt;/p&gt;
+&lt;p&gt;I am interested in examining cylindrically symmetric solutions of the above equation. Before doing so it is useful to take a look at solutions of the one-dimensional wave equation and spherically symmetric solutions of the three dimensional wave equation. The solutions for these cases have a very nice and simple form and are intuitively simple to understand. So, in one dimension, for any arbitrary functions $f$ and $g$, $u(x,t) = f(x–vt)+g(x+vt)$ is a solution of the wave equation. This can be easily verified by substituting it in the one dimensional wave equation.&lt;/p&gt;
+&lt;p&gt;For spherically symmetric solutions in the three-dimensional case, the wave equation reads&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+\frac{1}{r^2}\frac{\partial }{\partial r} \left( r^2 \frac{\partial h}{\partial r} \right)=
+\frac{1}{v^2}\frac{\partial^2 h }{\partial t^2}
+\end{equation}&lt;/p&gt;
+&lt;p&gt;By direct substitution it can be verified that $(1/r)[f(r-vt) + g(r+vt)]$ is the general solution of the above equation, in other words, the solutions are spherically symmetric waves traveling either towards the center or away from the center, with the amplitude proportional to $1/r$.&lt;/p&gt;
+&lt;p&gt;Hence in one dimension, the amplitude is independent of $x$, and in three dimensions the amplitude varies as $1/r$. Let us understand this physically. For simplicity let us assume that the functions $f$ and $g$ are sinusoidally varying functions. Let us further assume that the medium in which the wave travels consists of an infinite number of simple harmonic oscillators oscillating as the wave travels. In one dimension let the number of such oscillators per unit length be a constant $\lambda$. A small section of the rope of length $dx$ will thus have $\lambda dx$ oscillators. The energy of a simple harmonic oscillator is proportional to the square of its amplitude. Let the amplitude of each oscillator in this section $dx$ be $A(x)$. Since there are $\lambda dx$ oscillators, the total energy in length $dx$ is proportional to $λdxA(x)^2$. This should be independent of $x$ (This can be understood in various ways: either (1) by seeing that a sinusoidal function is linearly homogeneous, or (2) by physically assuming that someone is physically moving one end of the rope thus pumping in energy at a constant rate, so that in a section $dx$ of the rope, the energy that enters from the left must be equal to the energy that leaves from the right, otherwise there will be sinks or sources of energy, or (3) by considering a single pulse traveling across the rope and seeing that the number of oscillators per unit length is independent of $x$.) Since $\lambda$ is independent of $x$, it follows that $A(x)$ also must be independent of $x$.&lt;/p&gt;
+&lt;p&gt;What happens in the spherically symmetric three dimensional case? Well, let us assume that the number of oscillators per unit volume in space is a constant $\mu$. Consider a thin spherical shell  of thickness $dr$ a distance $r$ away from the origin. The volume of this shell is $4\pi r^2dr$, hence the number of oscillators in this shell is $4\pi\mu r^2dr$. Let the amplitude of each oscillator be $A(r)$, implying the energy of each oscillator is proportional to $A(r)^2$. Multiplying this with the total number of oscillators in this shell gives us the total energy in this shell, which is thus proportional to $A(r)^2\cdot 4\pi\mu r^2dr$. Again, this must be independent of $r$, which is possible only if $A(r)$ is proportional to $1/r$.&lt;/p&gt;
+&lt;p&gt;Using a similar logic as above, one could conclude that the general solution for the cylindrically symmetric wave equation in two dimensions is $\rho^{-1/2} f(\rho–vt)$, where $\rho$ is the distance of a point from the $z$-axis in cylindrical coordinates. Indeed, a thin circular disc of thickness $d\rho$ and a distance $\rho$ away from the origin will have $\alpha\cdot 2\pi\rho d\rho$ number of oscillators, where $\alpha$ is the number of oscillators per unit area. If $A(\rho)$ is the amplitude of each oscillator in this disc, the total energy is proportional to $A(\rho)^2α2π\rho d\rho$, which again must be independent of $\rho$, suggesting that $A(\rho)$ varies as $\rho^{-1/2}$.&lt;/p&gt;
+&lt;p&gt;Unfortunately, this answer is wrong. This can be seen by explicitly substituting $\rho^{-1/2} f(\rho–vt)$ in the cylindrically symmetric two dimensional wave equation:&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+\frac{\partial^2 h }{\partial \rho^2}
++
+\frac{1}{\rho}\frac{\partial h }{\partial \rho}=
+\frac{1}{v^2}\frac{\partial^2 h }{\partial t^2}
+\end{equation}&lt;/p&gt;
+&lt;p&gt;This equation is not satisfied for the above form of the wave function. Indeed, there exists no $n$ for which $ρ^n f(ρ–vt)$ will satisfy the above equation. For, if you substitute&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+h(\rho,t)=\rho^n f(\rho-vt)
+\end{equation}&lt;/p&gt;
+&lt;p&gt;in the above cylindrically symmetric two dimensional wave equation, an explicit calculation for the left hand side gives:&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+\frac{\partial^2 h }{\partial \rho^2}
++
+\frac{1}{\rho}\frac{\partial h }{\partial \rho}
+= n^2\rho^{n-2}f + (2n+1)\rho^{n-1}f' + \rho^n f''
+\end{equation}&lt;/p&gt;
+&lt;p&gt;where $f'=\left. \frac{df(x)}{dx}\right|_{x=\rho-vt}$, $f''=\left. \frac{d^2f(x)}{dx^2}\right|_{x=\rho-vt}$, etc. This can satisfy the wave equation only when the first two terms (i.e. the $f$ and $f’$ terms above) vanish. The second term can indeed be removed by choosing $n = -1/2$, but the first term remains. (In contrast, for three dimensions the choice $n = -1$ satisfies the wave equation by eliminating the first two terms in the corresponding equation.)&lt;/p&gt;
+&lt;p&gt;However, for large $\rho$, the above guess does satisfy the wave equation, since in the large $\rho$ limit the first term also goes to zero. Hence the guess $\rho^{-1/2} f(\rho–vt)$ is strictly speaking a solution only in the large $\rho$ limit. The correct solution is given by the so-called Bessel functions, which indeed show an asymptotic $\rho^{-1/2}$ behavior in the large $\rho$ limit. (As an exercise one could try out the ansatz $g(\rho)f(\rho-vt)$ to see if an exact form for the amplitude $g$ can be found. This is physically more intuitive than the separation of variables method usually used.)&lt;/p&gt;
+&lt;p&gt;In our case we can always choose the boundaries at which reflection occurs to be so far away from the origin that the above asymptotic form for the amplitude holds.&lt;/p&gt;
+&lt;h3 id="Understanding-multiple-reflections-of-water-waves-in-a-square-boundary"&gt;Understanding multiple reflections of water waves in a square boundary&lt;a class="anchor-link" href="#Understanding-multiple-reflections-of-water-waves-in-a-square-boundary"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Having gained a bit of clarity regarding reflection of wave at a single boundary and the nature of the solution of the wave equation in one, two and three dimensions, it is time to come back to our original aim, viz. to understand multiple reflection of waves within an enclosed two dimensional region.&lt;/p&gt;
+&lt;p&gt;For simplicity, I decided to focus on a water surface enclosed in a square region and trace the multiple reflections of a single circular pulse starting from the center. From our discussion, the pulse, which is described by $f(\rho–vt)$, travels out at the speed $v$, and its amplitude falls off as $\rho^{-1/2}$. The function $\rho^{-1/2}f(\rho-vt)$ describes the height of the water above equilibrium at distance $\rho$ from the origin and at time $t$. I chose a &lt;a href="http://mathworld.wolfram.com/LorentzianFunction.html"&gt;Lorentzian&lt;/a&gt; form for $f(\rho-vt)$, although a Gaussian would have done as well. Thus if there are no boundaries, the height of the water above equilibrium at distance $\rho$ from origin and time $t$ is:&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
+\end{equation}&lt;/p&gt;
+&lt;p&gt;where $\eta$ fixes the width of the pulse. The above just describes a circular pulse moving with velocity $v$ away from the origin. In the following animation the pulse is shown as a circle moving away from the origin.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="./images/reflections/water_no_refl_03_opt.gif" width="500" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Now we come to the topic of reflections. The first step is to realize that the same principle which holds for one-dimensional waves holds for two dimensional waves as well. Hence the actual wave can be thought of as a superposition of two virtual waves. Let us consider reflection at a single boundary. Hence we have to consider the boundary as a mirror so the source which emits the pulse has its image which is . Also, open boundary conditions will be used. The following video shows the reflection of a circular pulse at a boundary.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="./images/reflections/water_one_refl_opt_rotate_opt_crop.gif" width="300" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Now let us try to understand this in terms of virtual wave pulses. The following animation makes this clear.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="./images/reflections/water_one_refl_full_2_rot_opt_crop.gif" width="300" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;A gory application of the above is in maximising the damage caused by a nuclear explosion. When a nuclear bomb explodes above the surface of the earth, it sets out a spherical shock wave of highly compressed air at very high pressure. This wave after hitting the surface of the earth is reflected, like the above animation shows, and the region where the incident and reflected waves meet goes out in a circle, destroying everything in its wake. The reflected blast wave merges with the incident shock and forms what is known as a &lt;a href="http://www.atomicarchive.com/Effects/effects6.shtml"&gt;Mach stem&lt;/a&gt;. For reasons which have to do with the changes in temperature and pressure of the air caused by the explosion, this destruction is maximum when the bomb is detonated above a certain height from the earth’s surface and depends, among other factors, on the yield of the bomb. The Hiroshima bomb, which had a yield of about 16 kilotons of TNT, was exploded about 600m above the earth’s surface, while bombs with higher yield have a higher optimum height of detonation, sometimes even up to 3 to 4 km.&lt;/p&gt;
+&lt;p&gt;Coming back, we now have all the material required to understand multiple reflections in two dimensions from multiple boundaries. As mentioned earlier I’ll consider water confined in a square boundary with the wave pulse travel outwards from the center. If reflection takes place at all four boundaries of the square, we can expect, based on the above animation, that a virtual wave comes in from each side of the square, and each side of the square thus acts as a mirror. There are thus four additional virtual squares, one on top, one on bottom, one to the right, and one to the left of the real square. The motion of the virtual water in these virtual squares are exact mirror images of the water in the center square. However, and this is where it becomes really interesting, these four virtual squares are not enough – to track the movement of the reflected wave as it travels further, it becomes necessary to include four more virtual sources – one at NW, NE, SW and SE  of the actual square. And suddenly it becomes clear that we in fact need an infinite array of such virtual squares to track the reflections of the original wave. The point of invoking this virtual lattice is to ensure that refection symmetry holds.  One could well write an algorithm that ensures reflection symmetry without invoking this infinite virtual lattice, but in my opinion present method is simple to implement and is intuitively simple to understand.&lt;/p&gt;
+&lt;p&gt;With the explanation behind, time to present the animations. First, I will show only the actual wave and the actual region without showing the virtual waves and the virtual lattice. To keep the animation from becoming too bulky, I will show the wave pulse as a line plot instead of the color map shown in the first animation. Of course, the amplitude of the pulse falls off as the inverse square root of the distance from the center, as explained earlier.&lt;/p&gt;
+&lt;p&gt;So, here is the first animation:&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="./images/reflections/Reflections03_forblog_02_unitcell_interval32.gif" width="500" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;It looks quite complicated by itself. However, it is simpler to comprehend when the virtual lattice and the virtual wave forms are also shown. This I have done in the next animation:
+&lt;img src="./images/reflections/Reflections03_forblog_02_all_interval32_opt200.gif" width="500" /&gt;&lt;/p&gt;
+&lt;p&gt;Obviously the virtual lattice extends to infinity in both directions, but I have shown just a 5×5 part of that, with the real square at the center (shown with thick edges). When a disturbance is made in the central square, it is as if simultaneously the same disturbance is made in each of the of the image squares, and it is as if each of these disturbances is travelling in a circle of ever increasing radius. However, the actual action is taking place at the thick square in the center, which is all that we observe in reality. And if you follow it closely, you will notice that the motion of the waves in it is exactly the same as that in the previous animation.&lt;/p&gt;
+&lt;p&gt;Hence each wall of the square acts like a mirror and the entire infinite lattice of the virtual image sources are just mirror images of the single point at the center. If ever there was a room of mirrors, this would be it.&lt;/p&gt;
+&lt;p&gt;Note also the fractal nature of the above. For example if you consider a bigger square whose side is three times the square of the unit square and consider reflections of the wave pulse on this square only, you will notice that it has exactly the same pattern which the reflections in the unit square have.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=s9ipqVWHrcs&amp;amp;index=1&amp;amp;list=PLmHuJURr0IaG10gSlmnNlzPrU8DMJ6AbX"&gt;Here&lt;/a&gt; is a playlist on my youtube channel of these animations, which includes a longer version of the animation shown at the beginning of this post.&lt;/p&gt;
+&lt;p&gt;The above explanation deals with the case when the wave originates from the center of a square boudary. You will notice that the second animation in this post shows a rectangular region and the wave originates from a point which is not at the center of the rectangle. The idea for simulating this case remains exactly the same: just consider the boundaries to be mirrors and the wave motion then is a superposition of the real wave and the image waves.&lt;/p&gt;
+&lt;p&gt;Readers familiar with the "method of images" in Electrodynamics will immediately note the similarity between that method and the method described in this post. The success of this method hinges on the correct boundary conditions being produced by the images and the absence of any images in the region of interest.&lt;/p&gt;
+&lt;p&gt;A further question raised itself: can this method be used to simulate two-dimensional wave reflections in a general polygonal region? As a first step, I considered the simpler case of a semi-infinite angular region defined by two lines meeting at a point and making a certain angle with each other. Here is turns out that the method described here works only if this angle is an even part of $\frac{n}{m}\cdot360^{\rm o}$, where $n$ and $m$ are both integers and have no factors in common, and $m$ is an even integer. For those cases where $m$ is odd, the procedure outlined here, i.e., treating the boundaries as mirrors and introducing the corresponding images, unfortunately introduces an image inside the region of interest. Here for example is an animation I created for the case where the angle is $20^{\rm o}$, which is an eighteenth-part of $360^{\rm o}$.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./images/reflections/anim01_opt_crop.gif" width="500" /&gt;&lt;/p&gt;
+&lt;p&gt;That’s it. Hope you had fun, and thanks for being all the way till here!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content><category term="physics"></category><category term="python"></category><category term="animation"></category></entry><entry><title>Uploading video and audio files using Pelican</title><link href="https://bhaskar-kamble.github.io/fourth-post.html" rel="alternate"></link><published>2017-12-24T20:38:00+01:00</published><updated>2017-12-24T20:38:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2017-12-24:/fourth-post.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
