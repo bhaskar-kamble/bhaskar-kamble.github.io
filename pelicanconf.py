@@ -27,6 +27,8 @@ AUTHOR_FEED_RSS = None
 #         ('Jinja2', 'http://jinja.pocoo.org/'),
 #         ('You can modify those links in your config file', '#'),)
 
+#THEME = "./pelican-themes/waterspill"
+
 # Title menu options
 MENUITEMS = (('About', 'https://bhaskarkamble.com'),('Archives', "/archives.html"))
 #             ('Archives', 'bhaskar-kamble.github.io/archives.html'))
