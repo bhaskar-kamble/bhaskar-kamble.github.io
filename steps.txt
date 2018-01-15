@@ -71,7 +71,7 @@ When you want to write a new article or modify an earlier article, do:
 3. Copy the ipynb file in "content" folder and modify the ipynb-meta file if needed.
 4. Run pelican content -s publishconf.py
 5. go to "output" folder
-6. Run "python3.6 -m pelican.server" to see the post.
+6. Run "python3.6 -m pelican.server" to see the post. (type localhost:8000 in the browser)
 7. Go back to "Pythonblog"
 8. Run "git checkout dev" or "git checkout -b dev". The latter if the branch "dev" doesn't already exist.
 9. git add -A
@@ -79,3 +79,5 @@ When you want to write a new article or modify an earlier article, do:
 11.Run "git push --set-upstream origin dev"
 12.Run "ghp-import output -b master"
 13.Run "git push origin master"
+#################################
+Remember to copy the images folder in 
