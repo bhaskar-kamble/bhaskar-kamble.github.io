@@ -4,7 +4,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;em&gt;The Python code I wrote for creating the two-dimensional animations shown in this post is available at &lt;a href="https://github.com/bhaskar-kamble/Reflections"&gt;my github repo&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Python codes I wrote for creating the animations in this post are available at &lt;a href="https://github.com/bhaskar-kamble/Reflections"&gt;my github repo&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Like Archimedes, I like my occasional warm bath in winter. And like Archimedes, I am given to pensive cogitations in the bath tub. On one such occasion, spent in pensively reflecting and cogitating in the bath tub on this and that, the patterns of waves on the water surface caught my attention. The slightest movement on my part would set off a wave in motion, which would go out in a circle, get reflected from the wall of the tub, change direction, come back, meet another wave coming in from the other direction, get reflected from the opposite wall, and so on it went, getting reflected over and over again, meeting other waves on the way, which in their turn were being reflected and traveling back and forth, till in the end an absolutely incomprehensible display of patterns developed itself in the bath tub. “a fascinating display of shimmering patterns” is another way to describe the phenomenon. I accordingly transferred my cogitations to understanding these patterns. After the mechanism was clear, I spent some time in coding with Python to simulate them, and here is the result of that simulation:&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
@@ -981,7 +981,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;em&gt;The Python code I wrote for creating the two-dimensional animations shown in this post is available at &lt;a href="https://github.com/bhaskar-kamble/Reflections"&gt;my github repo&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Python codes I wrote for creating the animations in this post are available at &lt;a href="https://github.com/bhaskar-kamble/Reflections"&gt;my github repo&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Like Archimedes, I like my occasional warm bath in winter. And like Archimedes, I am given to pensive cogitations in the bath tub. On one such occasion, spent in pensively reflecting and cogitating in the bath tub on this and that, the patterns of waves on the water surface caught my attention. The slightest movement on my part would set off a wave in motion, which would go out in a circle, get reflected from the wall of the tub, change direction, come back, meet another wave coming in from the other direction, get reflected from the opposite wall, and so on it went, getting reflected over and over again, meeting other waves on the way, which in their turn were being reflected and traveling back and forth, till in the end an absolutely incomprehensible display of patterns developed itself in the bath tub. “a fascinating display of shimmering patterns” is another way to describe the phenomenon. I accordingly transferred my cogitations to understanding these patterns. After the mechanism was clear, I spent some time in coding with Python to simulate them, and here is the result of that simulation:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -991,6 +991,7 @@ h6:hover .anchor-link {
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="./images/reflections/Reflections_03.gif" width="500" /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 1 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1000,6 +1001,7 @@ h6:hover .anchor-link {
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;And I thought, why stop with a square boundary with the source at the center, why not do it for a recangular boundary as well with the source at an arbitrary point? Well, I modified the program a bit, and this is what the simulation looks like:
 &lt;img src="./images/reflections/WaterReflection.gif" width="500" /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 2 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1019,6 +1021,7 @@ h6:hover .anchor-link {
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="./images/reflections/rope_03_opt_crop.gif" width="500" /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 3 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1036,6 +1039,7 @@ h6:hover .anchor-link {
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="./images/reflections/rope_05_opt_crop.gif" width="500" /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 4 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1055,6 +1059,7 @@ h6:hover .anchor-link {
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="./images/reflections/rope_05_openBC_opt_crop.gif" width="500" /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 5 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1076,6 +1081,7 @@ h6:hover .anchor-link {
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="./images/reflections/WaterWaves_FLP.jpg" width="500" /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 6 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1136,6 +1142,7 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="./images/reflections/water_no_refl_03_opt.gif" width="500" /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 7 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1152,6 +1159,7 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="./images/reflections/water_one_refl_opt_rotate_opt_crop.gif" width="300" /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 8 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1168,6 +1176,7 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="./images/reflections/water_one_refl_full_2_rot_opt_crop.gif" width="300" /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 9 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1187,6 +1196,7 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="./images/reflections/Reflections03_forblog_02_unitcell_interval32.gif" width="500" /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 10 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1196,7 +1206,7 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;It looks quite complicated by itself. However, it is simpler to comprehend when the virtual lattice and the virtual wave forms are also shown. This I have done in the next animation:
 &lt;img src="./images/reflections/Reflections03_forblog_02_all_interval32_opt200.gif" width="500" /&gt;&lt;/p&gt;
-&lt;p&gt;Obviously the virtual lattice extends to infinity in both directions, but I have shown just a 5×5 part of that, with the real square at the center (shown with thick edges). When a disturbance is made in the central square, it is as if simultaneously the same disturbance is made in each of the of the image squares, and it is as if each of these disturbances is travelling in a circle of ever increasing radius. However, the actual action is taking place at the thick square in the center, which is all that we observe in reality. And if you follow it closely, you will notice that the motion of the waves in it is exactly the same as that in the previous animation.&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 11 &lt;/p&gt;&lt;p&gt;Obviously the virtual lattice extends to infinity in both directions, but I have shown just a 5×5 part of that, with the real square at the center (shown with thick edges). When a disturbance is made in the central square, it is as if simultaneously the same disturbance is made in each of the of the image squares, and it is as if each of these disturbances is travelling in a circle of ever increasing radius. However, the actual action is taking place at the thick square in the center, which is all that we observe in reality. And if you follow it closely, you will notice that the motion of the waves in it is exactly the same as that in the previous animation.&lt;/p&gt;
 &lt;p&gt;Hence each wall of the square acts like a mirror and the entire infinite lattice of the virtual image sources are just mirror images of the single point at the center. If ever there was a room of mirrors, this would be it.&lt;/p&gt;
 &lt;p&gt;Note also the fractal nature of the above. For example if you consider a bigger square whose side is three times the square of the unit square and consider reflections of the wave pulse on this square only, you will notice that it has exactly the same pattern which the reflections in the unit square have.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=s9ipqVWHrcs&amp;amp;index=1&amp;amp;list=PLmHuJURr0IaG10gSlmnNlzPrU8DMJ6AbX"&gt;Here&lt;/a&gt; is a playlist on my youtube channel of these animations, which includes a longer version of the animation shown at the beginning of this post.&lt;/p&gt;
@@ -1204,7 +1214,7 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 &lt;p&gt;Readers familiar with the "method of images" in Electrodynamics will immediately note the similarity between that method and the method described in this post. The success of this method hinges on the correct boundary conditions being produced by the images and the absence of any images in the region of interest.&lt;/p&gt;
 &lt;p&gt;A further question raised itself: can this method be used to simulate two-dimensional wave reflections in a general polygonal region? As a first step, I considered the simpler case of a semi-infinite angular region defined by two lines meeting at a point and making a certain angle with each other. Here is turns out that the method described here works only if this angle is an even part of $\frac{n}{m}\cdot360^{\rm o}$, where $n$ and $m$ are both integers and have no factors in common, and $m$ is an even integer. For those cases where $m$ is odd, the procedure outlined here, i.e., treating the boundaries as mirrors and introducing the corresponding images, unfortunately introduces an image inside the region of interest. Here for example is an animation I created for the case where the angle is $20^{\rm o}$, which is an eighteenth-part of $360^{\rm o}$.&lt;/p&gt;
 &lt;p&gt;&lt;img src="./images/reflections/anim01_opt_crop.gif" width="500" /&gt;&lt;/p&gt;
-&lt;p&gt;That’s it. Hope you had fun, and thanks for being all the way till here!&lt;/p&gt;
+&lt;p style="text-align: center;"&gt; Fig. 12 &lt;/p&gt;&lt;p&gt;That’s it. Hope you had fun, and thanks for being all the way till here!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
