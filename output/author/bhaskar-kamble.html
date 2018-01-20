@@ -23,17 +23,17 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://bhaskar-kamble.github.io/reflections.html">Reflection of waves in a two-dimensional boundary</a></h1>
+                    <h1 class="entry-title"><a href="https://bhaskar-kamble.github.io/wheelswithinwheels.html">Wheels within wheels</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2018-01-11T21:12:00+01:00">
-                Published: Do 11 Januar 2018
+        <abbr class="published" title="2018-01-17T23:23:00+01:00">
+                Published: Mi 17 Januar 2018
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="https://bhaskar-kamble.github.io/author/bhaskar-kamble.html">Bhaskar Kamble</a>
         </address>
 <p>In <a href="https://bhaskar-kamble.github.io/category/posts.html">posts</a>.</p>
-<p>tags: <a href="https://bhaskar-kamble.github.io/tag/physics.html">physics</a> <a href="https://bhaskar-kamble.github.io/tag/python.html">python</a> <a href="https://bhaskar-kamble.github.io/tag/animation.html">animation</a> </p>
+<p>tags: <a href="https://bhaskar-kamble.github.io/tag/mathematics.html">mathematics</a> <a href="https://bhaskar-kamble.github.io/tag/python.html">python</a> <a href="https://bhaskar-kamble.github.io/tag/animation.html">animation</a> </p>
 </footer><!-- /.post-info --><style type="text/css">/*!
 *
 * IPython notebook
@@ -1010,16 +1010,11 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>The Python codes I wrote for creating the animations in this post are available at <a href="https://github.com/bhaskar-kamble/Reflections">my github repo</a>.</em></p>
-<p>Like Archimedes, I like my occasional warm bath in winter. And like Archimedes, I am given to pensive cogitations in the bath tub. On one such occasion, spent in pensively reflecting and cogitating in the bath tub on this and that, the patterns of waves on the water surface caught my attention. The slightest movement on my part would set off a wave in motion, which would go out in a circle, get reflected from the wall of the tub, change direction, come back, meet another wave coming in from the other direction, get reflected from the opposite wall, and so on it went, getting reflected over and over again, meeting other waves on the way, which in their turn were being reflected and traveling back and forth, till in the end an absolutely incomprehensible display of patterns developed itself in the bath tub. “a fascinating display of shimmering patterns” is another way to describe the phenomenon. I accordingly transferred my cogitations to understanding these patterns. After the mechanism was clear, I spent some time in coding with Python to simulate them, and here is the result of that simulation:</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./images/reflections/Reflections_03.gif" width="500" /></p>
+<p><em>I had originally published this post <a href="https://bhaskarkamble.com/mathematics/the-wheel-turns/">on my earlier website</a> and am republishing it here with slight variations.</em></p>
+<p>Epicycloids and hypocycloids offer unlimited artistic possibilities while requiring only a rudimentary knowledge of trigonometry and coordinate geometry. Because of this reason they seemed to be the perfect place to get started I first started exploring Python’s <code>matplotlib</code> package for its animation possibilities. I found <a href="https://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/">Jake VanderPlas</a> excellent series of articles on this topic extremely useful in the initial stages.</p>
+<p>In the near future I shall upload my python codes as a github repo. As of now I want to in this post present certain animations I obtained relating to these curves.  In the first part I shall discuss hypocycloids, their equations and some animations, in the second part I shall discuss the same for epicycloids, and in the third will show some further animations with both hypocycloids and epicycloids.</p>
+<h1 id="The-hypocycloid-and-its-equation">The hypocycloid and its equation<a class="anchor-link" href="#The-hypocycloid-and-its-equation">¶</a></h1><p>A hypocycloid is the path traced by a point on the rim of a circle that is rolling without slipping on the interior of another, fixed circle. The figure below illustrates this.</p>
+<p><img src="./images/wheelswithinwheels/hypo_cyc.jpg" width="600" /></p>
 <p style="text-align: center;"> Fig. 1 </p>
 </div>
 </div>
@@ -1028,141 +1023,30 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>And I thought, why stop with a square boundary with the source at the center, why not do it for a recangular boundary as well with the source at an arbitrary point? Well, I modified the program a bit, and this is what the simulation looks like:
-<img src="./images/reflections/WaterReflection.gif" width="500" /></p>
-<p style="text-align: center;"> Fig. 2 </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In this post I'd like to share how the above animations were created as well as the physics of the above phenomenon.</p>
-<p>During my initial searches on Google, I did not find much regarding wave reflection from multiple boundaries, which was surprising because it is a very good illustration of how very simple ideas can lead to quite complicated looking phenomena. In fact, the basic idea is quite simple and is based on the reflection of a one dimensional wave from a single boundary. So let us revisit this concept.</p>
-<h2 id="Reflection-of-one-dimensional-waves-at-a-boundary">Reflection of one dimensional waves at a boundary<a class="anchor-link" href="#Reflection-of-one-dimensional-waves-at-a-boundary">¶</a></h2><p>I had read about the reflection of one-dimensional waves at a boundary from the Feynman lectures on physics (FLP) when I was a physics student. It was a long time ago, but it seems like yesterday when I was sitting in the bus and reading about it. And I distinctly remembered the mechanism, since it was so simple in its essence.</p>
-<p>The system being considered was a rope fixed at one end with a pulse traveling along its length. (In the following I have used the words “pulse”, “wave” and “wave form” interchangeably.) The question was to understand how the pulse would be reflected from the fixed point when it reached there. It turns out that due to the nature of the wave equation and the boundary condition in this case, this reflection can be thought of as a linear combination of two virtual waves: one wave traveling in the positive direction and the other in the negative direction, and the actual wave is a superposition of the two. (see <a href="http://www.feynmanlectures.caltech.edu/I_49.html">here</a> for the explanation from the online version of FLP.) It is almost as if an imaginary wave is coming from the other side of the fixed point and meeting the actual pulse at the fixed point, and the two pulses then go along the way. I created some animations to illustrate the idea. The first of these shows just the process of reflection without the virtual waves:</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./images/reflections/rope_03_opt_crop.gif" width="500" /></p>
-<p style="text-align: center;"> Fig. 3 </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>It shows a wave pulse traveling on a rope fixed to a wall and and as it reaches the wall it gets reflected into the other direction.</p>
-<p>As mentioned earlier this can be thought of as a combination of two virtual waves traveling in opposite directions. The next animation below shows the actual wave along with the two virtual wave forms. The actual wave form (red) is a superposition of the virtual (blue and green) wave forms.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./images/reflections/rope_05_opt_crop.gif" width="500" /></p>
-<p style="text-align: center;"> Fig. 4 </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The one in blue is a waveform traveling to the right and the one in green is traveling to the left and the actual wave form is a superposition of both. Except for a sign change, the two are mirror images of each other, which is required to ensure that the end point of the string remains fixed to the wall at all times.  (The particular waveform I have chosen is such that the two wave forms overlap only when they reach the wall, and hence the actual wave form will resemble the blue one before reflection and the green one after reflection. Only during the reflection process it will look somewhat different due to the overlap. In general the two virtual waveforms may always have considerable overlap and thus the actual waveform may bear little resemblance to the virtual waves. For example, a standing wave on a string fixed at both ends is a superposition of a virtual wave traveling in the positive direction and a virtual wave traveling in the negative direction, but the standing wave itself has little resemblance to either of the virtual waveforms.)</p>
-<p>What I find really intriguing is that it is almost as if an imaginary wave is coming from the other side of the fixed point and meeting the actual pulse at the fixed point, and the two pulses then go along the way.</p>
-<p>Formally, the blue waveform, being a wave traveling in the +x direction, can be expressed as $f(x–vt)$, where $v$ is the speed of the wave and $t$ is the time. The point where the rope is attached to the wall is $x = 0$. Similarly, the green waveform, being a wave traveling in the $-x$ direction and being the inverted mirror image of the blue one, is $-f(-x–vt)$. Hence the actual wave, shown in red, is $u(x,t) =  f(x–vt)-f(-x–vt)$. This ensures that the point where the string is attached to the wall remains fixed at all times.</p>
-<p>What happens when, instead of being rigidly fixed to the wall, the end of the string is allowed to move freely at the boundary without resistance? In this case, assuming the rope is massless, the slope of the tangent at the end point of the string must always be zero. This is ensured by requiring that the virtual waveforms be mirror images of each other. Under this condition the actual waveform becomes $u(x,t) =  f(x–vt)+f(-x–vt)$. The partial derivative of $u(x,t)$ with respect to $x$ at $x = 0$, which is the slope of the tangent at the end point of the string, is indeed easily seen to be zero. The following animation shows this case:</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./images/reflections/rope_05_openBC_opt_crop.gif" width="500" /></p>
-<p style="text-align: center;"> Fig. 5 </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Reflection-of-two-dimensional-waves-at-a-boundary">Reflection of two-dimensional waves at a boundary<a class="anchor-link" href="#Reflection-of-two-dimensional-waves-at-a-boundary">¶</a></h2><p>The above explanation pertains to one-dimensional waves and for a single reflection at a boundary. As mentioned earlier, I wanted to understand multiple reflections for a two-dimensional wave and eventually to simulate them. Before doing so I’d like to mention some simplifying assumptions about water waves in two dimensions which render the calculations tractable.</p>
-<h3 id="Some-simplifications-for-water-waves">Some simplifications for water waves<a class="anchor-link" href="#Some-simplifications-for-water-waves">¶</a></h3><p>At the outset I must mention some uncomfortable facts about water waves. Although waves on a water surface look so much like ordinary transverse waves, they are much more complicated. Feynman makes it clear that</p>
-<p><em>“Now, the next waves of interest, that are easily seen by everyone and which are usually used as an example of waves in elementary courses, are water waves. As we shall soon see, they are the worst possible example, because they are in no respects like sound and light; they have all the complications that waves can have.”</em></p>
-<p>For example, one may expect that a water molecule on the surface of a water wave executes up-and-down simple harmonic motion, just like in a transverse wave. However this picture is immediately seen to be wrong when one remembers that water is incompressible in the everyday world, and such a transverse motion would require that water be compressible. As Feynman goes on to say,</p>
-<p><em>“What actually happens is that particles of water near the surface move approximately in circles. When smooth swells are coming, a person floating in a tire can look at a nearby object and see it going in a circle. So it is a mixture of longitudinal and transverse, to add to the confusion. At greater depths in the water the motions are smaller circles until, reasonably far down, there is nothing left of the motion.”</em></p>
-<p>The following is a diagram from FLP, showing how the water molecules move on a water wave.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./images/reflections/WaterWaves_FLP.jpg" width="500" /></p>
-<p style="text-align: center;"> Fig. 6 </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="http://www.acs.psu.edu/drussell/Demos/waves/Water-2016.gif">Here</a> is a very nice animation showing the motion of water molecules under the effect of a water wave, which is taken from <a href="http://www.acs.psu.edu/drussell/Demos/waves/wavemotion.html">this</a> site. For a hardcore mathematical treatment of this fascination subject check out <a href="https://www.amazon.com/Linear-Water-Waves-Mathematical-Approach/dp/0521808537">this</a> book.</p>
-<p>Regardless of the above complications it is however a matter of observation that the <em>height</em> of the water surface indeed behaves like a transverse wave, and I shall therefore assume that it satisfies the two-dimensional wave equation:</p>
+<p>The fixed circle has radius R and the moving circle has radius r. P is point fixed to the rim of the moving circle. If initially P lay on the intersection of the fixed circle and the x-axis, the condition of no slipping gives</p>
 <p>\begin{equation}
-\frac{\partial^2 h }{\partial x^2}
-+
-\frac{\partial^2 h }{\partial y^2}=
-\frac{1}{v^2}\frac{\partial^2 h }{\partial t^2}
+r\theta = R\phi
+\label{noslipping}
 \end{equation}</p>
-<p>I am interested in examining cylindrically symmetric solutions of the above equation. Before doing so it is useful to take a look at solutions of the one-dimensional wave equation and spherically symmetric solutions of the three dimensional wave equation. The solutions for these cases have a very nice and simple form and are intuitively simple to understand. So, in one dimension, for any arbitrary functions $f$ and $g$, $u(x,t) = f(x–vt)+g(x+vt)$ is a solution of the wave equation. This can be easily verified by substituting it in the one dimensional wave equation.</p>
-<p>For spherically symmetric solutions in the three-dimensional case, the wave equation reads</p>
+<p>It then follows from the figure that the equation for the point P is</p>
+<p>\begin{eqnarray}
+x &=& (R-r)\cos\phi + r\cos\left[ \left( \frac{R}{r} - 1\right)\phi\right] \nonumber \\
+y &=& (R-r)\sin\phi - r\sin\left[ \left( \frac{R}{r} - 1\right)\phi\right]
+\end{eqnarray}</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Animations">Animations<a class="anchor-link" href="#Animations">¶</a></h2><p>Let us have a look at some animations now. Suppose that $\theta = 2n\pi$ and $\phi = 2m\pi$, where $n$ and $m$ are integers. This means that the center of the moving circle completes $m$ revolutions in the same time that it takes the point P to touch the fixed circle $n$ times (not counting the initial position) till it is back to the original position. From the no-slipping condition (Eq. (1)), it follows that</p>
 <p>\begin{equation}
-\frac{1}{r^2}\frac{\partial }{\partial r} \left( r^2 \frac{\partial h}{\partial r} \right)=
-\frac{1}{v^2}\frac{\partial^2 h }{\partial t^2}
+nr = mR
 \end{equation}</p>
-<p>By direct substitution it can be verified that $(1/r)[f(r-vt) + g(r+vt)]$ is the general solution of the above equation, in other words, the solutions are spherically symmetric waves traveling either towards the center or away from the center, with the amplitude proportional to $1/r$.</p>
-<p>Hence in one dimension, the amplitude is independent of $x$, and in three dimensions the amplitude varies as $1/r$. Let us understand this physically. For simplicity let us assume that the functions $f$ and $g$ are sinusoidally varying functions. Let us further assume that the medium in which the wave travels consists of an infinite number of simple harmonic oscillators oscillating as the wave travels. In one dimension let the number of such oscillators per unit length be a constant $\lambda$. A small section of the rope of length $dx$ will thus have $\lambda dx$ oscillators. The energy of a simple harmonic oscillator is proportional to the square of its amplitude. Let the amplitude of each oscillator in this section $dx$ be $A(x)$. Since there are $\lambda dx$ oscillators, the total energy in length $dx$ is proportional to $λdxA(x)^2$. This should be independent of $x$ (This can be understood in various ways: either (1) by seeing that a sinusoidal function is linearly homogeneous, or (2) by physically assuming that someone is physically moving one end of the rope thus pumping in energy at a constant rate, so that in a section $dx$ of the rope, the energy that enters from the left must be equal to the energy that leaves from the right, otherwise there will be sinks or sources of energy, or (3) by considering a single pulse traveling across the rope and seeing that the number of oscillators per unit length is independent of $x$.) Since $\lambda$ is independent of $x$, it follows that $A(x)$ also must be independent of $x$.</p>
-<p>What happens in the spherically symmetric three dimensional case? Well, let us assume that the number of oscillators per unit volume in space is a constant $\mu$. Consider a thin spherical shell  of thickness $dr$ a distance $r$ away from the origin. The volume of this shell is $4\pi r^2dr$, hence the number of oscillators in this shell is $4\pi\mu r^2dr$. Let the amplitude of each oscillator be $A(r)$, implying the energy of each oscillator is proportional to $A(r)^2$. Multiplying this with the total number of oscillators in this shell gives us the total energy in this shell, which is thus proportional to $A(r)^2\cdot 4\pi\mu r^2dr$. Again, this must be independent of $r$, which is possible only if $A(r)$ is proportional to $1/r$.</p>
-<p>Using a similar logic as above, one could conclude that the general solution for the cylindrically symmetric wave equation in two dimensions is $\rho^{-1/2} f(\rho–vt)$, where $\rho$ is the distance of a point from the $z$-axis in cylindrical coordinates. Indeed, a thin circular disc of thickness $d\rho$ and a distance $\rho$ away from the origin will have $\alpha\cdot 2\pi\rho d\rho$ number of oscillators, where $\alpha$ is the number of oscillators per unit area. If $A(\rho)$ is the amplitude of each oscillator in this disc, the total energy is proportional to $A(\rho)^2α2π\rho d\rho$, which again must be independent of $\rho$, suggesting that $A(\rho)$ varies as $\rho^{-1/2}$.</p>
-<p>Unfortunately, this answer is wrong. This can be seen by explicitly substituting $\rho^{-1/2} f(\rho–vt)$ in the cylindrically symmetric two dimensional wave equation:</p>
-<p>\begin{equation}
-\frac{\partial^2 h }{\partial \rho^2}
-+
-\frac{1}{\rho}\frac{\partial h }{\partial \rho}=
-\frac{1}{v^2}\frac{\partial^2 h }{\partial t^2}
-\end{equation}</p>
-<p>This equation is not satisfied for the above form of the wave function. Indeed, there exists no $n$ for which $ρ^n f(ρ–vt)$ will satisfy the above equation. For, if you substitute</p>
-<p>\begin{equation}
-h(\rho,t)=\rho^n f(\rho-vt)
-\end{equation}</p>
-<p>in the above cylindrically symmetric two dimensional wave equation, an explicit calculation for the left hand side gives:</p>
-<p>\begin{equation}
-\frac{\partial^2 h }{\partial \rho^2}
-+
-\frac{1}{\rho}\frac{\partial h }{\partial \rho}
-= n^2\rho^{n-2}f + (2n+1)\rho^{n-1}f' + \rho^n f''
-\end{equation}</p>
-<p>where $f'=\left. \frac{df(x)}{dx}\right|_{x=\rho-vt}$, $f''=\left. \frac{d^2f(x)}{dx^2}\right|_{x=\rho-vt}$, etc. This can satisfy the wave equation only when the first two terms (i.e. the $f$ and $f’$ terms above) vanish. The second term can indeed be removed by choosing $n = -1/2$, but the first term remains. (In contrast, for three dimensions the choice $n = -1$ satisfies the wave equation by eliminating the first two terms in the corresponding equation.)</p>
-<p>However, for large $\rho$, the above guess does satisfy the wave equation, since in the large $\rho$ limit the first term also goes to zero. Hence the guess $\rho^{-1/2} f(\rho–vt)$ is strictly speaking a solution only in the large $\rho$ limit. The correct solution is given by the so-called Bessel functions, which indeed show an asymptotic $\rho^{-1/2}$ behavior in the large $\rho$ limit. (As an exercise one could try out the ansatz $g(\rho)f(\rho-vt)$ to see if an exact form for the amplitude $g$ can be found. This is physically more intuitive than the separation of variables method usually used.)</p>
-<p>In our case we can always choose the boundaries at which reflection occurs to be so far away from the origin that the above asymptotic form for the amplitude holds.</p>
-<h3 id="Understanding-multiple-reflections-of-water-waves-in-a-square-boundary">Understanding multiple reflections of water waves in a square boundary<a class="anchor-link" href="#Understanding-multiple-reflections-of-water-waves-in-a-square-boundary">¶</a></h3><p>Having gained a bit of clarity regarding reflection of wave at a single boundary and the nature of the solution of the wave equation in one, two and three dimensions, it is time to come back to our original aim, viz. to understand multiple reflection of waves within an enclosed two dimensional region.</p>
-<p>For simplicity, I decided to focus on a water surface enclosed in a square region and trace the multiple reflections of a single circular pulse starting from the center. From our discussion, the pulse, which is described by $f(\rho–vt)$, travels out at the speed $v$, and its amplitude falls off as $\rho^{-1/2}$. The function $\rho^{-1/2}f(\rho-vt)$ describes the height of the water above equilibrium at distance $\rho$ from the origin and at time $t$. I chose a <a href="http://mathworld.wolfram.com/LorentzianFunction.html">Lorentzian</a> form for $f(\rho-vt)$, although a Gaussian would have done as well. Thus if there are no boundaries, the height of the water above equilibrium at distance $\rho$ from origin and time $t$ is:</p>
-<p>\begin{equation}
-h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
-\end{equation}</p>
-<p>where $\eta$ fixes the width of the pulse. The above just describes a circular pulse moving with velocity $v$ away from the origin. In the following animation the pulse is shown as a circle moving away from the origin.</p>
+<p>To be concrete, let us consider the case $r=2R/5$, i.e. $n=5$ and $m=2$. In this case the rolling wheel generates the following hypocycloid (<code>hypocycloid_spokes_v2.py</code>):</p>
+<p><img src="./images/wheelswithinwheels/hypo_r_2by5_spokes_opt_speed3x.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 2  with $r=2R/5$</p>
 </div>
 </div>
 </div>
@@ -1170,8 +1054,13 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./images/reflections/water_no_refl_03_opt.gif" width="500" /></p>
-<p style="text-align: center;"> Fig. 7 </p>
+<p>Now suppose that $r = 3R/5$, i.e. $n = 5$ and $m = 3$. Funnily enough the curve generated is the same!</p>
+<p><img src="./images/wheelswithinwheels/hypo_r_3by5_spokes_opt_speed3x.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 3 with $r=3R/5$</p><p>I show the above two cases once again, but this time simultaneously (<code>hypocycloid_simultaneous_4_new.py</code>). In the first of the following two animations (Fig. 4), the sense of rotation of the two circles is the same while in the second (Fig. 5) they are opposite. Notice how in Fig. 4 the respective points on the circles tracing out the curve are symmetric with respect to reflections about the x-axis whereas in Fig. 5 they always coincide:</p>
+<p><img src="./images/wheelswithinwheels/hypo_r_2by5_3by5_R_opt_speed3x.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 4  with $r_1=2R/5$ and $r_2=3R/5$</p><p>and (<code>hypocycloid_simultaneous_opp_4_new.py</code>):
+<img src="./images/wheelswithinwheels/hypo_r_2by5_3by5_R_opp_opt_speed5x.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 5 with $r_1=2R/5$ and $r_2=3R/5$ and the circles rotating in the opposite sense</p>
 </div>
 </div>
 </div>
@@ -1179,7 +1068,9 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now we come to the topic of reflections. The first step is to realize that the same principle which holds for one-dimensional waves holds for two dimensional waves as well. Hence the actual wave can be thought of as a superposition of two virtual waves. Let us consider reflection at a single boundary. Hence we have to consider the boundary as a mirror so the source which emits the pulse has its image which is . Also, open boundary conditions will be used. The following video shows the reflection of a circular pulse at a boundary.</p>
+<p>In the same way the cases $r = R/5$ and $4R/5$ also generate the same hypocycloid, as the following animation shows. (produced by <code>hypocycloid_simultaneous_2_new.py</code>):</p>
+<p><img src="./images/wheelswithinwheels/hypo_r_1by5_4by5_R_opt_speedx2.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 6  with $r_1=R/5$ and $r_2=4R/5$</p>
 </div>
 </div>
 </div>
@@ -1187,8 +1078,10 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./images/reflections/water_one_refl_opt_rotate_opt_crop.gif" width="300" /></p>
-<p style="text-align: center;"> Fig. 8 </p>
+<p>As in Fig. 4 and 5 if the sense of rotation is opposite, the figures coincide, as shown in the following figure (produced by <code>hypocycloid_simultaneous_opp_4_new.py</code>)</p>
+<p><img src="./images/wheelswithinwheels/hypo_r_1by5_4by5_R_opp_opt_speed2x_3.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 7 with $r_1=R/5$ and $r_2=4R/5$ with the circles rotating in the opposite sense</p><p>We can summarize a few salient features of the above case of $n = 5$. If we require the moving circle to be smaller than the fixed circle, and allow $m$ to take only integral values, then the possible values of $n$ are 0, 1, 2, 3, and 4. Of these 0 is the trivial case, and of the remaining four non-trivial cases, only two give unique curves. This is reminiscent of traveling waves on a system of infinite identical masses connected with springs and following periodic boundary conditions. In this case it will be remembered that if the masses repeat their motion every $N$ number of masses, where $N$ is odd, then there are $N$ normal modes. Of these, one is the trivial mode and the remaining $N – 1$ non-trivial normal modes are traveling waves with exactly $(N – 1)/2$ unique frequencies with two normal modes (one a wave in the positive direction and the other a wave in the negative direction) for each frequency. This is also reminiscent of the combinatorics formula $^nC_r=^nC_{n-r}$.</p>
+<p>In general, when the sum of the radii of the moving circles equals the radius of the fixed circle, then the hypocycloids generated by a point fixed on the rim of the circles will be the same.</p>
 </div>
 </div>
 </div>
@@ -1196,7 +1089,13 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now let us try to understand this in terms of virtual wave pulses. The following animation makes this clear.</p>
+<p>Here are a few further cases (produced by <code>hypocycloid_simultaneous_opp_4_new.py</code>). Fig. 8 shows the case $r_1=4R/11$ and $r_2=7R/11$ while Fig. 9 shows $r_1=R/7$ and $r_2=6R/7$</p>
+<p><img src="./images/wheelswithinwheels/hypo_r_4by11_7by11_R_opp_opt_speedx2.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 8 with $r_1=4R/11$ and $r_2=7R/11$ </p><p>Another example:</p>
+<p><img src="./images/wheelswithinwheels/hypo_r_1by7_6by7_R_opp_opt_speed_1.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 9 with $r_1=R/7$ and $r_2=6R/7$</p><p>The case of $r = R/2$ is also interesting, in that the resulting curve is simply a straight line:
+<img src="./images/wheelswithinwheels/hypo_r_1by2_spokes_opt_speed4x.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 10 with $r=R/2$</p>
 </div>
 </div>
 </div>
@@ -1204,8 +1103,7 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./images/reflections/water_one_refl_full_2_rot_opt_crop.gif" width="300" /></p>
-<p style="text-align: center;"> Fig. 9 </p>
+<h1 id="Epicycloids">Epicycloids<a class="anchor-link" href="#Epicycloids">¶</a></h1>
 </div>
 </div>
 </div>
@@ -1213,10 +1111,8 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A gory application of the above is in maximising the damage caused by a nuclear explosion. When a nuclear bomb explodes above the surface of the earth, it sets out a spherical shock wave of highly compressed air at very high pressure. This wave after hitting the surface of the earth is reflected, like the above animation shows, and the region where the incident and reflected waves meet goes out in a circle, destroying everything in its wake. The reflected blast wave merges with the incident shock and forms what is known as a <a href="http://www.atomicarchive.com/Effects/effects6.shtml">Mach stem</a>. For reasons which have to do with the changes in temperature and pressure of the air caused by the explosion, this destruction is maximum when the bomb is detonated above a certain height from the earth’s surface and depends, among other factors, on the yield of the bomb. The Hiroshima bomb, which had a yield of about 16 kilotons of TNT, was exploded about 600m above the earth’s surface, while bombs with higher yield have a higher optimum height of detonation, sometimes even up to 3 to 4 km.</p>
-<p>Coming back, we now have all the material required to understand multiple reflections in two dimensions from multiple boundaries. As mentioned earlier I’ll consider water confined in a square boundary with the wave pulse travel outwards from the center. If reflection takes place at all four boundaries of the square, we can expect, based on the above animation, that a virtual wave comes in from each side of the square, and each side of the square thus acts as a mirror. There are thus four additional virtual squares, one on top, one on bottom, one to the right, and one to the left of the real square. The motion of the virtual water in these virtual squares are exact mirror images of the water in the center square. However, and this is where it becomes really interesting, these four virtual squares are not enough – to track the movement of the reflected wave as it travels further, it becomes necessary to include four more virtual sources – one at NW, NE, SW and SE  of the actual square. And suddenly it becomes clear that we in fact need an infinite array of such virtual squares to track the reflections of the original wave. The point of invoking this virtual lattice is to ensure that refection symmetry holds.  One could well write an algorithm that ensures reflection symmetry without invoking this infinite virtual lattice, but in my opinion present method is simple to implement and is intuitively simple to understand.</p>
-<p>With the explanation behind, time to present the animations. First, I will show only the actual wave and the actual region without showing the virtual waves and the virtual lattice. To keep the animation from becoming too bulky, I will show the wave pulse as a line plot instead of the color map shown in the first animation. Of course, the amplitude of the pulse falls off as the inverse square root of the distance from the center, as explained earlier.</p>
-<p>So, here is the first animation:</p>
+<p><img src="./images/wheelswithinwheels/epi_cyc.jpg" width="600" /></p>
+<p style="text-align: center;"> Fig. 11 </p>
 </div>
 </div>
 </div>
@@ -1224,8 +1120,11 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./images/reflections/Reflections03_forblog_02_unitcell_interval32.gif" width="500" /></p>
-<p style="text-align: center;"> Fig. 10 </p>
+<p>In this case also w ehave a circle rolling along another circle, with the difference that the rolling circle rolls on the exterior of the fixed circle. The parametric equation is:</p>
+<p>\begin{eqnarray}
+x &=& (R+r)\cos\phi - r\cos\left[ \left( \frac{R}{r} + 1\right)\phi\right] \nonumber \\
+y &=& (R+r)\sin\phi - r\sin\left[ \left( \frac{R}{r} + 1\right)\phi\right]
+\end{eqnarray}</p>
 </div>
 </div>
 </div>
@@ -1233,17 +1132,89 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It looks quite complicated by itself. However, it is simpler to comprehend when the virtual lattice and the virtual wave forms are also shown. This I have done in the next animation:
-<img src="./images/reflections/Reflections03_forblog_02_all_interval32_opt200.gif" width="500" /></p>
-<p style="text-align: center;"> Fig. 11 </p><p>Obviously the virtual lattice extends to infinity in both directions, but I have shown just a 5×5 part of that, with the real square at the center (shown with thick edges). When a disturbance is made in the central square, it is as if simultaneously the same disturbance is made in each of the of the image squares, and it is as if each of these disturbances is travelling in a circle of ever increasing radius. However, the actual action is taking place at the thick square in the center, which is all that we observe in reality. And if you follow it closely, you will notice that the motion of the waves in it is exactly the same as that in the previous animation.</p>
-<p>Hence each wall of the square acts like a mirror and the entire infinite lattice of the virtual image sources are just mirror images of the single point at the center. If ever there was a room of mirrors, this would be it.</p>
-<p>Note also the fractal nature of the above. For example if you consider a bigger square whose side is three times the square of the unit square and consider reflections of the wave pulse on this square only, you will notice that it has exactly the same pattern which the reflections in the unit square have.</p>
-<p><a href="https://www.youtube.com/watch?v=s9ipqVWHrcs&amp;index=1&amp;list=PLmHuJURr0IaG10gSlmnNlzPrU8DMJ6AbX">Here</a> is a playlist on my youtube channel of these animations, which includes a longer version of the animation shown at the beginning of this post.</p>
-<p>The above explanation deals with the case when the wave originates from the center of a square boudary. You will notice that the second animation in this post shows a rectangular region and the wave originates from a point which is not at the center of the rectangle. The idea for simulating this case remains exactly the same: just consider the boundaries to be mirrors and the wave motion then is a superposition of the real wave and the image waves.</p>
-<p>Readers familiar with the "method of images" in Electrodynamics will immediately note the similarity between that method and the method described in this post. The success of this method hinges on the correct boundary conditions being produced by the images and the absence of any images in the region of interest.</p>
-<p>A further question raised itself: can this method be used to simulate two-dimensional wave reflections in a general polygonal region? As a first step, I considered the simpler case of a semi-infinite angular region defined by two lines meeting at a point and making a certain angle with each other. Here is turns out that the method described here works only if this angle is an even part of $\frac{n}{m}\cdot360^{\rm o}$, where $n$ and $m$ are both integers and have no factors in common, and $m$ is an even integer. For those cases where $m$ is odd, the procedure outlined here, i.e., treating the boundaries as mirrors and introducing the corresponding images, unfortunately introduces an image inside the region of interest. Here for example is an animation I created for the case where the angle is $20^{\rm o}$, which is an eighteenth-part of $360^{\rm o}$.</p>
-<p><img src="./images/reflections/anim01_opt_crop.gif" width="500" /></p>
-<p style="text-align: center;"> Fig. 12 </p><p>That’s it. Hope you had fun, and thanks for being all the way till here!</p>
+<p>which is simply obtained by replacing $r$ with -$r$ in the hypocycloid equations.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following shows the special case of a cardioid, which is obtained when both the fixed and moving circles have the same radius.</p>
+<p><img src="./images/wheelswithinwheels/01_epi_r_1_opt.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 12 </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In spite of its rather boring shape, the cardioid has several very interesting properties which are very nicely described on the wikipedia page.</p>
+<p>Since we’ve already seen many animations in the hypocycloid section, maybe just a few in this epicycloid section will suffice. I have animated the cases r = R/5, 2R/5, 3R/5 and 4R/5. The case of r = 5R/5 = R will of course give the cardioid, so I’m not showing it here. It is  immediately apparent from the animation that we get four unique curves from the four values of r, as opposed to the hypocycloid case where we obtained only two unique curves from the four values of r (for the hypocycloid r = R/5 and 4R/5 give one of the two unique curves, while r = 2R/5 and 3R/5 give the other curve).</p>
+<p><img src="./images/wheelswithinwheels/epi_subplots_samespeed_faster2_opt.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 13 Top left: $r=R/5$, Top right: $r=2R/5$, Bottom left: $r=3R/5$, Bottom right: $r=4R/5$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Further-animations">Further animations<a class="anchor-link" href="#Further-animations">¶</a></h1><p>We have already seen that the epicycloid equation is obtained from the hypocycloid equation just by changing the sign of $r$ in the former equation. But what happens when the moving circle in the hypocycloid is bigger than the fixed circle? The moving circle will obviously not be inside the fixed circle in this case, and the curve will be traced outside the fixed circle. Actually, the resulting hypocycloid turns out to be equivalent to an epicycloid! The radius of the circle generating this epicycloid must be equal to the difference of the radius of the large moving circle and the radius of the fixed circle.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following animation demonstrates this for the specific case of $r_{hypo}=8R/5$, i.e. it shows the hypocycloid which a circle with this radius (the red circle) will produce and the epicycloid which a circle with radius $8R/5-R=3R/5$ (the blue circle) will produce. Following is with <code>hypo_epi_simult_3_spokes.py</code>:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./images/wheelswithinwheels/hypo_r_8by5_3by5_opt_speed3x.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 14 </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Fig. 14, the points fixed to the rims of the two circles always coincide, so one cannot tell them apart. Hence I decided to show the above case again, but this time with sense of rotation of the two circles being opposite. Following is with <code>hypo_epi_simult_3_spokes.py</code>:</p>
+<p><img src="./images/wheelswithinwheels/hypo_r_8by5_3by5_opp_opt_speed3x.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 15 </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And since they are so pretty, I decided to include one more animation:
+<img src="./images/wheelswithinwheels/hypo_r_2by7_5by7_both_opt_speed3x.gif" width="500" /></p>
+<p style="text-align: center;"> Fig. 16 </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Further-references-and-links:">Further references and links:<a class="anchor-link" href="#Further-references-and-links:">¶</a></h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/Cardioid">https://en.wikipedia.org/wiki/Cardioid</a> (for interesting properties of the cardioid)</li>
+<li><a href="https://de.wikipedia.org/wiki/Epizykloide">https://de.wikipedia.org/wiki/Epizykloide</a> (this is the german wikipedia site for epicycloids. I include it here because it shows that the evolute of an epicycloid is also an epicycloid.)</li>
+<li><a href="http://demonstrations.wolfram.com/SphereWithTunnelBrachistochrone/">http://demonstrations.wolfram.com/SphereWithTunnelBrachistochrone/</a> (this is fascinating because it mentions (without proof) that a hypocycloid going through the earth is the shortest time path between two points on the surface of the earth compared to all other underground paths. In a uniform gravitational field the shortest time is the cycloid.)</li>
+<li><a href="https://sourceforge.net/p/geofun/wiki/Home/">https://sourceforge.net/p/geofun/wiki/Home/</a> (some nice artwork based on these and related curves)</li>
+<li><a href="http://www.v-jaekel.de/animate-trochoid-en.html">http://www.v-jaekel.de/animate-trochoid-en.html</a> (an interactive website for generating such curves.)</li>
+<li><a href="http://blogs.ams.org/visualinsight/2013/12/01/deltoid-rolling-inside-astroid/">http://blogs.ams.org/visualinsight/2013/12/01/deltoid-rolling-inside-astroid/</a></li>
+<li><a href="https://johncarlosbaez.wordpress.com/2013/12/03/rolling-hypocycloids/">https://johncarlosbaez.wordpress.com/2013/12/03/rolling-hypocycloids/</a> (this and the previous link show some rather amazing properties of hypocycloids based on group theory.)</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1282,6 +1253,34 @@ h(\rho,t) = \frac{1}{\sqrt{\rho}} \cdot \frac{\eta}{(\rho-vt)^2+\eta^2}
                     <h1>Other articles</h1>
                     <hr />
                     <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bhaskar-kamble.github.io/reflections.html" rel="bookmark"
+                           title="Permalink to Reflection of waves in a two-dimensional boundary">Reflection of waves in a two-dimensional boundary</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-01-11T21:12:00+01:00">
+                Published: Do 11 Januar 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://bhaskar-kamble.github.io/author/bhaskar-kamble.html">Bhaskar Kamble</a>
+        </address>
+<p>In <a href="https://bhaskar-kamble.github.io/category/posts.html">posts</a>.</p>
+<p>tags: <a href="https://bhaskar-kamble.github.io/tag/physics.html">physics</a> <a href="https://bhaskar-kamble.github.io/tag/python.html">python</a> <a href="https://bhaskar-kamble.github.io/tag/animation.html">animation</a> </p>
+</footer><!-- /.post-info -->                
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>The Python codes I wrote for creating the animations in this post are available at <a href="https://github.com/bhaskar-kamble/Reflections">my github repo</a>.</em></p>
+<p>Like Archimedes, I like my occasional warm bath in winter. And like Archimedes, I am given to pensive cogitations in the bath tub. On one such occasion, spent in pensively reflecting and cogitating in the bath tub on this and that, the patterns of waves on the water surface caught my attention. The slightest movement on my part would set off a wave in motion, which would go out in a circle, get reflected from the wall of the tub, change direction, come back, meet another wave coming in from the other direction, get reflected from the opposite wall, and so on it went, getting reflected over and over again, meeting other waves on the way, which in their turn were being reflected and traveling back and forth, till in the end an absolutely incomprehensible display of patterns developed itself in the bath tub. “a fascinating display of shimmering patterns” is another way to describe the phenomenon. I accordingly transferred my cogitations to understanding these patterns. After the mechanism was clear, I spent some time in coding with Python to simulate them, and here is the result of that simulation:</p>
+                <a class="readmore" href="https://bhaskar-kamble.github.io/reflections.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
