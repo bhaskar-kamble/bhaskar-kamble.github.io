@@ -1,5 +1,1510 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Forests - posts</title><link href="https://bhaskar-kamble.github.io/" rel="alternate"></link><link href="https://bhaskar-kamble.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://bhaskar-kamble.github.io/</id><updated>2018-01-17T23:23:00+01:00</updated><entry><title>Wheels within wheels</title><link href="https://bhaskar-kamble.github.io/wheelswithinwheels.html" rel="alternate"></link><published>2018-01-17T23:23:00+01:00</published><updated>2018-01-17T23:23:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2018-01-17:/wheelswithinwheels.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Forests - posts</title><link href="https://bhaskar-kamble.github.io/" rel="alternate"></link><link href="https://bhaskar-kamble.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://bhaskar-kamble.github.io/</id><updated>2019-01-24T23:23:00+01:00</updated><entry><title>Waves and oscillations</title><link href="https://bhaskar-kamble.github.io/wavesandoscillations.html" rel="alternate"></link><published>2019-01-24T23:23:00+01:00</published><updated>2019-01-24T23:23:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2019-01-24:/wavesandoscillations.html</id><summary type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="1.-Abstract"&gt;1. Abstract&lt;a class="anchor-link" href="#1.-Abstract"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;This article introduces the idea of Fourier series from the approach of linear algebra. Starting with a system of coupled oscillators and introducing the idea of normal modes, the article shows how the wave equation and the Fourier series solution for different boundary conditions are natural consequences of the aforementioned system in the continuum limit. This approach to waves and Fourier series from a purely linear algebra perspective is usually not emphasized and can be an interesting way to revisit the topic.&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell &gt; div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area &gt; div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area &gt; div.highlight &gt; pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the &lt;head&gt; if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev &lt;Maniac@SoftwareManiacs.Org&gt;
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell &gt; div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+&lt;/style&gt;
+&lt;style type="text/css"&gt;.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;
+&lt;style type="text/css"&gt;
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+&lt;/style&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="1.-Abstract"&gt;1. Abstract&lt;a class="anchor-link" href="#1.-Abstract"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;This article introduces the idea of Fourier series from the approach of linear algebra. Starting with a system of coupled oscillators and introducing the idea of normal modes, the article shows how the wave equation and the Fourier series solution for different boundary conditions are natural consequences of the aforementioned system in the continuum limit. This approach to waves and Fourier series from a purely linear algebra perspective is usually not emphasized and can be an interesting way to revisit the topic.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="2.-Introduction"&gt;2. Introduction&lt;a class="anchor-link" href="#2.-Introduction"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The subject of the normal modes of a discrete system of coupled oscillators and the Fourier series solution for the wave equation in a continuous medium play a central role in several branches of physics and engineering, and are also important from a pedagogic point of view. A number of articles have been published on the topic of normal modes of discrete systems, which have mainly dealt with the experimental observation of normal modes [1,2] and theoretical analyses of normal modes of finite one-dimensional lattices [3-10].  Interesting extensions to the quantum regime were carried out [11], and systems such as a spring with a finite mass [12,13], the Wilberforce pendulum [14] were also considered. Results of matrix algebra were applied to investigate normal mode analyses in linear spring-mass lattices where the end springs have arbitrary constants [8], as well as for triatomic chains [9] and defect lattices [10].&lt;/p&gt;
+&lt;p&gt;Likewise, there have been several publications dealing with the oscillations of continuous systems and the Fourier spectrum analyses for these systems. These include experimental set-ups for demonstrating normal modes in strings and air-columns [15-17], illustrating the harmonic content of plucked strings through the Fast Fourier Transform (FFT) and high-speed photography [18-19], theoretical analyses of decay in plucked strings [20],  and the modes of a compound string [21]. Fourier series expansion and an expansion in terms of Chebyshev polynomials were used to study inhomogeneous strings [22] as well, and uncertainty relations for Fourier transforms and Fourier series were obtained [23] paralleling the famous uncertainty relations of quantum mechanics.&lt;/p&gt;
+&lt;p&gt;While the above publications are fascinating and interesting, what has been lacking is the connection between normal modes of a discrete system and the Fourier series solution for waves in a continuous medium. This is surprising considering that while the transition from Fourier series to the Fourier transform is generally well known, the topic of waves and the subsequent Fourier series solution for different boundary conditions is introduced directly starting with 
+the continuum case without emphasizing its connection with the normal modes of a discrete system.
+However, a discrete system is intuitively simpler to understand, and it therefore appears natural to approach the topic of waves and Fourier series as an extension of this system. Armed with just the basic knowledge of the simple harmonic oscillator and some linear algebra, it is possible to show this connection, and that is precisely the aim of this article.&lt;/p&gt;
+&lt;p&gt;The outline of this article is as follows: in Section I we recall the general properties of normal modes of a coupled oscillator system. In Section II we state the normal modes for a spring-mass for different boundary conditions. In Section III we recall the wave equation and the Fourier series solution for different boundary conditions. In Section IV we see how the discrete case transforms to the continuum case for the different boundary conditions, and we end with a summary in Section VI.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="3.-General-features-of-coupled-oscillators"&gt;3. General features of coupled oscillators&lt;a class="anchor-link" href="#3.-General-features-of-coupled-oscillators"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Suppose a system of $N$ coupled masses constrained to move along the ${\bf {\hat x}}$ direction, with $u_n(t){\bf {\hat x}}$ being the displacement of the $n$th mass from equilibrium, has for the equation of motion
+\begin{eqnarray}
+\ddot{u}_n(t) = \sum_{m=1}^N A_{nm}u_m(t),                          {\hspace 5cm}   (1)
+\label{eom}
+\end{eqnarray}
+where ${\bf A}$ is a Hermitian matrix and ${\bf u}$ is an $N$-dimensional column vector of the displacements $u_n(t)$. Then the unitary 
+transformation
+\begin{equation}
+\alpha_m(t) = \sum_{n=1}^N S_{mn}u_n(t), {\hspace 5cm}   (2)
+\label{normal_modes}
+\end{equation}
+where the columns of ${\bf S^\dagger}$ are the eigenvectors of ${\bf A}$ and ${\bm \alpha}$ is the $N$-dimensional column vector consisting of the normal modes has a solution which can be written in the following two equivalent ways
+\begin{eqnarray}
+\alpha_m (t) &amp;=&amp; A_m \cos \omega_mt + B_m \sin \omega_mt, \nonumber \\
+\alpha_m (t) &amp;=&amp; A_m \exp  (i\omega_m t),   {\hspace 5cm}   (3)
+\label{solutions}
+\end{eqnarray}
+where $\omega_m= \sqrt{-\lambda_m}$. In the first of the above equations, $A_m$ and $B_m$ are real, while  $A_m$ in the second equation is complex. Here we assume that $\lambda_m$, the $m$th eigenvalue of ${\bf A}$, is negative.&lt;/p&gt;
+&lt;p&gt;Using the unitarity of ${\bf S}$, Eq. (2) can be inverted to give
+\begin{equation}
+u_n(t) = \sum_{m=1}^N S_{mn}^* \alpha_m(t).  {\hspace 5cm}   (4)
+\label{normal_modes_inverted}
+\end{equation}&lt;/p&gt;
+&lt;p&gt;If only one normal mode is present, i.e., if $A_m=\delta_{mm'}A_m$ in the complex form of Eq. (3), then from Eq. (4),&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+u_n(t)=A_{m'}S^* _{m'n}\exp(i\omega_{m'}t).  {\hspace 4cm}   (5)
+\label{single_mode}
+\end{equation}
+Hence, in a normal mode, all the masses oscillate with the same frequency of the normal mode, and the amplitudes and phase differences are given by the eigenvector of the normal mode.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="4.-Normal-modes-for-different-boundary-conditions"&gt;4. Normal modes for different boundary conditions&lt;a class="anchor-link" href="#4.-Normal-modes-for-different-boundary-conditions"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;In this section the normal modes of a chain of $N$ identical masses, each of mass $M$ and inter-mass separation $a$, coupled to one another with identical springs with spring constant $K$, are presented for fixed, open and periodic boundary conditions.  Fig. \ref{figuremodes} these boundary conditions for $N=4$ masses. Although some of these results have been discussed earlier, we present them here for the sake of clarity and maintaining continuity with the sections that follow.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="4.1-Fixed-boundary-conditions"&gt;4.1 Fixed boundary conditions&lt;a class="anchor-link" href="#4.1-Fixed-boundary-conditions"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="./images/WavesOscillations/FixedBCyoutube.gif" width="600" /&gt;&lt;/p&gt;
+&lt;p&gt;For these boundary conditions, the masses at the end points are attached to rigid walls with the identical springs, as shown in the above animation for $N=5$ masses.&lt;/p&gt;
+&lt;p&gt;In this case, the matrix ${\bf A}$ in Eq. (1) is
+\begin{eqnarray}
+{\bf A} = -\frac{K}{M}
+\left( \begin{array}{rrrrr}
+ 2        &amp;     -1     &amp;     0       &amp;  \cdots &amp;    0
+\\
+-1        &amp;      2     &amp;    -1       &amp;  \cdots &amp;    0
+\\
+ 0        &amp;     -1     &amp;     2       &amp;  \cdots &amp;    0
+\\
+ \vdots   &amp;   \vdots   &amp;   \vdots    &amp;  \ddots &amp;   -1
+\\
+ 0        &amp;      0     &amp;     0       &amp;   -1    &amp;    2
+\end{array} 
+\right),
+\label{matrix_fixed}  {\hspace 3cm}   (6)
+\end{eqnarray}&lt;/p&gt;
+&lt;p&gt;which is proportional to a tridiagonal matrix with $2$ on the diagonals and $-1$ on the upper and lower diagonals.
+The normal modes are given by Eq. (2), where the column vectors of ${\bf S}^\dagger$ are the eigenvectors of ${\bf A}$. It can be verified that if we choose&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+S^\dagger_{nm} = S_{mn}^* = \sqrt{\frac{2}{N}} \sin \frac{mn\pi}{N+1},   {\hspace 4cm} (7)
+\label{amn_fixed}
+\end{equation}&lt;/p&gt;
+&lt;p&gt;then the $m$th column vector of ${\bf S}^\dagger$ is an orthonormal eigenvector of ${\bf A}$ with the eigenvalue $\lambda_m=-\omega_m^2$, where&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+\omega_m = \sqrt{\frac{2K}{M} \left(  1-\cos \frac{m\pi}{N+1} \right)}=\sqrt{\frac{4K}{M}}\left| \sin\frac{m\pi}{2(N+1)}\right|        {\hspace 2cm}  (8)
+\label{freq_fixed}
+\end{equation}
+is the frequency of the mode $m$.&lt;/p&gt;
+&lt;p&gt;The form for $S_{mn}^*$ in Eq. (7) has been discussed, for example, in the book by Pain [27].&lt;/p&gt;
+&lt;p&gt;For {\it any} integer $m$, the above system has exactly $N$ non-trivial modes, which follows from the observation that the modes $m$ and $2(N+1)-m$ are identical. Since the eigenvectors are purely real, it follows from Eq. (5) that the normal modes are standing waves with no phase difference between the masses. Physically, Eq. (7) means that the amplitudes of the masses in the $m$th normal mode are modulated with a wavelength $2(N+1)a/m$, as shown in Fig. \ref{figuremodes}(a).&lt;/p&gt;
+&lt;p&gt;{\bf Historical note.} In the $m$th normal mode, the motion of the $n$th mass is $u_{mn}(t)=S_{mn}^*\exp(i\omega_mt)$, so that for $n\neq 1,N$, $S_{mn}^*$ satisfies the recursion relation
+\begin{equation}
+S_{m,n-1}^*+S_{m,n+1}^*+\left( \omega_m^2 \frac{M}{K}-2 \right)S_{mn}^*=0.   {\hspace 2cm}  (9)
+\end{equation}
+$S_{mn}^*$ given by Eq. (7) is one choice which satisfies the above equation and is a special case of the trigonometric relation $\sin(\theta+2\alpha)=2\cos\alpha\sin(\theta+\alpha)-\sin\theta$. Hence if $\cos\alpha$, $\sin\theta$, and $\sin(\theta+\alpha)$ are known, this relation can be used to recursively find $\sin(\theta+2\alpha)$, $\sin(\theta+3\alpha)$, etc. This property  was used extensively in ancient India to create sine and cosine tables [25].&lt;/p&gt;
+&lt;h2 id="4.-2-Open-boundary-conditions"&gt;4. 2 Open boundary conditions&lt;a class="anchor-link" href="#4.-2-Open-boundary-conditions"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="./images/WavesOscillations/OpenBC.gif" width="600" /&gt;&lt;/p&gt;
+&lt;p&gt;For these boundary conditions, the masses at the end points are free and interact only
+with their neighbors in the interior, as shown in Fig. \ref{figuremodes}(b) for $N=4$ masses.&lt;/p&gt;
+&lt;p&gt;In this case, the matrix ${\bf A}$ in Eq. (1) is given by
+\begin{eqnarray}
+{\bf A} = -\frac{K}{M}
+\left( \begin{array}{rrrrr}
+ 1        &amp;     -1     &amp;     0       &amp;  \cdots &amp;    0
+\\
+-1        &amp;      2     &amp;    -1       &amp;  \cdots &amp;    0
+\\
+ 0        &amp;     -1     &amp;     2       &amp;  \cdots &amp;    0
+\\
+ \vdots   &amp;   \vdots   &amp;   \vdots    &amp;  \ddots &amp;   -1
+\\
+ 0        &amp;      0     &amp;     0       &amp;   -1    &amp;    1
+\end{array} 
+\right).
+\label{matrix_open}   {\hspace 3cm} (10)
+\end{eqnarray}
+This is similar to the tridiagonal matrix for fixed boundary conditions, except that the first and last diagonal elements are different. The system now is an isolated system with zero external force, and hence with zero acceleration of the center of mass. This results in one more equation, and hence the degrees of freedom, and therefore the number of nontrivial normal modes are reduced to $N-1$.&lt;/p&gt;
+&lt;p&gt;To find the normal modes, it can be verified that if we choose&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+S_{mn}^* = \sqrt{\frac{2}{N}} \cos \left[ \frac{m\pi}{N}  \left( n-\frac{1}{2} \right) \right],
+\label{amn_open} {\hspace 4cm} (11)
+\end{equation}&lt;/p&gt;
+&lt;p&gt;then the $m$th column of ${\bf S}^\dagger$ will be an orthonormal eigenvector of ${\bf A}$ with the eigenvalue $\lambda_m=-\omega_m^2$, where&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+\omega_m = \sqrt{\frac{2K}{M} \left(  1-\cos \frac{m\pi}{N} \right)}=\sqrt{\frac{4K}{M}}\left|\sin \frac{m\pi}{2N} \right|
+\label{freq_open}   {\hspace 3cm} (12)
+\end{equation}
+is the frequency of the mode $m$.&lt;/p&gt;
+&lt;p&gt;The form for $S_{mn}^*$ in Eq. (11) has been discussed earlier in the context of finite one dimensional diatomic lattices [4], lattices with periodic impurities [5], and lattices with single mass defects [6].&lt;/p&gt;
+&lt;p&gt;For {\it any} integer $m$, the mode $m+N$ is identical to the mode $N-m$, resulting in only $N$ unique modes. Of these, one is the trivial mode described by either $m=0$ or $N$, and the rest are the $N-1$ non-trivial modes. From Eq. (5), it follows that the normal modes are standing waves with no phase difference between the masses. Physically, Eq. (11) means that the amplitudes of the masses in the $m$th normal mode are modulated with a wavelength $2Na/m$, as shown in Fig. \ref{figuremodes}(b).&lt;/p&gt;
+&lt;p&gt;One can also have additionally, "mixed" boundary conditions, where one of the ends is attached to a wall with a spring and the other end is free. In this case, the amplitude of the $n$th mass in the $N$th normal mode is given by $\sin [(n\pi (2m-1))/(2N+1)]$, which can also be guessed from Figs. \ref{figuremodes}(a) and (b). This boundary condition has been discussed in the context of a spring of finite mass with a mass at one of its end points and the other one fixed. [13]&lt;/p&gt;
+&lt;h2 id="4.3-Periodic-boundary-conditions"&gt;4.3 Periodic boundary conditions&lt;a class="anchor-link" href="#4.3-Periodic-boundary-conditions"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In this case we assume that the $N$th mass is coupled back to the first mass with a spring. This is equivalent to the case of an infinite number of masses where the motion of the $n$th mass is identical to that of the $n+N$th mass [26]. Fig. \ref{figuremodes} (c) illustrates this boundary condition for $N=4$ masses.&lt;/p&gt;
+&lt;p&gt;For these boundary conditions,
+\begin{eqnarray}
+{\bf A} = -\frac{K}{M}
+\left( \begin{array}{rrrrr}
+ 2        &amp;     -1     &amp;     0       &amp;  \cdots &amp;    -1
+\\
+-1        &amp;      2     &amp;    -1       &amp;  \cdots &amp;    0
+\\
+ 0        &amp;     -1     &amp;     2       &amp;  \cdots &amp;    0
+\\
+ \vdots   &amp;   \vdots   &amp;   \vdots    &amp;  \ddots &amp;   -1
+\\
+ -1        &amp;      0     &amp;     0       &amp;   -1    &amp;    2
+\end{array} 
+\right).
+\label{matrix_periodic}  {\hspace 3cm} (13)
+\end{eqnarray}&lt;/p&gt;
+&lt;p&gt;This looks similar to the matrix for fixed boundary conditions, but now because of the $-1$ in the top right and bottom left positions, it is no longer tridiagonal. In this case, it can be verified by direct substitution that if $x^N=1$, then the column vector $(1/\sqrt{N})(1,x,x^2,\cdots,x^{N-1})^T$ is an eigenvector with the eigenvalue $2-x-x^{N-1}$. Since $x$ is one of the $N$th roots of unity, we have $x=  \exp(2\pi im/N)$ for $m=0,1,2,\cdots N-1$. Hence if we choose&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+S_{mn}^* = \frac{1}{\sqrt{N}} \exp \left(     \frac{2\pi im(n-1)}{N}  \right),
+\label{amn_periodic} {\hspace 4cm} (14)
+\end{equation}&lt;/p&gt;
+&lt;p&gt;the $m$th column of ${\bf S}^\dagger$ is an orthonormal eigenvector of ${\bf A}$ with the eigenvalue $\lambda_m=-
+\omega_m^2$, where&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+\omega_m = \sqrt{\frac{2K}{M}\left( 1-\cos \frac{2\pi m}{N} \right)} = \sqrt{\frac{4K}{M}}\left| \sin\frac{m\pi}{N} \right|
+\label{freq_periodic} {\hspace 2cm} (15)
+\end{equation}&lt;/p&gt;
+&lt;p&gt;is the frequency of the mode $m$. 
+The form for $S_{mn}^*$ in Eq. (14) has been discussed earlier\cite{vonkarman}.&lt;/p&gt;
+&lt;p&gt;For {\it any} integer $m$, the mode $m$ is identical to the $m+N$ mode. Hence it follows that there are only $N$ modes, of which one is the trivial mode with zero frequency. Since each term in a given eigenvector has the same magnitude, it follows from Eq. (\ref{single_mode}) that each mass in a normal mode has the same amplitude but a different phase, so that the normal modes are traveling waves. Physically, Eq. (14) means that the phases of the masses in the $m$th normal mode modulate with a wavelength $Na/m$, as shown in Fig. \ref{figuremodes}(c).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="5.-The-wave-equation-in-one-dimension"&gt;5. The wave equation in one dimension&lt;a class="anchor-link" href="#5.-The-wave-equation-in-one-dimension"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The wave equation in one dimension reads
+\begin{equation}
+\frac{\partial^2 u}{\partial x^2} = \frac{1}{c^2} \frac{\partial^2 u}{\partial t^2}.
+\label{wave_eqn} {\hspace 4cm} (16)
+\end{equation}&lt;/p&gt;
+&lt;p&gt;The general solution for fixed boundary conditions, $u(0,t)=u(L,t)=0$, is&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+u(x,t) = \sum_{m=1}^\infty \sin k_m x (A_m  \cos \omega_m t + B_m  \sin \omega_m t)
+\label{fourier_series_fixedBC} {\hspace 2cm} (17)
+\end{equation}
+with
+\begin{eqnarray}
+k_m&amp;=&amp;m;\pi/L \nonumber \\
+\omega_m&amp;=&amp;ck;_m,
+\label{k_and_w} {\hspace 4cm} (18)
+\end{eqnarray}&lt;/p&gt;
+&lt;p&gt;where the Fourier coefficients are given by&lt;/p&gt;
+&lt;p&gt;\begin{eqnarray}
+A_m &amp;=&amp; \frac{2}{L} \int_0^L  \sin (k_mx)  u(x,0) dx \nonumber \\
+B_m &amp;=&amp; \frac{2}{L\omega_m} \int_0^L  \sin (k_mx) \frac{\partial}{\partial t}u(x,0) dx.
+\label{fourier_coefficients_fixed}    {\hspace 2cm} (19)
+\end{eqnarray}&lt;/p&gt;
+&lt;p&gt;For open boundary conditions ($\partial u(x,t) / \partial t = 0$ at $x=0,L$) the solution is&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+u(x,t) = \sum_{m=1}^\infty \cos k_m x (A_m  \cos \omega_m t + B_m  \sin \omega_m t)
+\label{fourier_series_openBC}  {\hspace 1cm} (20)
+\end{equation}&lt;/p&gt;
+&lt;p&gt;with the Fourier coefficients given by&lt;/p&gt;
+&lt;p&gt;\begin{eqnarray}
+A_m &amp;=&amp; \frac{2}{L} \int_0^L  \cos (k_mx)  u(x,0) dx \nonumber \\
+B_m &amp;=&amp; \frac{2}{L\omega_m} \int_0^L  \cos (k_mx)  \frac{\partial}{\partial t}u(x,0) dx
+\label{fourier_coefficients_open}  {\hspace 2cm} (21)
+\end{eqnarray}&lt;/p&gt;
+&lt;p&gt;and $k_m$ and $\omega_m$ given by Eq. (18).
+For periodic boundary conditions ($u(x,t)=u(x+L,t)$), the solution is&lt;/p&gt;
+&lt;p&gt;\begin{eqnarray}
+u(x,t) &amp;=&amp; \sum_{m=1}^{\infty} [\cos k_mx(A_m^{(c)}\cos\omega_mt+B_m^{(c)}\sin\omega_mt) \nonumber \\
+&amp;+&amp; \sin k_mx (A_m^{(s)}\cos\omega_mt+B_m^{(s)}\sin\omega_mt)]
+\label{fourier_series_periodic}  {\hspace 4cm} (22)
+\end{eqnarray}
+with
+\begin{eqnarray}
+k_m&amp;=&amp;2m\pi/L \nonumber \\
+\omega_m&amp;=&amp;ck;_m,
+\label{k_and_w_periodic}   {\hspace 4cm} (23)
+\end{eqnarray}
+where the Fourier coefficients are given by
+\begin{eqnarray}
+A_m^{(c)} &amp;=&amp; \frac{2}{L} \int_0^L  \cos (k_mx)  u(x,0) dx \nonumber \\
+B_m^{(c)} &amp;=&amp; \frac{2}{L\omega_m} \int_0^L  \cos (k_mx)  \frac{\partial}{\partial t}u(x,0) dx \nonumber \\
+A_m^{(s)} &amp;=&amp; \frac{2}{L} \int_0^L  \sin (k_mx)  u(x,0) dx \nonumber \\
+B_m^{(s)} &amp;=&amp; \frac{2}{L\omega_m} \int_0^L  \sin (k_mx)  \frac{\partial}{\partial t}u(x,0) dx. {\hspace 4cm} (24) \nonumber \\
+\label{fourier_coefficients_periodic}   
+\end{eqnarray}&lt;/p&gt;
+&lt;p&gt;In the following section we will see how the above results are obtained as the limiting case of the spring-mass system considered earlier.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="6.-The-continuum-limit-of-the-discrete-case"&gt;6. The continuum limit of the discrete case&lt;a class="anchor-link" href="#6.-The-continuum-limit-of-the-discrete-case"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;It follows from Eq. (1), (6), (10), and (13) that, regardless of the boundary conditions, the equation of motion of a mass not at the end points (i.e. $n\neq 0,N$) can be rewritten as
+\begin{equation}
+{\ddot u}_{n} = \frac{Ka^2}{M} \left [\frac{\left( \frac{u_{n+1}-u_n}{a} \right) - \left( \frac{u_n-u_{n-1}}{a} \right)}
+{a}
+\right], {\hspace 4cm} (25)
+\end{equation}
+where $a$ is the inter-mass separation. In the continuum limit, we keep the distance $L$ fixed but let $N\rightarrow\infty$. Then the above approaches the wave equation Eq. (16), with 
+\begin{equation}
+c = a\sqrt{\frac{K}{M}}. {\hspace 4cm} (26)
+\label{speed_sound}
+\end{equation}&lt;/p&gt;
+&lt;p&gt;Elementary derivations of the speed of waves in solids, fluids, and a string were published in an early paper which used the conventional approach of starting straightaway from the continuum case [24]. Alternatively, one can start from the discrete spring-mass system used in this article to arrive at the same results. For example, the longitudinal waves of an air-column can be modeled by considering a number of such identical, independent&lt;/p&gt;
+&lt;p&gt;systems arranged parallelly in a cylinder of length $L$, such that all the masses at a particular cross-section move exactly in phase. Then the bulk modulus $B$ (which equals $-VdP/dV$, with $P$ and $V$ being the pressure and volume, respectively) can be shown to be $N_SKa/S$, where $S$ is the area of cross-section, and $N_S$ is the number of masses in the cross-section.&lt;/p&gt;
+&lt;p&gt;This can be seen as follows. Suppose that the springs on the left of a particular cross section of masses have a length $l$ at some time $t$. Then the force due to {\it these} springs on the masses is $N_SK(a_0-x)$, where $a_0$ is the unstretched length of a spring, so that the pressure on the left is $P=N_SK(a_0-l)/S$. The volume enclosed between this cross section, the cross section adjacent to it on the left, and the cylinder  is $V=lS$. Then the incremental changes in the pressure and volume due to an incremental change in $l$ are, respectively, $dP=-(N_SK/S)dl$ and $dV=Sdl$. Hence the bulk modulus, $-VdP/dV$, equals $N_SKa/S$, where we have taken for $V$ its equilibrium value, $Sa$.&lt;/p&gt;
+&lt;p&gt;Similarly, the density $\rho$ is $N_SM/Sa$, so that in the continuum limit, Eq. (26) turns to be $\sqrt{B/\rho}$, which is the well known formula for the speed of sound in air.&lt;/p&gt;
+&lt;p&gt;In this article we will stick to the spring-mass system where the masses move longitudinally. However, the analysis remains the same for transverse oscillations, where the spring-mass system now approaches a string in the continuum limit. The only thing which changes is the constant $-K/M$ in front of the matrices of Eq. (6), (10), and (13), which is now replaced by $-Kd/Ma$, where $d$ is the change in length of a {\it single} spring compared to its equilibrium length. For this case, $c$ in Eq. (26) is replaced by $\sqrt{Kda/M}$, which in the continuum limit is easily seen to be $\sqrt{T/\lambda}$, with $T$ and $\lambda$ being the tension and linear mass density of the string, respectively.&lt;/p&gt;
+&lt;p&gt;Recent experiments have been devised to illustrate the harmonic content of plucked guitar strings [18] and to see the vibrational pattern of a string using high-speed photography [19].
+In passing we also mention that while strings are generally used to illustrate normal modes with fixed boundary conditions, an interesting experiment was devised to observe normal modes in strings with open boundary conditions [15].&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="6.1-Fixed-boundary-conditions"&gt;6.1 Fixed boundary conditions&lt;a class="anchor-link" href="#6.1-Fixed-boundary-conditions"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Using Eq.(4), which gives the motion in terms of the normal modes, and
+ real version of the normal mode solutions, Eq. (3), and Eq. (7), which gives the amplitudes of the masses in a normal mode, gives
+\begin{equation}
+u_n(t) = \sum_{m=1}^N \sin \frac{nm\pi}{N+1} ({\tilde A}_m\cos \omega_mt + {\tilde B}_m \sin \omega_mt), {\hspace 4cm} (27)
+\label{fixed_expansion}
+\end{equation}
+where ${\tilde A}_m=\sqrt{\frac{2}{N}}A_m$ and ${\tilde B}_m=\sqrt{\frac{2}{N}}B_m$, and where $\omega_m$ is given by Eq. (8).&lt;/p&gt;
+&lt;p&gt;Now we take the $N\rightarrow \infty$ limit for a fixed, finite $L$. In this limit, using $\sin x \approx x$ for small $x$ in Eq. (8), gives for the frequency $\omega_m=ck_m$, with $c$ given by the limiting value of Eq. (26). Next, using $(N+1)a=L$, and defining $k_m=m\pi/La$, and associating the point $na$ with space point $x$, Eq. (27) becomes, in the continuum limit,
+\begin{equation}
+u(x,t) = \sum_{m=1}^\infty \sin k_mx \left(  {\tilde A}_m\cos \omega_mt +  {\tilde B}_m\sin \omega_mt \right), {\hspace 4cm} (28)
+\end{equation}
+which is exactly the Fourier series expansion for $u(x,t)$ for fixed boundary conditions (Eq. (17-18)).&lt;/p&gt;
+&lt;p&gt;Now we find the Fourier coefficients ${\tilde A}_m$ and ${\tilde B}_m$. Using the real form of Eq. (3), which gives the general solution of the normal modes, in Eq. (2), which gives the normal modes in terms of the motion of the masses, and with Eq. (7), which gives the amplitudes of the masses in a normal mode, we have
+\begin{equation}
+A_m \cos \omega_m t + B_m \sin \omega_m t = \sqrt{\frac{2}{N}} \sum_{n=1}^N \sin \left( \frac{mn\pi}{N+1} \right)u_n(t). {\hspace 4cm} (29)
+\label{thirtyfive}
+\end{equation}
+Putting $t=0$, and noting that for large $N$, $Na \approx (N+1)a=L$, we get
+\begin{equation}
+{\tilde A}_m=A_m \sqrt{\frac{2}{N}} = \frac{2}{L} \sum_{n=1}^N \sin \left( \frac{m(na)\pi}{L} \right)u_n(0)  a. {\hspace 4cm} (30)
+\end{equation}
+Now taking the $N\rightarrow \infty$ limit, and associating $na$ with $x$, the above becomes
+\begin{equation}
+{\tilde A}_m = \frac{2}{L} \int_0^L \sin \left( \frac{mx\pi}{L} \right)u(x,0)dx. {\hspace 4cm} (31)
+\end{equation}
+Similarly, ${\tilde B}_m$ is found by differentiating Eq. (29) with time and putting $t=0$. This gives
+\begin{equation}
+{\tilde B}_m = \frac{2}{L\omega_m} \int_0^L \sin \left( \frac{mx\pi}{L} \right)  \left. \frac{\partial u(x,t)}{\partial t} \right|_{t=0} dx. {\hspace 4cm} (32)
+\end{equation}
+The above coefficients are exactly as those given by Eq. (19).&lt;/p&gt;
+&lt;h2 id="6.2-Open-boundary-conditions"&gt;6.2 Open boundary conditions&lt;a class="anchor-link" href="#6.2-Open-boundary-conditions"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;For open boundary conditions, an analysis, exactly similar to the case of fixed boundary conditions, leads, in the continuum limit, to the following Fourier series for $u(x,t)$:
+\begin{equation}
+u(x,t) = \sum_{m=1}^\infty    \cos  k_m x   \left({\tilde A}_m\cos \omega_mt + {\tilde B}_m \sin \omega_mt \right) {\hspace 4cm} (33)
+\end{equation}
+with $k_m$ and $\omega_m$, as in the case of fixed boundary conditions, given by $k_m=m\pi/L$ and $\omega_m=ck_m$, and $c$ given by the limiting value of Eq. (26). In this case, space point $x$ must be associated with $(n-1/2)a$. The Fourier coefficients are also found exactly in the same manner as that used in the case of fixed boundary conditions, and turn out to be
+\begin{eqnarray}
+{\tilde A}_m &amp;=&amp; \frac{2}{L} \int_0^L \cos \left( \frac{mx\pi}{L} \right)u(x,0)dx \nonumber \\
+{\tilde B}_m &amp;=&amp; \frac{2}{L\omega_m} \int_0^L \cos \left( \frac{mx\pi}{L} \right)  \left. \frac{\partial u(x,t)}{\partial t} \right|_{t=0} dx. {\hspace 4cm} (34)
+\end{eqnarray}
+The above is identical to the Fourier series for open boundary conditions given by Eqs. (20-21).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="6.3-Periodic-boundary-conditions"&gt;6.3 Periodic boundary conditions&lt;a class="anchor-link" href="#6.3-Periodic-boundary-conditions"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In this case the wave number and frequency are given by Eq. (23). The complex nature of the eigenvectors (Eq. (14)) in this case suggests that we should use the complex version of Eq. (3). Assuming only mode $m$ is present, we have $u_n(t)\sim \exp[i(2\pi mx_n/Na + \omega_mt)]$, where $x_n=(n-1)a$ is the position of the $n$th mass. This is a wave traveling in the $-x$ direction with $\omega_m$ given by Eq. (15) and wave number $2\pi m/Na$. Similarly, it can be verified that the mode $N-m$ is also a wave with the same frequency and wave number but traveling in the $+x$ direction. Since one of the modes is a trivial mode, it follows that if $N-1$ is even, then for each non-trivial mode of a given frequency, there is another mode of the same frequency but representing a wave traveling in the opposite direction, resulting in $(N-1)/2$ unique frequencies, apart from the frequency of the trivial mode. On the other hand, if $N-1$ is odd, then the mode $m=N/2$ is such that any two adjacent masses oscillate exactly out of phase, and hence the wave motion cannot be assigned a specific direction. Leaving this mode and the trivial mode aside, the rest of the $N-2$ modes can be divided into two groups: one consisting of waves traveling in the positive direction and the other in the negative direction.&lt;/p&gt;
+&lt;p&gt;For simplicity consider the case where $N-1$ is even. Since the mode $m$ is equivalent to the $m-N$ mode, we can let $m$ vary from $-(N-1)/2$ to $(N-1)/2$ in Eq. (4) which, using Eq. (14), becomes
+\begin{equation}
+u_n(t)=  \sum_{m=-(N-1)/2}^{(N-1)/2} {\tilde A}_m \exp \left[i\left(\frac{2\pi m x_n}{Na} + \omega_mt\right)\right], {\hspace 4cm} (35)
+\label{unt_periodic}
+\end{equation}
+where ${\tilde A}_m=\sqrt{\frac{2}{N}}A_m$. (The case of even $N$ can be similarly treated by letting $m$ run from $-N/2$ to $(N/2)-1$.) Using $Na=L$, introducing $k_m=2\pi m/Na$, and associating $x_n$ with $x$, we get in the continuum limit ($N\rightarrow \infty$) 
+\begin{equation}
+u(x,t)=  \sum_{m=-\infty}^\infty {\tilde A}_m \exp \left[i\left(k_m x_n + \omega_mt\right)\right], {\hspace 4cm} (36)
+\end{equation}
+where $\omega_m=ck_m$, which follows from Eq. (15) in the continuum limit, with $c$ being given as usual by Eq. (26).&lt;/p&gt;
+&lt;p&gt;${\tilde A}_m$ can be determined by putting $t=0$ in Eq. (2) and using the complex form of Eq. (3). In the continuum limit this amounts to
+\begin{equation}
+{\tilde A}_m=\frac{1}{L}\int_{0}^L e^{-ik_mx}u(x,0)dx. {\hspace 4cm} (37)
+\label{coefficients_periodic_discrete}
+\end{equation}
+To establish the equivalence with Eq. (22-24), Eq. (35) can be expressed purely in terms of the sine and cosine functions:
+\begin{eqnarray}
+u_n(t)&amp;=&amp;{\tilde A}&lt;em&gt;0 + \sum&lt;/em&gt;{m=1}^{(N-1)/2} \left[ ({\tilde A}&lt;em&gt;m+{\tilde A}&lt;/em&gt;{-m})\cos k_mx_n \cos \omega_mt % \right. \nonumber \&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;      + i({\tilde A}_m+{\tilde A}_{-m}) \cos k_mx_n \sin \omega_mt \right. \nonumber \\
+       &amp;+&amp; \left. i({\tilde A}_m-{\tilde A}_{-m}) \sin k_mx_n \cos \omega_mt %\nonumber \\
+      + (-{\tilde A}_m+{\tilde A}_{-m}) \sin k_mx_n \sin \omega_mt \right].
+      \label{real_fourier} {\hspace 4cm} (38)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;\end{eqnarray}
+Physically, only $\Re[u_n(t)]$ or $\Re[u(x,t)]$ can be accessed, which means that we need $\Re[{\tilde A}_m+{\tilde A}_{-m}]$, $\Re[i({\tilde A}_m+{\tilde A}_{-m})]$, etc. from the above equation. From Eq. (37)
+\begin{equation}
+\Re[{\tilde A}_m+{\tilde A}_{-m}]=\frac{2}{L}\int_0^L \cos (k_mx) \Re [u(x,0)] dx. {\hspace 4cm} (39)
+\label{real_periodic_1}
+\end{equation}
+If we try to use Eq. (37) to find $\Re[i({\tilde A}_m+{\tilde A}_{-m})]$, we will end up requiring the imaginary part of $u(x,0)$. However, the imaginary part of $u(x,t)$ is in general not available. This problem can be solved by taking the time derivative of Eq. (2) and, using Eq. (3) with $t=0$, this yields
+\begin{equation}
+i\omega_m {\tilde A}_m = \frac{1}{N}\sum_{n=1}^N e^{-ik_mx_n} \left. \frac{\partial u_n(t)}{\partial t} \right|_{t=0} {\hspace 4cm} (40)
+\end{equation}
+where we have also used Eq. (14). Hence in the continuum we get for $\Re[i({\tilde A}_m + {\tilde A}_{-m})]$
+\begin{equation}
+\Re[i({\tilde A}_m+{\tilde A}_{-m})]=\frac{2}{\omega_m L} \int_0^{L} \cos k_mx \times\Re\left[ \left. \frac{\partial u(x,t)}{\partial t} \right|_{t=0} \right]dx. {\hspace 4cm} (41)
+\label{real_periodic_2}
+\end{equation}
+The real part of the other two coefficients in Eq. (38) can be similarly shown to be
+\begin{equation}
+ \Re[i({\tilde A}_m-{\tilde A}_{-m})] = \frac{2}{L} \int_0^L \sin k_mx \times \Re[u(x,0)] dx {\hspace 4cm} (42)
+ \label{real_periodic_3}
+\end{equation}
+\begin{equation}
+ \Re[-{\tilde A}_m+{\tilde A}_{-m}] = \frac{2}{\omega_m L} \int_0^L \sin k_mx \times \Re\left[ \left. \frac{\partial u(x,t)}{\partial t} \right|_{t=0} \right]dx. {\hspace 4cm} (43)
+ \label{real_periodic_4}
+\end{equation}
+Eqs. (38,39,41-43) are equivalent to the Fourier series expansion for periodic boundary conditions, given by Eqs. (22-24).&lt;/p&gt;
+&lt;p&gt;From the above discussion, a basic theorem in digital signal processing, usually known as the Nyquist sampling theorem, becomes clear. The theorem states that if a continuous signal with a finite time period is sampled every $\delta t$ seconds (with $\delta t$ smaller than the time period), then the maximum frequency that will be described by the sampling is $(1/2)\times2\pi/\delta t$. This can be seen as follows. If we associate the equilibrium position of the $n$th mass with the time when the $n$th sample is taken, and the distance $a$ between adjacent masses with the time interval $\delta t$ between two consecutive samples, then $u_n(t)$ at $t=0$ can be compared to the $n$ samples of the signal. Thus, the wave number $k_m=2\pi m/Na$ for the spring mass system is equivalent to the $m$th frequency of the time signal. The maximum value that $k_m$ can take is given by $m=(N-1)/2$ for odd $N$,  as seen by Eq. (38), and $N/2$ for even $N$. For the latter case, this equals $\pi/a$, which is half of $2\pi/a$. Comparing to the case of signals using the associations just outlined, this means that the maximum frequency described by the sampling is $\pi/\delta t$, which is half of $2\pi/\delta t$, which is exactly what the theorem says.&lt;/p&gt;
+&lt;p&gt;{\bf Note added for DFT, 16 October 2016}&lt;/p&gt;
+&lt;p&gt;Using the same correspondence, further properties of discrete time signals become clear. A real time signal is equivalent to $u_n(0)$ in Eq. (38) with $n$ playing the role of the discrete time index. Further, for $t=0$, only the first and third terms on the right hand side of Eq. (38) survive.&lt;/p&gt;
+&lt;p&gt;If $u_n(0)$ is real for all $n$, then $A_m+A_{-m}$ and $i(A_m-A_{-m})$, which occur in the first and third terms of Eq. (38), respectively, are real, which implies that $A_{-m}=A_m^*$. In other words $\Re [A_{-m}] = \Re [A_m]$ and $\Im [A_{-m}] = -\Im [A_m]$.&lt;/p&gt;
+&lt;p&gt;Moreover, if $u_n(0)$ is an even signal, i.e. if $u_{-n}(0)=u_n(0)$, then the third term on the right side of Eq. (38) involving the $\sin k_mx_n$ term vanishes since it is odd in $n$ and only the first term remains. This can happen only if $i(A_m-A_{-m})$ vanishes i.e. if $\Im [A_m]=0$.&lt;/p&gt;
+&lt;p&gt;Likewise for a signal odd in $n$, the real part of its DFT vanishes ($A_m$ is proportional to DFT).&lt;/p&gt;
+&lt;p&gt;%\section{Additional notes}
+%Transverse oscillations, signal processing, Toeplitz matrices.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="7.-Summary"&gt;7. Summary&lt;a class="anchor-link" href="#7.-Summary"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;In this article we approached the wave equation and the Fourier series solution for various boundary conditions purely as the limiting case of a system of discrete coupled oscillators. Starting with the discrete system, we obtained the normal modes for three different boundary conditions (fixed, open, and periodic) by diagonalizing the matrix appearing in the respective equation of motion. The amplitudes and phases of the masses in a normal mode are given by the eigenvectors while the frequencies are determined by the eigenvalues. In the continuum limit, the equations of motion approached the wave equation with the speed of the wave given in terms of the limiting values of the system parameters. An arbitrary motion of the masses is a linear combination of the normal modes, with the  coefficients determined by the initial conditions. In the continuum limit, this linear combination was shown to be identical to the Fourier series expansion for each of the three boundary conditions separately. The wavenumber and frequency of each Fourier mode were further shown to satisfy the dispersion relation in terms of the speed of the wave, obtained as the limiting value of the system parameters in the continuum limit. Further, it was shown that the coefficients in the normal modes expansion for the discrete system become identical to the Fourier coefficients in the continuum limit for each boundary condition separately.&lt;/p&gt;
+&lt;p&gt;It is interesting to note that while the exact solutions for the normal modes for the spring-mass system used in this article are well known in the literature  for different boundary conditions, the close connection between these normal modes and the Fourier series solution is rarely emphasized. The approach in this article emphasizes this connection in a unified way and can be an interesting way to introduce or to revisit the topic. It can also be used as an initial point to understand other wave phenomena starting from this approach.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Bibliography"&gt;Bibliography&lt;a class="anchor-link" href="#Bibliography"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;\begin{thebibliography}{99}
+\bibitem{givens}
+Ryan Givens, O. F. de Alcantara Bonfim and Robert B. Ormond,
+"Direct observation of normal modes in coupled oscillators",
+Am. J. Phys. {\bf 71} (1), 87-90 (2003).&lt;/p&gt;
+&lt;p&gt;\bibitem{kannewurf}
+C. R. Kannewurf and Harald C. Jensen,
+ "Coupled Oscillations",
+Am. J. Phys. 25, 442-445 (1957);&lt;/p&gt;
+&lt;p&gt;\bibitem{band}
+William Band and A. D. Bhatti,
+ "Energy Propagation in a Finite Lattice",
+Am. J. Phys. 33, 930-933 (1965).&lt;/p&gt;
+&lt;p&gt;\bibitem{chaturvedi}
+D. K. Chaturvedi and J. S. Baijal,
+ "Normal Modes of Oscillation for a Finite One-Dimensional Diatomic Lattice",
+Am. J. Phys. 42, 482-486 (1974).&lt;/p&gt;
+&lt;p&gt;\bibitem{lee}
+S. M. Lee,
+ "Exact Normal-Mode Analysis for a Linear Lattice with “Periodic Impurities",
+Am. J. Phys. 37, 888-894 (1969).&lt;/p&gt;
+&lt;p&gt;\bibitem{weinstock}
+Robert Weinstock,
+"Normal-Mode Frequencies of Finite One-Dimensional Lattices with Single Mass Defect: Exact Solutions",
+Am. J. Phys. 39, 484-502 (1971).&lt;/p&gt;
+&lt;p&gt;\bibitem{weinstock2}
+Robert Weinstock,
+"Oscillations of a particle attached to a heavy spring: An application of the Stieltjes integral",
+Am. J. Phys. 47, 508 (1979)&lt;/p&gt;
+&lt;p&gt;\bibitem{louck}
+James D. Louck,
+ "Exact Normal Modes of Oscillation of a Linear Chain of Identical Particles",
+Am. J. Phys. 30, 585-590 (1962)&lt;/p&gt;
+&lt;p&gt;\bibitem{kesavasamy1}
+K. Kesavasamy and N. Krishnamurthy, "Lattice vibrations in a linear triatomic chain", Am. J. Phys. {\bf 46}(8), 815-819 (1978);&lt;/p&gt;
+&lt;p&gt;\bibitem{kesavasamy2}
+K. Kesavasamy and N. Krishnamurthy,
+ "Vibrations of a one‐dimensional defect lattice",
+Am. J. Phys. {\bf 47}(11), 968-973 (1979).&lt;/p&gt;
+&lt;p&gt;\bibitem{bhattacharya}
+M. Bhattacharya, H. Shi and S. Preble,
+"Coupled second-quantized oscillators",
+Am. J. Phys. {\bf 81}(4), 267-273 (2013)&lt;/p&gt;
+&lt;p&gt;\bibitem{cushing}
+James T. Cushing,
+ "The spring‐mass system revisited"
+Am. J. Phys. {\bf 52}(10), 925-933 (1984); The method of characteristics applied to the massive spring problem, 52, 933 (1984).&lt;/p&gt;
+&lt;p&gt;\bibitem{bloodmazur}
+Paul Mazur and Frank A. Blood Jr.,
+ "Comparison of Normal Modes of an End-Weighted Discrete and Continuous Linear Chain",
+Am. J. Phys. 40, 1694-1696 (1972)&lt;/p&gt;
+&lt;p&gt;%-------------------------------
+% you can also see this:
+ %The method of characteristics applied to the massive spring problem
+%James T. Cushing
+%Am. J. Phys. 52, 933 (1984);
+%------------------------------&lt;/p&gt;
+&lt;p&gt;\bibitem{berg}
+Richard E. Berg and Todd S. Marshall
+ "Wilberforce pendulum oscillations and normal modes",
+Am. J. Phys. {\bf 59}(1), 32-38 (1991).&lt;/p&gt;
+&lt;p&gt;\bibitem{kashy}
+E. Kashy, D. A. Johnson, J. McIntyre and S. L. Wolfe,
+ "Transverse standing waves in a string with free ends",
+Am. J. Phys. {\bf 65}(4), 310-313 (1997).&lt;/p&gt;
+&lt;p&gt;\bibitem{jihui}
+D. Jihui and C. T. P. Wang, "Demonstration of longitudinal standing
+waves in a pipe revisited", Am. J. Phys. 53, 1110 (1985).&lt;/p&gt;
+&lt;p&gt;\bibitem{ficken}
+G. Ficken and F. Stephenson, "Comments on the Rubens flame tube",
+Am. J. Phys. 54, 297 (1986).&lt;/p&gt;
+&lt;p&gt;\bibitem{perov}
+Polievkt Perov, Walter Johnson and Nataliia Perova-Mello,
+ "The physics of guitar string vibrations",
+Am. J. Phys. {\bf 84}(1), 38-43 (2016).&lt;/p&gt;
+&lt;p&gt;\bibitem{whitfield}
+Scott B. Whitfield and Kurt B. Flesch,
+ "An experimental analysis of a vibrating guitar string using high-speed photography",
+Am. J. Phys. {\bf 82}(2), 102-109 (2014).&lt;/p&gt;
+&lt;p&gt;\bibitem{politzer}
+David Politzer,
+ "The plucked string: An example of non-normal dynamics",
+Am. J. Phys. {\bf 83}(5), 395-402 (2015).&lt;/p&gt;
+&lt;p&gt;\bibitem{rossing}
+Thomas D. Rossing,
+ "Normal modes of a compound string",
+Am. J. Phys. {\bf 43}(8), 735-736 (1975).&lt;/p&gt;
+&lt;p&gt;\bibitem{rawitscher}
+George Rawitscher and Jakob Liss,"The vibrating inhomogeneous string",
+Am. J. Phys. {\bf 79}(4), 417-427 (2011).&lt;/p&gt;
+&lt;p&gt;\bibitem{forbes}
+G. W. Forbes and M. A. Alonso,
+"Measures of spread for periodic distributions and the associated uncertainty relations",
+Am. J. Phys. {\bf 69}(3), 340-347 (2001).
+ibid.,
+"Consistent analogs of the Fourier uncertainly relation",
+Am. J. Phys. {\bf 69}(10), 1091-1095 (2001).&lt;/p&gt;
+&lt;p&gt;\bibitem{oleary}
+Austin J. O'Leary,
+ "Elementary Derivation of Equations for Wave Speeds",
+Am. J. Phys. 22, 327-334 (1954).&lt;/p&gt;
+&lt;p&gt;\bibitem{sineseries}
+John Playfair, "On the trigonometric tables of the Brahmins", Transactions of the Royal Society of Edinburgh, Vol. IV, 1798.&lt;/p&gt;
+&lt;p&gt;\bibitem{vonkarman}
+N. W. Ashcroft and N. D. Mermin, "Solid State Physics", Chapter 22, pp. 430-431, Holt, Rinehart and Winston, New York, 1976.&lt;/p&gt;
+&lt;p&gt;\bibitem{fixedbc}
+H. J. Pain, "The Physics of Vibrations and Waves", Chapter 4, pp. 90-95, Sixth Edition, Wiley 2005.&lt;/p&gt;
+&lt;p&gt;\end{thebibliography}&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content><category term="mathematics"></category><category term="python"></category><category term="animation"></category></entry><entry><title>Wheels within wheels</title><link href="https://bhaskar-kamble.github.io/wheelswithinwheels.html" rel="alternate"></link><published>2018-01-17T23:23:00+01:00</published><updated>2018-01-17T23:23:00+01:00</updated><author><name>Bhaskar Kamble</name></author><id>tag:bhaskar-kamble.github.io,2018-01-17:/wheelswithinwheels.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
