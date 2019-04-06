@@ -1346,8 +1346,6 @@ Eqs. (38,39,41-43) are equivalent to the Fourier series expansion for periodic b
 &lt;p&gt;If $u_n(0)$ is real for all $n$, then $A_m+A_{-m}$ and $i(A_m-A_{-m})$, which occur in the first and third terms of Eq. (38), respectively, are real, which implies that $A_{-m}=A_m^*$. In other words $\Re [A_{-m}] = \Re [A_m]$ and $\Im [A_{-m}] = -\Im [A_m]$.&lt;/p&gt;
 &lt;p&gt;Moreover, if $u_n(0)$ is an even signal, i.e. if $u_{-n}(0)=u_n(0)$, then the third term on the right side of Eq. (38) involving the $\sin k_mx_n$ term vanishes since it is odd in $n$ and only the first term remains. This can happen only if $i(A_m-A_{-m})$ vanishes i.e. if $\Im [A_m]=0$.&lt;/p&gt;
 &lt;p&gt;Likewise for a signal odd in $n$, the real part of its DFT vanishes ($A_m$ is proportional to DFT).&lt;/p&gt;
-&lt;p&gt;%\section{Additional notes}
-%Transverse oscillations, signal processing, Toeplitz matrices.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1364,112 +1362,106 @@ Eqs. (38,39,41-43) are equivalent to the Fourier series expansion for periodic b
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h1 id="Bibliography"&gt;Bibliography&lt;a class="anchor-link" href="#Bibliography"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;\begin{thebibliography}{99}
-\bibitem{givens}
+&lt;h1 id="Bibliography"&gt;Bibliography&lt;a class="anchor-link" href="#Bibliography"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;\begin{thebibliography}{99}&lt;/p&gt;
+&lt;p&gt;[1] \bibitem{givens}
 Ryan Givens, O. F. de Alcantara Bonfim and Robert B. Ormond,
 "Direct observation of normal modes in coupled oscillators",
 Am. J. Phys. {\bf 71} (1), 87-90 (2003).&lt;/p&gt;
-&lt;p&gt;\bibitem{kannewurf}
+&lt;p&gt;[2] \bibitem{kannewurf}
 C. R. Kannewurf and Harald C. Jensen,
  "Coupled Oscillations",
 Am. J. Phys. 25, 442-445 (1957);&lt;/p&gt;
-&lt;p&gt;\bibitem{band}
+&lt;p&gt;[3] \bibitem{band}
 William Band and A. D. Bhatti,
  "Energy Propagation in a Finite Lattice",
 Am. J. Phys. 33, 930-933 (1965).&lt;/p&gt;
-&lt;p&gt;\bibitem{chaturvedi}
+&lt;p&gt;[4] \bibitem{chaturvedi}
 D. K. Chaturvedi and J. S. Baijal,
  "Normal Modes of Oscillation for a Finite One-Dimensional Diatomic Lattice",
 Am. J. Phys. 42, 482-486 (1974).&lt;/p&gt;
-&lt;p&gt;\bibitem{lee}
+&lt;p&gt;[5] \bibitem{lee}
 S. M. Lee,
  "Exact Normal-Mode Analysis for a Linear Lattice with “Periodic Impurities",
 Am. J. Phys. 37, 888-894 (1969).&lt;/p&gt;
-&lt;p&gt;\bibitem{weinstock}
+&lt;p&gt;[6] \bibitem{weinstock}
 Robert Weinstock,
 "Normal-Mode Frequencies of Finite One-Dimensional Lattices with Single Mass Defect: Exact Solutions",
 Am. J. Phys. 39, 484-502 (1971).&lt;/p&gt;
-&lt;p&gt;\bibitem{weinstock2}
+&lt;p&gt;[7] \bibitem{weinstock2}
 Robert Weinstock,
 "Oscillations of a particle attached to a heavy spring: An application of the Stieltjes integral",
 Am. J. Phys. 47, 508 (1979)&lt;/p&gt;
-&lt;p&gt;\bibitem{louck}
+&lt;p&gt;[8] \bibitem{louck}
 James D. Louck,
  "Exact Normal Modes of Oscillation of a Linear Chain of Identical Particles",
 Am. J. Phys. 30, 585-590 (1962)&lt;/p&gt;
-&lt;p&gt;\bibitem{kesavasamy1}
+&lt;p&gt;[9] \bibitem{kesavasamy1}
 K. Kesavasamy and N. Krishnamurthy, "Lattice vibrations in a linear triatomic chain", Am. J. Phys. {\bf 46}(8), 815-819 (1978);&lt;/p&gt;
-&lt;p&gt;\bibitem{kesavasamy2}
+&lt;p&gt;[10] \bibitem{kesavasamy2}
 K. Kesavasamy and N. Krishnamurthy,
  "Vibrations of a one‐dimensional defect lattice",
 Am. J. Phys. {\bf 47}(11), 968-973 (1979).&lt;/p&gt;
-&lt;p&gt;\bibitem{bhattacharya}
+&lt;p&gt;[11] \bibitem{bhattacharya}
 M. Bhattacharya, H. Shi and S. Preble,
 "Coupled second-quantized oscillators",
 Am. J. Phys. {\bf 81}(4), 267-273 (2013)&lt;/p&gt;
-&lt;p&gt;\bibitem{cushing}
+&lt;p&gt;[12] \bibitem{cushing}
 James T. Cushing,
  "The spring‐mass system revisited"
 Am. J. Phys. {\bf 52}(10), 925-933 (1984); The method of characteristics applied to the massive spring problem, 52, 933 (1984).&lt;/p&gt;
-&lt;p&gt;\bibitem{bloodmazur}
+&lt;p&gt;[13] \bibitem{bloodmazur}
 Paul Mazur and Frank A. Blood Jr.,
  "Comparison of Normal Modes of an End-Weighted Discrete and Continuous Linear Chain",
 Am. J. Phys. 40, 1694-1696 (1972)&lt;/p&gt;
-&lt;p&gt;%-------------------------------
-% you can also see this:
- %The method of characteristics applied to the massive spring problem
-%James T. Cushing
-%Am. J. Phys. 52, 933 (1984);
-%------------------------------&lt;/p&gt;
-&lt;p&gt;\bibitem{berg}
+&lt;p&gt;[14] \bibitem{berg}
 Richard E. Berg and Todd S. Marshall
  "Wilberforce pendulum oscillations and normal modes",
 Am. J. Phys. {\bf 59}(1), 32-38 (1991).&lt;/p&gt;
-&lt;p&gt;\bibitem{kashy}
+&lt;p&gt;[15] \bibitem{kashy}
 E. Kashy, D. A. Johnson, J. McIntyre and S. L. Wolfe,
  "Transverse standing waves in a string with free ends",
 Am. J. Phys. {\bf 65}(4), 310-313 (1997).&lt;/p&gt;
-&lt;p&gt;\bibitem{jihui}
+&lt;p&gt;[16] \bibitem{jihui}
 D. Jihui and C. T. P. Wang, "Demonstration of longitudinal standing
 waves in a pipe revisited", Am. J. Phys. 53, 1110 (1985).&lt;/p&gt;
-&lt;p&gt;\bibitem{ficken}
+&lt;p&gt;[17] \bibitem{ficken}
 G. Ficken and F. Stephenson, "Comments on the Rubens flame tube",
 Am. J. Phys. 54, 297 (1986).&lt;/p&gt;
-&lt;p&gt;\bibitem{perov}
+&lt;p&gt;[18] \bibitem{perov}
 Polievkt Perov, Walter Johnson and Nataliia Perova-Mello,
  "The physics of guitar string vibrations",
 Am. J. Phys. {\bf 84}(1), 38-43 (2016).&lt;/p&gt;
-&lt;p&gt;\bibitem{whitfield}
+&lt;p&gt;[19] \bibitem{whitfield}
 Scott B. Whitfield and Kurt B. Flesch,
  "An experimental analysis of a vibrating guitar string using high-speed photography",
 Am. J. Phys. {\bf 82}(2), 102-109 (2014).&lt;/p&gt;
-&lt;p&gt;\bibitem{politzer}
+&lt;p&gt;[20] \bibitem{politzer}
 David Politzer,
  "The plucked string: An example of non-normal dynamics",
 Am. J. Phys. {\bf 83}(5), 395-402 (2015).&lt;/p&gt;
-&lt;p&gt;\bibitem{rossing}
+&lt;p&gt;[21] \bibitem{rossing}
 Thomas D. Rossing,
  "Normal modes of a compound string",
 Am. J. Phys. {\bf 43}(8), 735-736 (1975).&lt;/p&gt;
-&lt;p&gt;\bibitem{rawitscher}
+&lt;p&gt;[22] \bibitem{rawitscher}
 George Rawitscher and Jakob Liss,"The vibrating inhomogeneous string",
 Am. J. Phys. {\bf 79}(4), 417-427 (2011).&lt;/p&gt;
-&lt;p&gt;\bibitem{forbes}
+&lt;p&gt;[23] \bibitem{forbes}
 G. W. Forbes and M. A. Alonso,
 "Measures of spread for periodic distributions and the associated uncertainty relations",
 Am. J. Phys. {\bf 69}(3), 340-347 (2001).
 ibid.,
 "Consistent analogs of the Fourier uncertainly relation",
 Am. J. Phys. {\bf 69}(10), 1091-1095 (2001).&lt;/p&gt;
-&lt;p&gt;\bibitem{oleary}
+&lt;p&gt;[24] \bibitem{oleary}
 Austin J. O'Leary,
  "Elementary Derivation of Equations for Wave Speeds",
 Am. J. Phys. 22, 327-334 (1954).&lt;/p&gt;
-&lt;p&gt;\bibitem{sineseries}
+&lt;p&gt;[25] \bibitem{sineseries}
 John Playfair, "On the trigonometric tables of the Brahmins", Transactions of the Royal Society of Edinburgh, Vol. IV, 1798.&lt;/p&gt;
-&lt;p&gt;\bibitem{vonkarman}
+&lt;p&gt;[26] \bibitem{vonkarman}
 N. W. Ashcroft and N. D. Mermin, "Solid State Physics", Chapter 22, pp. 430-431, Holt, Rinehart and Winston, New York, 1976.&lt;/p&gt;
-&lt;p&gt;\bibitem{fixedbc}
+&lt;p&gt;[27] \bibitem{fixedbc}
 H. J. Pain, "The Physics of Vibrations and Waves", Chapter 4, pp. 90-95, Sixth Edition, Wiley 2005.&lt;/p&gt;
 &lt;p&gt;\end{thebibliography}&lt;/p&gt;
 &lt;/div&gt;
