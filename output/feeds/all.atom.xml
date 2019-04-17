@@ -1122,7 +1122,7 @@ dz &amp;\\
 \right)
 \end{eqnarray}&lt;/p&gt;
 &lt;p&gt;The above is the first-order change in $f$ due to changes in $x$, $y$ and $z$.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;At an extremal point (maximum or minimum) the above is zero. Since $dx$, $dy$ and $dz$ are arbitrary, it follows that $\frac{\partial f}{\partial x}$, $\frac{\partial f}{\partial y}$ and $\frac{\partial f}{\partial z}$ must be separately zero.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;At an extremal point (maximum or minimum) or a saddle point, the above is zero. Since $dx$, $dy$ and $dz$ are arbitrary, it follows that $\frac{\partial f}{\partial x}$, $\frac{\partial f}{\partial y}$ and $\frac{\partial f}{\partial z}$ must be separately zero.&lt;/strong&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1219,7 +1219,7 @@ dz \\
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;At at an extremal point, the second term on the right hand side is zero. That leaves us with the third term, which is the second order change in $f$ which can be written as&lt;/p&gt;
+&lt;p&gt;At at an extremal point or a saddle point, the second term on the right hand side is zero. That leaves us with the third term, which is the second order change in $f$ which can be written as&lt;/p&gt;
 &lt;p&gt;\begin{equation}
 d^2f = (\Delta {\bf x})^T \cdot H \cdot (\Delta {\bf x})
 \end{equation}&lt;/p&gt;
