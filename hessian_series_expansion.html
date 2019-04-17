@@ -1019,8 +1019,7 @@ h6:hover .anchor-link {
 \begin{equation}
 f(x+dx) = f(x) + \frac{df}{dx}dx + \frac{1}{2!}\frac{d^2 f}{dx^2}dx^2 + \frac{1}{3!}\frac{d^3 f}{dx^3}dx^3 + \cdots
 \end{equation}</p>
-<p>For a function of multiple variables (which we shall take to be $x$, $y$ and $z$ in this case), we want to find the series expansion in terms of $dx$, $dy$ and $dz$. That is we want to develop a series expansion for</p>
-<p>$f(x+dx,y+dy,z+dz)$</p>
+<p>For a function of multiple variables (which we shall take to be $x$, $y$ and $z$ in this case), we want to find the series expansion in terms of $dx$, $dy$ and $dz$. That is we want to develop a series expansion for $f(x+dx,y+dy,z+dz)$</p>
 <p>First we keep $y+dy$ and $z+dz$ constant and expand only in terms of $x$ using the familiar series expansion for a single variable:</p>
 </div>
 </div>
@@ -1218,7 +1217,7 @@ H = \frac{1}{2}
 <p>The fact that at the point of minima (bzw. maxima), the above is positive (bzw. negative) no matter what the values of $dx$, $dy$ and $dz$ are, imposes certain conditions on $H$. Let's look at these conditions:</p>
 <p>\begin{eqnarray}
 && f(x+dx,y+dy,z+dz) \nonumber \\
-&& = f(x,y,z) + 
+&=& f(x,y,z) + 
 \left(\frac{\partial f}{\partial x} , \frac{\partial f}{\partial y} , \frac{\partial f}{\partial z}\right)
 \cdot
 \left(
@@ -1227,8 +1226,8 @@ dx & \\
 dy &\\
 dz \\
 \end{array}
-\right)
-+
+\right) \nonumber \\
+&+&
 \left(dx , dy , dz \right)\cdot \frac{1}{2} \cdot
 \left( \begin{array}{rrr}
 \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} & \frac{\partial^2 f}{\partial x \partial z} \\
