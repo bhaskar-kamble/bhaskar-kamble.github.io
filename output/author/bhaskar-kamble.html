@@ -1010,7 +1010,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The starting point is the familiar Taylor series expansion for a single variable:
+<h1 id="Series-expansion-of-a-function-with-several-variables">Series expansion of a function with several variables<a class="anchor-link" href="#Series-expansion-of-a-function-with-several-variables">¶</a></h1><p>The starting point is the familiar Taylor series expansion for a single variable:
 \begin{equation}
 f(x+dx) = f(x) + \frac{df}{dx}dx + \frac{1}{2!}\frac{d^2 f}{dx^2}dx^2 + \frac{1}{3!}\frac{d^3 f}{dx^3}dx^3 + \cdots
 \end{equation}</p>
@@ -1149,7 +1149,7 @@ dz &\\
 \right)
 \end{eqnarray}</p>
 <p>The above is the first-order change in $f$ due to changes in $x$, $y$ and $z$.</p>
-<p><strong>At an extremal point (maximum or minimum) the above is zero.</strong></p>
+<p><strong>At an extremal point (maximum or minimum) the above is zero. Since $dx$, $dy$ and $dz$ are arbitrary, it follows that $\frac{\partial f}{\partial x}$, $\frac{\partial f}{\partial y}$ and $\frac{\partial f}{\partial z}$ must be separately zero.</strong></p>
 </div>
 </div>
 </div>
@@ -1160,7 +1160,7 @@ dz &\\
 <p>While the second order terms (terms 5 to 10) can be written as</p>
 <p>\begin{eqnarray}
 \left(dx , dy , dz\right)
-\cdot
+\cdot \frac{1}{2} \cdot
 \left( \begin{array}{rrr}
 \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} & \frac{\partial^2 f}{\partial x \partial z} \\
 \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} & \frac{\partial^2 f}{\partial y \partial z} \\
@@ -1176,8 +1176,8 @@ dz &\\
 \end{array}
 \right)
 \end{eqnarray}</p>
-<p>The above are the second-order changes in $f$ due to changes in $x$, $y$ and $z$.</p>
-<p><strong>For a minimum, the above is positive and for a maximum, the above is negative.</strong></p>
+<p>The above is the second-order change in $f$ due to changes in $x$, $y$ and $z$.</p>
+<p><strong>For a minimum, the above is positive and for a maximum, the above is negative, no matter what (dx, dy, dz) are.</strong></p>
 </div>
 </div>
 </div>
@@ -1185,7 +1185,188 @@ dz &\\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>The matrix above is the Hessian matrix.</strong></p>
+<p><strong>The matrix above is the Hessian matrix denoted by $H$.</strong> To be explicit:</p>
+<p>\begin{eqnarray}
+H = \frac{1}{2}
+\left( \begin{array}{rrr}
+\frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} & \frac{\partial^2 f}{\partial x \partial z} \\
+\frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} & \frac{\partial^2 f}{\partial y \partial z} \\
+\frac{\partial^2 f}{\partial z \partial x} & \frac{\partial^2 f}{\partial z \partial y} & \frac{\partial^2 f}{\partial z^2} \\
+\end{array} 
+\right)
+\end{eqnarray}</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Conditions-for-maxima-or-minima">Conditions for maxima or minima<a class="anchor-link" href="#Conditions-for-maxima-or-minima">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The fact that at the point of minima (bzw. maxima), the above is positive (bzw. negative) no matter what the values of $dx$, $dy$ and $dz$ are, imposes certain conditions on $H$. Let's look at these conditions:</p>
+<p>\begin{eqnarray}
+&& f(x+dx,y+dy,z+dz) \nonumber \\
+&& = f(x,y,z) + 
+\left(\frac{\partial f}{\partial x} , \frac{\partial f}{\partial y} , \frac{\partial f}{\partial z}\right)
+\cdot
+\left(
+\begin{array}{l}
+dx & \\
+dy &\\
+dz \\
+\end{array}
+\right)
++
+\left(dx , dy , dz \right)\cdot \frac{1}{2} \cdot
+\left( \begin{array}{rrr}
+\frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} & \frac{\partial^2 f}{\partial x \partial z} \\
+\frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} & \frac{\partial^2 f}{\partial y \partial z} \\
+\frac{\partial^2 f}{\partial z \partial x} & \frac{\partial^2 f}{\partial z \partial y} & \frac{\partial^2 f}{\partial z^2} \\
+\end{array} 
+\right) \cdot
+\left(
+\begin{array}{l}
+dx & \\
+dy &\\
+dz \\
+\end{array}
+\right) + \cdots
+\end{eqnarray}</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At at an extremal point, the second term on the right hand side is zero. That leaves us with the third term, which is the second order change in $f$ which can be written as</p>
+<p>\begin{equation}
+d^2f = (\Delta {\bf x})^T \cdot H \cdot (\Delta {\bf x})
+\end{equation}</p>
+<p>which actually is valid for any number of dimensions, not just three. In our present case of three dimensions we have</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\Delta {\bf x} = \left(\begin{array}{l}
+dx & \\
+dy &\\
+dz \\
+\end{array}\right)$</p>
+<p>and $H = \frac{1}{2} \cdot
+\left( \begin{array}{rrr}
+\frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} & \frac{\partial^2 f}{\partial x \partial z} \\
+\frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} & \frac{\partial^2 f}{\partial y \partial z} \\
+\frac{\partial^2 f}{\partial z \partial x} & \frac{\partial^2 f}{\partial z \partial y} & \frac{\partial^2 f}{\partial z^2} \\
+\end{array} 
+\right)$.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At this stage, I'm going to do a trick. It's actually quite well known in the world of physics, and which I've used in <a href="https://www.youtube.com/watch?v=t9-1UmBAQOg&amp;t=362s">this</a> video on waves and oscillations (4:55 onwards). The trick involves inserting the identity matrix $S^{-1}S$, where $S$ is any invertible matrix with dimensions of $H$. With this, we have</p>
+<p>\begin{equation}
+d^2f = (\Delta {\bf x})^T  (S^{-1}S) \cdot H \cdot  (S^{-1}S)  (\Delta {\bf x})
+\end{equation}</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since matrix multiplication is associative, the above is the same as</p>
+<p>\begin{equation}
+d^2f = ((\Delta {\bf x})^T  S^{-1} )\cdot (S H  S^{-1})\cdot (S  \Delta {\bf x})
+\end{equation}</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now - this is where it gets really interesting - if we choose the columns of $S^{-1}$ to be the eigenvectors of $H$, then $SHS^{-1}$ is a diagonal matrix, with the eigenvalues of $H$ on the diagonals. (This is quite easy to prove using the rules of matrix multiplication.) But that is not all. Notice that the Hessian matrix $H$ is symmetric, that is, $H_{ij}= H_{ji}$ (i.e. $\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y \partial x}$). There is a very interesting theorem that, if the columns of $S$ are the eigenvectors of a symmetric matrix, then the inverse of $S$ is the transpose of $S$, i.e. $S^{-1}=S^T$ (an equivalent statement is that $S$ is an orthogonal matrix). As mentioned, $H$ is already symmetric, so this theorem allows us to replace $S^{-1}$ by $S^T$ in the above equation:</p>
+<p>\begin{equation}
+d^2f = ((\Delta {\bf x})^T  S^T )\cdot (S H  S^T)\cdot (S  \Delta {\bf x})
+\end{equation}</p>
+<p>where $SHS^T$ is a diagonal matrix consisting of the eigenvalues of $H$. We also say that $SHS^T$ is an orthogonal transformation that diagonalizes the Hessian.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Further, from a basic statement of matrix algebra, $(\Delta {\bf x})^TS^T = (S \Delta {\bf x})^T$ which allows us to write</p>
+<p>\begin{equation}
+d^2f = (S \Delta {\bf x})^T\cdot (S H  S^T)(S  \Delta {\bf x})
+\end{equation}</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-case-of-two-dimensions">The case of two dimensions<a class="anchor-link" href="#The-case-of-two-dimensions">¶</a></h2><p>In the case of two dimensions, $S\Delta {\bf x}$ is a two-dimensional column vector, $H$ is a $2\times 2$ matrix, and $SHS^T$ is a $2\times 2$ diagonal matrix consisting of the eigenvalues of $H$. Let $\lambda_1$ and $\lambda_2$ be the two eigenvalues of $H$, and let $S\Delta {\bf x} = \left(\begin{array}{l}
+\alpha & \\
+\beta \\
+\end{array}\right)$, where the exact values of $\alpha$ and $\beta$ are not important. This allows us to write for $d^2f$:</p>
+<p>\begin{eqnarray}
+d^2 f = (\alpha , \beta) \left( \begin{array}{rr}
+\lambda_1 & 0 \\
+0         & \lambda_2 \\
+\end{array} 
+\right)
+\left(\begin{array}{l}
+\alpha & \\
+\beta &\\
+\end{array}\right)
+\end{eqnarray}</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Carrying out the matrix multiplication, it immediately yields:
+\begin{equation}
+d^2f = \alpha^2 \lambda_1 + \beta^2 \lambda_2
+\end{equation}</p>
+<p>For a local minimum, $d^2f$ is always positive and vice-versa. We now use the fact that $\alpha^2$ and $\beta^2$ are always positive to find some conditions that $\lambda_1$ and $\lambda_2$ must satisfy for a point to be a local maximum or minimum.</p>
+<ul>
+<li><p><strong>Local Minimum.</strong> For this case we must always have $\alpha^2 \lambda_1 + \beta^2 \lambda_2 >0$, regardless of what $dx$ and $dy$, and consequently $\alpha$ and $\beta$, are. Moreover, since $\alpha^2$ and $\beta^2$ are always positive, this is possible only if both $\lambda_1 > 0$ and $\lambda_2 > 0$. In this case $\lambda_1\lambda_2 > 0$.</p>
+</li>
+<li><p><strong>Local Maximum.</strong> For this case we must always have $\alpha^2 \lambda_1 + \beta^2 \lambda_2 < 0$, regardless of what $dx$ and $dy$, and consequently $\alpha$ and $\beta$, are. Since $\alpha^2$ and $\beta^2$ are always positive, this is possible only if both $\lambda_1 < 0$ and $\lambda_2 < 0$. In this case also $\lambda_1\lambda_2 > 0$.</p>
+</li>
+<li><p>Hence if $\lambda_1\lambda_2 > 0$ at a point where all the first derivatives of $f$ are zero, then we are definitely dealing with either a local maximum or a local minimum, and not a saddle point. But it is not sufficient to tell us which of the two it is (maximum or minimum).</p>
+</li>
+<li><p>It is trivial to see that $\lambda_1\lambda_2= det(SHS^T)$. But $det(SHS^T) = det(SS^TH)=det(H)$ and hence  $\lambda_1\lambda_2$ is also the determinant of $H$.</p>
+</li>
+<li><p>If $\lambda_1\lambda_2 < 0$, i.e. if $det(H) < 0$ at a point where all the first derivatives of $f$ are zero, then we are dealing with a saddle point, i.e. along some directions the point is a maximum and along other directions the point is a minimum - like the saddle of a horse. A simple example is $f(x,y)=x^2-y^2$, whose first derivatives vanish at the point $(0,0)$, and whose Hessian at this point is $\left( \begin{array}{rr}
+1 & 0 \\
+0         & -1 \\
+\end{array} 
+\right)$ and whose determinant is consequently negative.</p>
+</li>
+</ul>
+<h1 id="Further-condition-to-determine-if-the-extremum-is-a-minimum-or-a-maximum">Further condition to determine if the extremum is a minimum or a maximum<a class="anchor-link" href="#Further-condition-to-determine-if-the-extremum-is-a-minimum-or-a-maximum">¶</a></h1><p>If $\lambda_1\lambda_2 > 0$, i.e. if $det(H) > 0$, then either $\lambda_1$ and $\lambda_2$ are both negative, or are both postive. The former corresponds to a maximum, and the latter to a minumum, as the first and second points in this list show. But to find out which of the two it is, we need one more condition. What is it? Well, let the extremum point be a minimum, to be concrete, let $(a,b)$ be the point. Now choose a line in the $xy$ plane which goes through this point and whose direction is parallel to the $x$-axis. Since a local minimum means that the point will be a minimum no matter which direction we choose, it will be a minimum along this line also. And along this line, $y$ has the constant value of $b$, and hence $f(x,y)=f(x,b)$ is just a function of $x$ ($y$ being constant). Now we know from the theory of functions of one variable that at a minimum the second derivative is positive. Keeping $y$ constant at the value $b$, the second derivative of $f$ with respect to $x$ at $x=a$ is thus positive at this point of minimum. However this second derivative is nothing else than $\frac{\partial^2 f}{\partial x^2}$, evaluated at the point $(a,b)$, which must thus be positive at a local minimum. And $\frac{\partial^2 f}{\partial x^2}$ is the element in the first row and first column of the Hessian: $H_{11}=\frac{\partial^2 f}{\partial x^2}$. Hence if we have found that the point where the first derivatives vanish and established that the determinant of $H$ at this point is positive, then if we see that $H_{11}$ at this point is also positive, then we have established that we have a local minimum. By the way, a similar reasoning shows that $H_{22}$ also must be positive, because the point $(a,b)$ is a local minimum even when we take a path parallel to the $y$-axis and passing through $x=a$, for in this case again we have a function of one variable, the variable being $y$ in this case. Hence it suffices to show that either $H_{11}$ or $H_{22}$ is positive - the positivity of one ensures the positivity of the other.</p>
+<p>In the same way, if $det(H) > 0$, and if $H_{11}<0$, then we are dealing with a local maximum.</p>
 </div>
 </div>
 </div>
