@@ -1015,7 +1015,9 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Rotation-matrix-in-two-dimensions">Rotation matrix in two dimensions<a class="anchor-link" href="#Rotation-matrix-in-two-dimensions">¶</a></h1><p><img src="./images/PCA/RotationOfCoordinatesSnapshot.png" width="500" /></p>
+<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h1><p>Principle Component Analysis (PCA) is a tool in machine learning and data science applications to reduce the number of dimensions of a data set. The idea is to pick only those components which have the maximum variance and leave out the rest. This serves two purposes: one is that by leaving out unimportant features one can improve the efficiency of machine learning algorithms, and the second is that the reduced dimensionality helps in a better visualization of the data. This article seeks to offer a fairly rigorous treatment of the subject, but in the backdrop of an easy to grasp example so that the intuitive side is not lost.</p>
+<h1 id="Rotation-matrix-in-two-dimensions">Rotation matrix in two dimensions<a class="anchor-link" href="#Rotation-matrix-in-two-dimensions">¶</a></h1><p>As a bit of revision, the rotation matrix in two dimensions is recalled here, since we will it use it in the next section.</p>
+<p><img src="./images/PCA/RotationOfCoordinatesSnapshot.png" width="500" /></p>
 <p>Suppose $x$ and $y$ are two features (they could be, for examle, the <code>mpg</code> and the <code>weight</code> features in the <code>mtcars</code> dataset). Consider a point P in $xy$ space with coordinates $x$ and $y$ (see the above figure, with $OA=x$ and $OB=y$). Now, keeping the origin fixed, we rotate the coordinate system in the anticlockwise direction by an angle $\theta$, and call the new coordinate system the $x'y'$ coordinate system. This is a special transformation of the coordinate system and is a pure rotation around the origin (there can be other transformations also: reflection, translation, scaling, etc. but we don't bother with them right now). In this new coordinate system, the coordinates of the same point P are $x'$ and $y'$ (in the above figure, $OC=x'$ and $OD=y'$). (FYI: this is a so-called passive transformation, in which the point remains fixed and the coordinate system is changed. In an active transformation, the coordinate system remains fixed but the point is moved.) The relation between the new rotated coordinates ($x'$ and $y'$) and the original coordinates ($x$ and $y$) of the point $P$ is then the following:</p>
 <p>\begin{eqnarray}
 \left(
@@ -1451,6 +1453,12 @@ Var(x^{u)}) = u^TSu = \lambda u^Tu = \lambda.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The first eigenvector, i.e. the first principal component, is $\left(  \begin{array}{r} 0.8653 \\ 0.5012 \end{array} \right)$. The "actual" principal component is, as we know, $\left( \begin{array}{r} \cos 30^{\rm o} \\ \sin 30^{\rm o} \end{array}\right)$, which equals $\left( \begin{array}{r} 0.866 \\ 0.5 \end{array}\right)$, which is pretty close to the one calculated here.</p>
+<h1 id="Advantages-and-disadvantages-of-PCA">Advantages and disadvantages of PCA<a class="anchor-link" href="#Advantages-and-disadvantages-of-PCA">¶</a></h1><ul>
+<li><p>Advantages: As mentioned in the introduction, PCA helps in getting of unimportant features and improve the efficiency of machine learning algorithms. It also helps in better visualization of data.</p>
+</li>
+<li><p>Disadvantages: The principle components are linear combinations of different features, and hence may not necessarily correspond to a real physical feature. Also, when a machine learning algorithm uses these features, it may be difficult to interpret them intuitively.</p>
+</li>
+</ul>
 <h2 id="Reference">Reference<a class="anchor-link" href="#Reference">¶</a></h2><p><a href="https://www.youtube.com/watch?v=L-pQtGm3VS8&amp;=&amp;t=2534s">https://www.youtube.com/watch?v=L-pQtGm3VS8&amp;=&t;=2534s</a></p>
 </div>
 </div>
